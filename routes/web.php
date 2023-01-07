@@ -26,5 +26,6 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('home', [HomeController::class,'index']);
+Route::get('home', [HomeController::class,'homepage'])->name('home');
+Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
 
