@@ -60,20 +60,17 @@
                                 <a href="{{route('movie.detail')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Details</a>
                             </li>
                             <li>
-                                <a href="movie-ticket-plan.html"><i class="fal fa-long-arrow-alt-right"></i>Movie Ticket Plan</a>
+                                <a href="{{route('movie.checkout')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Checkout</a>
                             </li>
                             <li>
-                                <a href="movie-seat-plan.html"><i class="fal fa-long-arrow-alt-right"></i>Movie Seat Plan</a>
+                                <a href="{{route('ticket.plan')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Ticket Plan</a>
                             </li>
                             <li>
-                                <a href="movie-checkout.html"><i class="fal fa-long-arrow-alt-right"></i>Movie Checkout</a>
-                            </li>
-                            <li>
-                                <a href="movie-food.html"><i class="fal fa-long-arrow-alt-right"></i>Movie Food</a>
+                                <a href="{{route('seat.plan')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Seat Plan</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children">
+                    <!-- <li class="menu-item-has-children">
                         <a href="#">events</a>
                         <ul class="submenu">
                             <li>
@@ -161,9 +158,9 @@
                                 <a href="blog-details.html"><i class="fal fa-long-arrow-alt-right"></i>Blog Single</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="contact.html">contact</a>
+                        <a href="{{route('contact')}}">contact</a>
                     </li>
                     <li class="header-button pr-0">
                         <a href="login.html">join us</a>

@@ -32,5 +32,6 @@ Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list'
 Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
 Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
 
-Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plain');
-Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plain');
+Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
+Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
+Route::get('contact', [HomeController::class,'contact'])->name('contact');

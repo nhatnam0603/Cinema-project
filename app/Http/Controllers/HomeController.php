@@ -60,4 +60,14 @@ class HomeController extends Controller
     {
        return view('web.seatplan');
     }
+      /**
+     * Display seat plan page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function contact()
+    {
+       return view('web.contact');
+    }
+    
 }
