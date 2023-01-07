@@ -78,10 +78,12 @@ class AuthController extends Controller
      */
     public function dashboard()
     {
-        if(Auth::check()){
+        if(Auth::check() && (Auth::user()->role) == 2){
             return view('admin.dashboard');
         }
-
+        else if((Auth::user()->role) == 1){
+            return redirect("home");
+        }
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
 
