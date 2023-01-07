@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Ticket - Online Ticket Booking Website HTML5 Template</title>
+    <title>Cinema</title>
 
     <link rel="shortcut icon" href="{{asset('assets/img/favicon.jpg')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -47,34 +47,17 @@
                     </a>
                 </div>
                 <ul class="menu">
-                    <li class="menu-item-has-children">
-                        <a href="#" class="active">Home</a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="index.html" class="active"> <i class="fal fa-long-arrow-alt-right"></i> Home Demo 01</a>
-                            </li>
-                            <li>
-                                <a href="index-2.html"> <i class="fal fa-long-arrow-alt-right"></i> Home Demo 02</a>
-                            </li>
-                            <li>
-                                <a href="index-3.html"> <i class="fal fa-long-arrow-alt-right"></i> Home Demo 03</a>
-                            </li>
-                        </ul>
+                    <li class="menu-item">
+                        <a href="{{route('home')}}" class="active">Home</a>
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#">movies</a>
                         <ul class="submenu">
                             <li>
-                                <a href="movie-grid.html"><i class="fal fa-long-arrow-alt-right"></i>Movie Grid</a>
+                                <a href="{{route('movie.list')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie List</a>
                             </li>
                             <li>
-                                <a href="movie-list.html"><i class="fal fa-long-arrow-alt-right"></i>Movie List</a>
-                            </li>
-                            <li>
-                                <a href="movie-details.html"><i class="fal fa-long-arrow-alt-right"></i>Movie Details</a>
-                            </li>
-                            <li>
-                                <a href="movie-details-2.html"><i class="fal fa-long-arrow-alt-right"></i>Movie Details 02</a>
+                                <a href="{{route('movie.detail')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Details</a>
                             </li>
                             <li>
                                 <a href="movie-ticket-plan.html"><i class="fal fa-long-arrow-alt-right"></i>Movie Ticket Plan</a>
