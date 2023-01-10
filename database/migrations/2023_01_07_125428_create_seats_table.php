@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::create('seats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('row');
             $table->integer('number');
-            $table->foreignId('screen_id')->constrainted();
-            // $table->integer('screen_id')->unsigned();
+            $table->integer('screen_id')->unsigned();
+            $table->foreign('screen_id')->references('id')->on('screens');
             $table->timestamps();
-        
-            // $table->foreign('screen_id')->references('id')->on('screens');
         });
     }
 
