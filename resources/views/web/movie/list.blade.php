@@ -21,28 +21,7 @@
                             <h3 class="title">find your tickets now</h3>
                         </div>
                     </div>
-                    <div class="col-lg-6 mb-20">
-                        <ul class="tab-menu ticket-tab-menu">
-                            <li class="active">
-                                <div class="tab-thumb">
-                                    <img src="assets/img/ticket/movie.png" alt="ticket">
-                                </div>
-                                <span>movie</span>
-                            </li>
-                            <li>
-                                <div class="tab-thumb">
-                                    <img src="assets/img/ticket/event.png" alt="ticket">
-                                </div>
-                                <span>events</span>
-                            </li>
-                            <li>
-                                <div class="tab-thumb">
-                                    <img src="assets/img/ticket/sport.png" alt="ticket">
-                                </div>
-                                <span>sports</span>
-                            </li>
-                        </ul>
-                    </div>
+                  
                 </div>
                 <div class="tab-area">
 
@@ -56,34 +35,23 @@
                                 <div class="thumb">
                                     <img src="assets/img/ticket/city.png" alt="ticket">
                                 </div>
-                                <span class="type">city</span>
-                                <select class="select-bar" style="display: none;">
-                                    <option value="london">New York</option>
-                                    <option value="dhaka">California</option>
-                                    <option value="rosario">Texas</option>
-                                    <option value="madrid">Florida</option>
-                                    <option value="koltaka">Nevada</option>
-                                    <option value="rome">Oregon</option>
-                                    <option value="khoksa">Ohio</option>
+                                <span class="type">Genre</span>
+                                <select class="select-bar">
+                                    <option value="1">Action</option>
+                                    <option value="2">Horror</option>
+                                    <option value="3">Romance</option>
+                                    <option value="4">Animation</option>
+                                    <option value="5">Comedy</option>
+                                    <option value="6">Drama</option>
+                                 
                                 </select>
-                                <div class="nice-select select-bar" tabindex="0"><span class="current">New York</span>
-                                    <ul class="list">
-                                        <li data-value="london" class="option selected">New York</li>
-                                        <li data-value="dhaka" class="option">California</li>
-                                        <li data-value="rosario" class="option">Texas</li>
-                                        <li data-value="madrid" class="option">Florida</li>
-                                        <li data-value="koltaka" class="option">Nevada</li>
-                                        <li data-value="rome" class="option">Oregon</li>
-                                        <li data-value="khoksa" class="option">Ohio</li>
-                                    </ul>
-                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="thumb">
                                     <img src="assets/img/ticket/date.png" alt="ticket">
                                 </div>
-                                <span class="type">date</span>
-                                <select class="select-bar" style="display: none;">
+                                <span class="type">Date</span>
+                                <select class="select-bar" >
                                     <option value="11/04/2021">11/04/2021</option>
                                     <option value="10/04/2021">10/04/2021</option>
                                     <option value="09/04/2021">09/04/2021</option>
@@ -92,227 +60,17 @@
                                     <option value="06/04/2021">06/04/2021</option>
                                     <option value="05/04/2021">05/04/2021</option>
                                 </select>
-                                <div class="nice-select select-bar" tabindex="0"><span class="current">11/04/2021</span>
-                                    <ul class="list">
-                                        <li data-value="11/04/2021" class="option selected">11/04/2021</li>
-                                        <li data-value="10/04/2021" class="option">10/04/2021</li>
-                                        <li data-value="09/04/2021" class="option">09/04/2021</li>
-                                        <li data-value="08/04/2021" class="option">08/04/2021</li>
-                                        <li data-value="07/04/2021" class="option">07/04/2021</li>
-                                        <li data-value="06/04/2021" class="option">06/04/2021</li>
-                                        <li data-value="05/04/2021" class="option">05/04/2021</li>
-                                    </ul>
-                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="thumb">
                                     <img src="assets/img/ticket/cinema.png" alt="ticket">
                                 </div>
-                                <span class="type">movie</span>
-                                <select class="select-bar" style="display: none;">
-                                    <option value="Avatar">Avatar</option>
-                                    <option value="Inception">Inception</option>
-                                    <option value="Parasite">Parasite</option>
-                                    <option value="Joker">Joker</option>
-                                    <option value="Searching">Searching</option>
-                                    <option value="Coco">Coco</option>
-                                    <option value="Lion">Lion</option>
+                                <span class="type">Type</span>
+                                <select class="select-bar">
+                                    <option value="2D">2D</option>
+                                    <option value="3D">3D</option>
+                                    <option value="IMax">IMax</option>
                                 </select>
-                                <div class="nice-select select-bar" tabindex="0"><span class="current">Avatar</span>
-                                    <ul class="list">
-                                        <li data-value="Avatar" class="option selected">Avatar</li>
-                                        <li data-value="Inception" class="option">Inception</li>
-                                        <li data-value="Parasite" class="option">Parasite</li>
-                                        <li data-value="Joker" class="option">Joker</li>
-                                        <li data-value="Searching" class="option">Searching</li>
-                                        <li data-value="Coco" class="option">Coco</li>
-                                        <li data-value="Lion" class="option">Lion</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="thumb">
-                                    <button type="submit" class="filter-btn"><i class="far fa-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="tab-item">
-                        <form class="ticket-search-form">
-                            <div class="form-group large">
-                                <input type="text" placeholder="Search for Events">
-                                <button type="submit"><i class="fas fa-search"></i></button>
-                            </div>
-                            <div class="form-group">
-                                <div class="thumb">
-                                    <img src="assets/img/ticket/city.png" alt="ticket">
-                                </div>
-                                <span class="type">city</span>
-                                <select class="select-bar" style="display: none;">
-                                    <option value="london">New York</option>
-                                    <option value="dhaka">California</option>
-                                    <option value="rosario">Texas</option>
-                                    <option value="madrid">Florida</option>
-                                    <option value="koltaka">Nevada</option>
-                                    <option value="rome">Oregon</option>
-                                    <option value="khoksa">Ohio</option>
-                                </select>
-                                <div class="nice-select select-bar" tabindex="0"><span class="current">New York</span>
-                                    <ul class="list">
-                                        <li data-value="london" class="option selected">New York</li>
-                                        <li data-value="dhaka" class="option">California</li>
-                                        <li data-value="rosario" class="option">Texas</li>
-                                        <li data-value="madrid" class="option">Florida</li>
-                                        <li data-value="koltaka" class="option">Nevada</li>
-                                        <li data-value="rome" class="option">Oregon</li>
-                                        <li data-value="khoksa" class="option">Ohio</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="thumb">
-                                    <img src="assets/img/ticket/date.png" alt="ticket">
-                                </div>
-                                <span class="type">date</span>
-                                <select class="select-bar" style="display: none;">
-                                    <option value="11/04/2021">11/04/2021</option>
-                                    <option value="10/04/2021">10/04/2021</option>
-                                    <option value="09/04/2021">09/04/2021</option>
-                                    <option value="08/04/2021">08/04/2021</option>
-                                    <option value="07/04/2021">07/04/2021</option>
-                                    <option value="06/04/2021">06/04/2021</option>
-                                    <option value="05/04/2021">05/04/2021</option>
-                                </select>
-                                <div class="nice-select select-bar" tabindex="0"><span class="current">11/04/2021</span>
-                                    <ul class="list">
-                                        <li data-value="11/04/2021" class="option selected">11/04/2021</li>
-                                        <li data-value="10/04/2021" class="option">10/04/2021</li>
-                                        <li data-value="09/04/2021" class="option">09/04/2021</li>
-                                        <li data-value="08/04/2021" class="option">08/04/2021</li>
-                                        <li data-value="07/04/2021" class="option">07/04/2021</li>
-                                        <li data-value="06/04/2021" class="option">06/04/2021</li>
-                                        <li data-value="05/04/2021" class="option">05/04/2021</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="thumb">
-                                    <img src="assets/img/ticket/event-2.png" alt="ticket">
-                                </div>
-                                <span class="type">event</span>
-                                <select class="select-bar" style="display: none;">
-                                    <option value="Design">Design</option>
-                                    <option value="Development">Development</option>
-                                    <option value="Software">Software</option>
-                                    <option value="Digital">Digital</option>
-                                    <option value="Festival">Festival</option>
-                                    <option value="Marketing">Marketing</option>
-                                    <option value="Seo">Seo</option>
-                                </select>
-                                <div class="nice-select select-bar" tabindex="0"><span class="current">Design</span>
-                                    <ul class="list">
-                                        <li data-value="Design" class="option selected">Design</li>
-                                        <li data-value="Development" class="option">Development</li>
-                                        <li data-value="Software" class="option">Software</li>
-                                        <li data-value="Digital" class="option">Digital</li>
-                                        <li data-value="Festival" class="option">Festival</li>
-                                        <li data-value="Marketing" class="option">Marketing</li>
-                                        <li data-value="Seo" class="option">Seo</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="thumb">
-                                    <button type="submit" class="filter-btn"><i class="far fa-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="tab-item">
-                        <form class="ticket-search-form">
-                            <div class="form-group large">
-                                <input type="text" placeholder="Search fo Sports">
-                                <button type="submit"><i class="fas fa-search"></i></button>
-                            </div>
-                            <div class="form-group">
-                                <div class="thumb">
-                                    <img src="assets/img/ticket/city.png" alt="ticket">
-                                </div>
-                                <span class="type">city</span>
-                                <select class="select-bar" style="display: none;">
-                                    <option value="london">New York</option>
-                                    <option value="dhaka">California</option>
-                                    <option value="rosario">Texas</option>
-                                    <option value="madrid">Florida</option>
-                                    <option value="koltaka">Nevada</option>
-                                    <option value="rome">Oregon</option>
-                                    <option value="khoksa">Ohio</option>
-                                </select>
-                                <div class="nice-select select-bar" tabindex="0"><span class="current">New York</span>
-                                    <ul class="list">
-                                        <li data-value="london" class="option selected">New York</li>
-                                        <li data-value="dhaka" class="option">California</li>
-                                        <li data-value="rosario" class="option">Texas</li>
-                                        <li data-value="madrid" class="option">Florida</li>
-                                        <li data-value="koltaka" class="option">Nevada</li>
-                                        <li data-value="rome" class="option">Oregon</li>
-                                        <li data-value="khoksa" class="option">Ohio</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="thumb">
-                                    <img src="assets/img/ticket/date.png" alt="ticket">
-                                </div>
-                                <span class="type">date</span>
-                                <select class="select-bar" style="display: none;">
-                                    <option value="11/04/2021">11/04/2021</option>
-                                    <option value="10/04/2021">10/04/2021</option>
-                                    <option value="09/04/2021">09/04/2021</option>
-                                    <option value="08/04/2021">08/04/2021</option>
-                                    <option value="07/04/2021">07/04/2021</option>
-                                    <option value="06/04/2021">06/04/2021</option>
-                                    <option value="05/04/2021">05/04/2021</option>
-                                </select>
-                                <div class="nice-select select-bar" tabindex="0"><span class="current">11/04/2021</span>
-                                    <ul class="list">
-                                        <li data-value="11/04/2021" class="option selected">11/04/2021</li>
-                                        <li data-value="10/04/2021" class="option">10/04/2021</li>
-                                        <li data-value="09/04/2021" class="option">09/04/2021</li>
-                                        <li data-value="08/04/2021" class="option">08/04/2021</li>
-                                        <li data-value="07/04/2021" class="option">07/04/2021</li>
-                                        <li data-value="06/04/2021" class="option">06/04/2021</li>
-                                        <li data-value="05/04/2021" class="option">05/04/2021</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="thumb">
-                                    <img src="assets/img/ticket/sport-2.png" alt="ticket">
-                                </div>
-                                <span class="type">sport</span>
-                                <select class="select-bar" style="display: none;">
-                                    <option value="Cricket">Cricket</option>
-                                    <option value="Football">Football</option>
-                                    <option value="Basketball">Basketball</option>
-                                    <option value="Baseball">Baseball</option>
-                                    <option value="Golf">Golf</option>
-                                    <option value="Running">Running</option>
-                                    <option value="Badminton">Badminton</option>
-                                </select>
-                                <div class="nice-select select-bar" tabindex="0"><span class="current">Cricket</span>
-                                    <ul class="list">
-                                        <li data-value="Cricket" class="option selected">Cricket</li>
-                                        <li data-value="Football" class="option">Football</li>
-                                        <li data-value="Basketball" class="option">Basketball</li>
-                                        <li data-value="Baseball" class="option">Baseball</li>
-                                        <li data-value="Golf" class="option">Golf</li>
-                                        <li data-value="Running" class="option">Running</li>
-                                        <li data-value="Badminton" class="option">Badminton</li>
-                                    </ul>
-                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="thumb">
@@ -331,41 +89,7 @@
                 <div class="col-sm-10 col-md-8 col-lg-3">
                     <div class="widget-1 widget-check">
                         <div class="widget-1-body">
-                            <h6 class="subtitle">Country</h6>
-                            <div class="check-area">
-                                <div class="form-group">
-                                    <input type="checkbox" name="lang" id="lang1"><label for="lang1">Australia</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" name="lang" id="lang2"><label for="lang2">France</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" name="lang" id="lang3"><label for="lang3">Russia</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" name="lang" id="lang4"><label for="lang4">Thailand</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" name="lang" id="lang5"><label for="lang5">Germany</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" name="lang" id="lang6"><label for="lang6">Italy</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" name="lang" id="lang7"><label for="lang7">USA</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" name="lang" id="lang8"><label for="lang8">UK</label>
-                                </div>
-                            </div>
-                            <div class="add-check-area">
-                                <a href="#">view more</a> <i class="fal fa-chevron-circle-down"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="widget-1 widget-check">
-                        <div class="widget-1-body">
-                            <h6 class="subtitle">experience</h6>
+                            <h6 class="subtitle">Type</h6>
                             <div class="check-area">
                                 <div class="form-group">
                                     <input type="checkbox" name="mode" id="mode1"><label for="mode1">2d</label>
@@ -431,7 +155,7 @@
                                 <div class="left">
                                     <div class="item">
                                         <span class="show">Show :</span>
-                                        <select class="select-bar" style="display: none;">
+                                        <select class="select-bar">
                                             <option value="10">10</option>
                                             <option value="20">20</option>
                                             <option value="30">30</option>
@@ -440,36 +164,16 @@
                                             <option value="60">60</option>
                                             <option value="100">100</option>
                                         </select>
-                                        <div class="nice-select select-bar" tabindex="0"><span class="current">10</span>
-                                            <ul class="list">
-                                                <li data-value="10" class="option selected">10</li>
-                                                <li data-value="20" class="option">20</li>
-                                                <li data-value="30" class="option">30</li>
-                                                <li data-value="40" class="option">40</li>
-                                                <li data-value="50" class="option">50</li>
-                                                <li data-value="60" class="option">60</li>
-                                                <li data-value="100" class="option">100</li>
-                                            </ul>
-                                        </div>
                                     </div>
                                     <div class="item">
                                         <span class="show">Sort By :</span>
-                                        <select class="select-bar" style="display: none;">
+                                        <select class="select-bar">
                                             <option value="latest">latest showing</option>
                                             <option value="exclusive">exclusive</option>
                                             <option value="upcoming">upcoming</option>
                                             <option value="trending">trending</option>
                                             <option value="popular">popular</option>
                                         </select>
-                                        <div class="nice-select select-bar" tabindex="0"><span class="current">latest showing</span>
-                                            <ul class="list">
-                                                <li data-value="latest" class="option selected">latest showing</li>
-                                                <li data-value="exclusive" class="option">exclusive</li>
-                                                <li data-value="upcoming" class="option">upcoming</li>
-                                                <li data-value="trending" class="option">trending</li>
-                                                <li data-value="popular" class="option">popular</li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                                 <ul class="grid-button tab-menu">

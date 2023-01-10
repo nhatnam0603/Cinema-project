@@ -26,7 +26,7 @@
                 </div>
                 <div class="item date-item">
                     <span class="date">FRI 14, 2021</span>
-                    <select class="select-bar" style="display: none;">
+                    <select class="select-bar">
                         <option value="sc1">07:40</option>
                         <option value="sc2">09:40</option>
                         <option value="sc3">11:40</option>
@@ -34,16 +34,6 @@
                         <option value="sc5">15:50</option>
                         <option value="sc6">19:50</option>
                     </select>
-                    <div class="nice-select select-bar" tabindex="0"><span class="current">07:40</span>
-                        <ul class="list">
-                            <li data-value="sc1" class="option selected">07:40</li>
-                            <li data-value="sc2" class="option">09:40</li>
-                            <li data-value="sc3" class="option">11:40</li>
-                            <li data-value="sc4" class="option">13:40</li>
-                            <li data-value="sc5" class="option">15:50</li>
-                            <li data-value="sc6" class="option">19:50</li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="item">
                     <small> TIME LEFT </small>

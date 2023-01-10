@@ -48,7 +48,7 @@
                 </div>
                 <ul class="menu">
                     <li class="menu-item">
-                        <a href="{{route('home')}}" class="active">Home</a>
+                        <a href="{{route('home')}}" >Home</a>
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#">movies</a>

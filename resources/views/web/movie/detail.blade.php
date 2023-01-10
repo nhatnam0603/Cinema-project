@@ -14,10 +14,7 @@
                 <div class="details-banner-content offset-lg-4">
                     <h3 class="title">Irregular</h3>
                     <div class="tags">
-                        <a href="#">English</a>
-                        <a href="#">France</a>
-                        <a href="#">Italy</a>
-                        <a href="#">Germany</a>
+                        <a href="#">2D</a>
                     </div>
                     <a href="#" class="button">horror</a>
                     <div class="social-and-duration">
@@ -29,13 +26,6 @@
                                 <i class="fal fa-clock"></i><span>2h 20min</span>
                             </div>
                         </div>
-                        <ul class="social-share">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -103,12 +93,6 @@
                     <div class="movie-details">
                         <h3 class="title">photos</h3>
                         <div class="details-photos owl-carousel owl-loaded owl-drag">
-
-
-
-
-
-
                             <div class="owl-stage-outer">
                                 <div class="owl-stage" style="transform: translate3d(-855px, 0px, 0px); transition: all 1s ease 0s; width: 1710px;">
                                     <div class="owl-item" style="width: 255px; margin-right: 30px;">
@@ -200,10 +184,6 @@
                                             </div>
                                         </div>
                                         <div class="casting-slider owl-carousel owl-loaded owl-drag">
-
-
-
-
                                             <div class="owl-stage-outer">
                                                 <div class="owl-stage" style="transform: translate3d(-1468px, 0px, 0px); transition: all 0.25s ease 0s; width: 2517px;">
                                                     <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
@@ -380,183 +360,7 @@
                                             <div class="owl-dots disabled"></div>
                                         </div>
                                     </div>
-                                    <div class="item">
-                                        <div class="header">
-                                            <h5 class="sub-title">movie crew</h5>
-                                            <div class="navigation">
-                                                <div class="cast-prev-2"><i class="flaticon-double-right-arrows-angles"></i></div>
-                                                <div class="cast-next-2"><i class="flaticon-double-right-arrows-angles"></i></div>
-                                            </div>
-                                        </div>
-                                        <div class="casting-slider-two owl-carousel owl-loaded owl-drag">
-
-
-
-
-                                            <div class="owl-stage-outer">
-                                                <div class="owl-stage" style="transform: translate3d(-1468px, 0px, 0px); transition: all 0.25s ease 0s; width: 2517px;">
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-5.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Jessica Hatcher</a></h6>
-                                                                <span class="cate">actor</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-6.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">George Reyer</a></h6>
-                                                                <span class="cate">Director</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-7.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Jonathan Douglas</a></h6>
-                                                                <span class="cate">producer</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-8.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Virginia Ellis</a></h6>
-                                                                <span class="cate">producer</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-5.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Jessica Hatcher</a></h6>
-                                                                <span class="cate">actor</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-6.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">George Reyer</a></h6>
-                                                                <span class="cate">Director</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-7.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Jonathan Douglas</a></h6>
-                                                                <span class="cate">producer</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item active" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-8.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Virginia Ellis</a></h6>
-                                                                <span class="cate">producer</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned active" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-5.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Jessica Hatcher</a></h6>
-                                                                <span class="cate">actor</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned active" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-6.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">George Reyer</a></h6>
-                                                                <span class="cate">Director</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned active" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-7.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Jonathan Douglas</a></h6>
-                                                                <span class="cate">producer</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-8.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Virginia Ellis</a></h6>
-                                                                <span class="cate">producer</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
-                                            <div class="owl-dots disabled"></div>
-                                        </div>
-                                    </div>
+                                
                                 </div>
                                 <div class="tab-item">
                                     <div class="movie-review-item">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,9 @@ class HomeController extends Controller
      */
     public function homepage()
     {
-       return view('web.homepage');
+      $movielist = Movie::all();
+
+       return view('web.homepage',compact('movielist'));
     }
     /**
      * Display a listing of movie.
@@ -22,7 +25,8 @@ class HomeController extends Controller
      */
     public function movielist()
     {
-       return view('web.movie.list');
+      $movielist = Movie::all();
+      return view('web.movie.list',compact('movielist'));
     }
     /**
      * Display movie detail page
