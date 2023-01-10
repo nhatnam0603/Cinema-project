@@ -163,7 +163,7 @@
                         <a href="{{route('contact')}}">contact</a>
                     </li>
                     <li class="header-button pr-0">
-                        <a href="login.html">join us</a>
+                        <a href="{{route('login')}}">Login</a>
                     </li>
                 </ul>
                 <div class="header-bar d-lg-none">

@@ -46,7 +46,7 @@
                         <div class="form-group checkgroup">
                             <input type="checkbox" id="bal2" name="remember" >
                             <label for="bal2">remember me</label>
-                            <a href="#" class="forget-pass">Forgot Password?</a>
+                            <a href="{{route('forget.password.get')}}" class="forget-pass">Forgot Password?</a>
                         </div>
                         <div class="form-group text-center">
                             <input type="submit" value="log in">
