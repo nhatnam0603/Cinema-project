@@ -16,7 +16,6 @@
         </div>
     </section>
 
-
     <section class="search-ticket-section padding-top pt-lg-0">
         <div class="container">
             <div class="search-tab">
@@ -32,7 +31,7 @@
                 <div class="tab-area">
 
                     <div class="tab-item active">
-                        <form class="ticket-search-form">
+                        <form class="ticket-search-form" method="get" action="{{route('movie.list')}}">
                             <div class="form-group large">
                                 <input type="text" placeholder="Search for Movies">
                                 <button type="submit"><i class="fas fa-search"></i></button>
@@ -42,14 +41,11 @@
                                     <img src="assets/img/ticket/city.png" alt="ticket">
                                 </div>
                                 <span class="type">Genre</span>
-                                <select class="select-bar">
-                                    <option value="1">Action</option>
-                                    <option value="2">Horror</option>
-                                    <option value="3">Romance</option>
-                                    <option value="4">Animation</option>
-                                    <option value="5">Comedy</option>
-                                    <option value="6">Drama</option>
-                                 
+                                <select class="select-bar" name="genreid">
+                                    <option value="">Choose genre</option>
+                                    @foreach($genres as $genre)
+                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                    @endforeach 
                                 </select>
                             </div>
                             <div class="form-group">
@@ -57,14 +53,12 @@
                                     <img src="assets/img/ticket/date.png" alt="ticket">
                                 </div>
                                 <span class="type">Date</span>
-                                <select class="select-bar" >
-                                    <option value="11/04/2021">11/04/2021</option>
-                                    <option value="10/04/2021">10/04/2021</option>
-                                    <option value="09/04/2021">09/04/2021</option>
-                                    <option value="08/04/2021">08/04/2021</option>
-                                    <option value="07/04/2021">07/04/2021</option>
-                                    <option value="06/04/2021">06/04/2021</option>
-                                    <option value="05/04/2021">05/04/2021</option>
+                                <select class="select-bar"  name="date">
+                                    <option value="">Choose Date</option>
+                                @for ($i = 0; $i < 7; $i++)
+                                    <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}">{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
+                                @endfor
+                                    
                                 </select>
                             </div>
                             <div class="form-group">
@@ -72,10 +66,11 @@
                                     <img src="assets/img/ticket/cinema.png" alt="ticket">
                                 </div>
                                 <span class="type">Type</span>
-                                <select class="select-bar">
-                                    <option value="2D">2D</option>
-                                    <option value="3D">3D</option>
-                                    <option value="IMax">IMax</option>
+                                <select class="select-bar" name="type">
+                                <option value="">Choose Type</option>
+                                    @foreach( $screenTypes as $type)
+                                        <option value="{{$type->id}}">{{$type->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -89,7 +84,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="movie-section padding-top bg-two">
         <div class="container">
@@ -105,13 +99,13 @@
                            <div class="col-sm-6 col-lg-4">
                                 <div class="movie-grid">
                                     <div class="movie-thumb c-thumb">
-                                        <a href="#">
-                                            <img src="{{asset($movie->image)}}" alt="movie">
+                                        <a href="{{route('movie.detail',['id'=>$movie->id])}}">
+                                            <img src="{{json_decode($movie->image_list)[0] ?? 'assets/img/movie/movie-list-default.jpg'}}" alt="movie">
                                         </a>
                                     </div>
                                     <div class="movie-content">
                                         <h5 class="title m-0">
-                                            <a href="#">{{$movie->name}}</a>
+                                            <a href="{{route('movie.detail',['id'=>$movie->id])}}">{{$movie->name}}</a>
                                         </h5>
                                         <ul class="movie-rating-percent">
                                             <li>
