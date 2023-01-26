@@ -121,7 +121,7 @@
             </li>
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                <img src="admin/images/faces/face5.jpg" alt="profile"/>
+                <img src="{{ asset('admin/images/faces/face5.jpg') }}" alt="profile"/>
                 <span class="nav-profile-name">Louis Barnett</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -130,8 +130,14 @@
                   Settings
                 </a>
                 <a class="dropdown-item">
-                  <i class="mdi mdi-logout text-primary"></i>
-                  Logout
+                    <form action="logout" method="get">
+                        @csrf
+                        <button class="mdi mdi-logout text-primary">
+                            <i type ="submit">Logout</i>
+                        </button>
+                    </form>
+
+
                 </a>
               </div>
             </li>
