@@ -45,6 +45,4 @@ Route::prefix('home')->middleware('auth')->group(function () {
 Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
 Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
 Route::get('contact', [HomeController::class,'contact'])->name('contact');
-
 });
-
