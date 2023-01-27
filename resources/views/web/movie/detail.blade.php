@@ -86,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="custom-button">book tickets</a>
+                <a href="{{route('ticket.plan',['id'=>$movie->id])}}" class="custom-button">book tickets</a>
             </div>
         </div>
     </section>

@@ -6,13 +6,15 @@
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-content style-two">
-                    <h3 class="title">Irregular</h3>
-                    <div class="tags">
-                        <a href="#">MOVIE</a>
-                        <a href="#">2D</a>
-                        <a href="#">3D</a>
+                    <h3 class="title">{{$movieScreenTime->movie->name}}</h3>
+                    <div class="tags">                     
+                        <a href="#">{{$movieScreenTime->screen->type}}</a>
+                        @foreach($movieScreenTime->movie->genres as $genre)
+                            <a href="#">{{$genre->name}}</a>
+                        @endforeach
                     </div>
                 </div>
+                <input type="hidden" id="screen-price" value="{{$movieScreenTime->screen->price}}">
             </div>
         </div>
     </section>
@@ -21,23 +23,19 @@
             <div class="page-title-area">
                 <div class="item md-order-1">
                     <a href="movie-ticket-plan.html" class="custom-button back-button">
-                        <i class="far fa-reply"></i> Change Plan
+                        <i class="far fa-reply"></i> Change Option
                     </a>
                 </div>
                 <div class="item date-item">
-                    <span class="date">FRI 14, 2021</span>
-                    <select class="select-bar">
-                        <option value="sc1">07:40</option>
-                        <option value="sc2">09:40</option>
-                        <option value="sc3">11:40</option>
-                        <option value="sc4">13:40</option>
-                        <option value="sc5">15:50</option>
-                        <option value="sc6">19:50</option>
-                    </select>
+                    <span class="date">{{date('l d, M Y',strtotime($movieScreenTime->date))}}</span>    
+                </div>
+                <div class="item">
+                    <small> TIME START </small>
+                    <span class="h3 font-weight-bold"> {{$movieScreenTime->time->time}} </span>
                 </div>
                 <div class="item">
                     <small> TIME LEFT </small>
-                    <span class="h3 font-weight-bold"> 09:00 </span>
+                    <span class="h3 font-weight-bold"> {{date('H:i',strtotime(strtotime($movieScreenTime->time->time),strtotime($movieScreenTime->movie->duration)))}} </span>
                 </div>
             </div>
         </div>
@@ -52,204 +50,32 @@
                 <h5 class="subtitle">single seat plan</h5>
                 <div class="screen-wrapper">
                     <ul class="seat-area">
+                        @foreach($output as $rowname => $row)
                         <li class="seat-line">
-                            <span>H</span>
+                            <span>{{$rowname}}</span>
+                           
                             <ul class="seat--area">
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
+                                         @foreach($row as $number => $checkseat)
                                         <li class="single-seat seat-free">
+                                            @if($checkseat)
                                             <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">h5</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-booked.png" alt="seat">
-                                            <span class="sit-num">h6</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">h7</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-booked.png" alt="seat">
-                                            <span class="sit-num">h8</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">h9</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">h10</span>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
+                                            <span class="sit-num" data-value ="{{$rowname}}{{$number}}">{{$rowname}}{{$number}}</span>
+                                            @else
                                             <img src="assets/img/movie/seat-1.png" alt="seat">
+                                            @endif
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </li>
                             </ul>
-                            <span>H</span>
+                            <span>{{$rowname}}</span>
                         </li>
-                        <li class="seat-line">
-                            <span>G</span>
-                            <ul class="seat--area">
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">g1</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">g2</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">g3</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">g4</span>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <span>G</span>
-                        </li>
-                        <li class="seat-line">
-                            <span>f</span>
-                            <ul class="seat--area">
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">f7</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">f8</span>
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">f9</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">f10</span>
-                                        </li>
-                                        <li class="single-seat seat-free">
-                                            <img src="assets/img/movie/seat-1-free.png" alt="seat">
-                                            <span class="sit-num">f11</span>
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/img/movie/seat-1.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <span>f</span>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
-                <h5 class="subtitle">double seat plan</h5>
+                <!-- <h5 class="subtitle">double seat plan</h5>
                 <div class="screen-wrapper">
                     <ul class="seat-area couple">
                         <li class="seat-line">
@@ -462,20 +288,24 @@
                             <span>a</span>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="proceed-book">
                 <div class="proceed-to-book">
                     <div class="book-item">
                         <span>Your Selected Seat</span>
-                        <h3 class="title">a1, a2</h3>
+                        <h3 class="title" id="booked"></h3>
                     </div>
                     <div class="book-item">
-                        <span>total price</span>
-                        <h3 class="title">$200</h3>
+                        <span>total price (VND)</span>
+                        <h3 class="title" id="total-price">0</h3>
                     </div>
                     <div class="book-item">
-                        <a href="movie-checkout.html" class="custom-button">checkout now</a>
+                        <form action="{{route('movie.checkout')}}" method="GET">
+                            <input type="hidden" name="id" value="{{$movieScreenTime->id}}">
+                            <input type="hidden" name="bookList" value="" id="inputBookList">
+                            <button type='submit' class="custom-button">checkout now</button>
+                        </form>
                     </div>
                 </div>
             </div>
