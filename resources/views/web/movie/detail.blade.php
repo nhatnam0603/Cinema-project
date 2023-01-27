@@ -6,24 +6,28 @@
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-thumb">
-                    <img src="assets/img/movie/movie-list-5.jpg" alt="movie">
-                    <a href="https://www.youtube.com/watch?v=uyNh0RPiLyI" class="video-button video-popup">
+                    <img src="{{$movie->image}}" alt="movie">
+                    <a href="https://www.youtube.com/watch?v=IuO64sifh9o" class="video-button video-popup">
                         <i class="fal fa-play"></i>
                     </a>
                 </div>
                 <div class="details-banner-content offset-lg-4">
-                    <h3 class="title">Irregular</h3>
+                    <h3 class="title">{{$movie->name}}</h3>
                     <div class="tags">
-                        <a href="#">2D</a>
+                        @foreach($movie->types as $type)
+                        <a href="#">{{$type->name}}</a>
+                        @endforeach
                     </div>
-                    <a href="#" class="button">horror</a>
+                    @foreach($movie->genres as $genre)
+                    <a href="#" class="button">{{$genre->name}}</a>
+                    @endforeach
                     <div class="social-and-duration">
                         <div class="duration-area">
                             <div class="item">
-                                <i class="fal fa-calendar-alt"></i><span>12 Apr, 2021</span>
+                                <i class="fal fa-calendar-alt"></i><span>{{date('d-m-Y',strtotime($movie->began_at))}}</span>
                             </div>
                             <div class="item">
-                                <i class="fal fa-clock"></i><span>2h 20min</span>
+                                <i class="fal fa-clock"></i><span> {{ date('H',strtotime($movie->duration)) }}h {{date('i',strtotime($movie->duration))}}min</span>
                             </div>
                         </div>
                     </div>
@@ -82,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="custom-button">book tickets</a>
+                <a href="{{route('ticket.plan',['id'=>$movie->id])}}" class="custom-button">book tickets</a>
             </div>
         </div>
     </section>
@@ -95,48 +99,39 @@
                         <div class="details-photos owl-carousel owl-loaded owl-drag">
                             <div class="owl-stage-outer">
                                 <div class="owl-stage" style="transform: translate3d(-855px, 0px, 0px); transition: all 1s ease 0s; width: 1710px;">
+                                    @if(!empty($movie->image_list))
+                                    @foreach(json_decode($movie->image_list) as $imagelist)
                                     <div class="owl-item" style="width: 255px; margin-right: 30px;">
                                         <div class="thumb">
-                                            <a href="assets/img/movie/movie-1.jpg" class="img-pop">
-                                                <img src="assets/img/movie/movie-1.jpg" alt="movie">
+                                            <a href="{{$imagelist}}" class="img-pop">
+                                                <img src="{{$imagelist}}" alt="movie">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    @else
+                                    <div class="owl-item" style="width: 255px; margin-right: 30px;">
+                                        <div class="thumb">
+                                            <a href="assets/img/movie/movie-list-default.jpg" class="img-pop">
+                                                <img src="assets/img/movie/movie-list-default.jpg" alt="movie">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="owl-item" style="width: 255px; margin-right: 30px;">
                                         <div class="thumb">
-                                            <a href="assets/img/movie/movie-2.jpg" class="img-pop">
-                                                <img src="assets/img/movie/movie-2.jpg" alt="movie">
+                                            <a href="assets/img/movie/movie-list-default.jpg" class="img-pop">
+                                                <img src="assets/img/movie/movie-list-default.jpg" alt="movie">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="owl-item" style="width: 255px; margin-right: 30px;">
                                         <div class="thumb">
-                                            <a href="assets/img/movie/movie-3.jpg" class="img-pop">
-                                                <img src="assets/img/movie/movie-3.jpg" alt="movie">
+                                            <a href="assets/img/movie/movie-list-default.jpg" class="img-pop">
+                                                <img src="assets/img/movie/movie-list-default.jpg" alt="movie">
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="owl-item active" style="width: 255px; margin-right: 30px;">
-                                        <div class="thumb">
-                                            <a href="assets/img/movie/movie-1.jpg" class="img-pop">
-                                                <img src="assets/img/movie/movie-1.jpg" alt="movie">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item active" style="width: 255px; margin-right: 30px;">
-                                        <div class="thumb">
-                                            <a href="assets/img/movie/movie-2.jpg" class="img-pop">
-                                                <img src="assets/img/movie/movie-2.jpg" alt="movie">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item active" style="width: 255px; margin-right: 30px;">
-                                        <div class="thumb">
-                                            <a href="assets/img/movie/movie-3.jpg" class="img-pop">
-                                                <img src="assets/img/movie/movie-3.jpg" alt="movie">
-                                            </a>
-                                        </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
@@ -147,31 +142,28 @@
                                 <li class="active">
                                     description
                                 </li>
-                                <li>
+                                <!-- <li>
                                     review <span>10</span>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="tab-area">
                                 <div class="tab-item active">
                                     <div class="item">
-                                        <h5 class="sub-title">There are many variations of passages</h5>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+                                        <!-- <h5 class="sub-title">There are many variations of passages</h5> -->
+                                        <p>{{$movie->description}}</p>
                                         <div class="widget-tags mt-5">
                                             <p>Tags : </p>
                                             <ul>
+                                                @foreach($movie->types as $type)
                                                 <li>
-                                                    <a href="#">2D</a>
+                                                    <a href="#">{{$type->name}}</a>
                                                 </li>
+                                                @endforeach
+                                                @foreach($movie->genres as $genre)
                                                 <li>
-                                                    <a href="#">3D</a>
+                                                    <a href="#">{{$genre->name}}</a>
                                                 </li>
-                                                <li>
-                                                    <a href="#">MOVIE</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">2021</a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
@@ -186,181 +178,33 @@
                                         <div class="casting-slider owl-carousel owl-loaded owl-drag">
                                             <div class="owl-stage-outer">
                                                 <div class="owl-stage" style="transform: translate3d(-1468px, 0px, 0px); transition: all 0.25s ease 0s; width: 2517px;">
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-1.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Thoma Michels</a></h6>
-                                                                <span class="cate">actress</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-2.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Wayne Gould</a></h6>
-                                                                <span class="cate">actor</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-3.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Theodore Trotman</a></h6>
-                                                                <span class="cate">actress</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-4.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Julie Martinez</a></h6>
-                                                                <span class="cate">actor</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @foreach($movie->casts as $cast)
                                                     <div class="owl-item" style="width: 195.75px; margin-right: 14px;">
                                                         <div class="cast-item">
                                                             <div class="cast-thumb">
                                                                 <a href="#">
-                                                                    <img src="assets/img/cast/cast-1.jpg" alt="cast">
+                                                                    <img src="{{$cast->image}}" alt="cast">
                                                                 </a>
                                                             </div>
                                                             <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Thoma Michels</a></h6>
-                                                                <span class="cate">actress</span>
-                                                                <p>As Position Name</p>
+                                                                <h6 class="cast-title"><a href="#">{{$cast->name}}</a></h6>
+                                                                <span class="cate">{{$cast->position}}</span>
+                                                                <!-- <p>As Position Name</p> -->
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="owl-item" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-2.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Wayne Gould</a></h6>
-                                                                <span class="cate">actor</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-3.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Theodore Trotman</a></h6>
-                                                                <span class="cate">actress</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item active" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-4.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Julie Martinez</a></h6>
-                                                                <span class="cate">actor</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned active" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-1.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Thoma Michels</a></h6>
-                                                                <span class="cate">actress</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned active" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-2.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Wayne Gould</a></h6>
-                                                                <span class="cate">actor</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned active" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-3.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Theodore Trotman</a></h6>
-                                                                <span class="cate">actress</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="owl-item cloned" style="width: 195.75px; margin-right: 14px;">
-                                                        <div class="cast-item">
-                                                            <div class="cast-thumb">
-                                                                <a href="#">
-                                                                    <img src="assets/img/cast/cast-4.jpg" alt="cast">
-                                                                </a>
-                                                            </div>
-                                                            <div class="cast-content">
-                                                                <h6 class="cast-title"><a href="#">Julie Martinez</a></h6>
-                                                                <span class="cate">actor</span>
-                                                                <p>As Position Name</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
-                                            <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
+                                            <div class="owl-nav disabled">
+                                                <button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span>
+                                                </button>
+                                                <button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>
+                                            </div>
                                             <div class="owl-dots disabled"></div>
                                         </div>
                                     </div>
-                                
+
                                 </div>
                                 <div class="tab-item">
                                     <div class="movie-review-item">

@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::enableForeignKeyConstraints();
+        Schema::create('movies_genres', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-            $table->role()->default(1);
+            $table->integer('movie_id')->unsigned();
+            $table->bigInteger('genre_id')->unsigned();
+
+            $table->foreign('movie_id')->references('id')->on('movies');
+            $table->foreign('genre_id')->references('id')->on('genres');
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('movies_genres');
     }
 };

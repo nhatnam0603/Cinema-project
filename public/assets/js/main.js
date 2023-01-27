@@ -133,6 +133,8 @@
       $('.window-warning').addClass('inActive');
     })
     $('.seat-plan-wrapper li .movie-schedule .item').on('click', function() {
+      let id = $(this).attr('data-value');
+      $('.seatPlanButton').attr('href','seat-plan?id='+id);
       $('.window-warning').removeClass('inActive');
     })
     //Tab Section
@@ -343,16 +345,26 @@
 
 
     // seat book
-    var book = 0;
+    var bookList = [];
     $(".seat-free img").on('click', function(e) {
-      if(book == 0) {
-        $(this).attr("src","assets/img/movie/seat-1-free.png");
-        book = 1;
-      }
-      else if(book == 1) {
+      let check = $(this).attr("src");
+      if(check == "assets/img/movie/seat-1-free.png")
+      {
+        bookList.push($(this).next().attr("data-value"));
         $(this).attr("src","assets/img/movie/seat-1-booked.png");
-        book = 0;
+        $("#booked").text(bookList.join());
+        $("#total-price").text(bookList.length * $("#screen-price").val());
       }
+      else if (check == "assets/img/movie/seat-1-booked.png")
+      {
+        if(bookList.indexOf($(this).next().attr("data-value")))
+        bookList.splice(bookList.indexOf($(this).next().attr("data-value")),1)
+        $(this).attr("src","assets/img/movie/seat-1-free.png");
+        $("#booked").text(bookList.join());
+        $("#total-price").text(bookList.length * $("#screen-price").val());
+      }
+      $("#inputBookList").val(bookList.join());
+      console.log(bookList);
     });
 
 

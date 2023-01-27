@@ -2,15 +2,16 @@
 
 @section('content')
 <session class="content">
-    <section class="details-banner hero-area seat-plan-banner" style="background:url('assets/img/banner/banner-movie-details.jpg')">
+<section class="details-banner hero-area" style="background:url('assets/img/banner/banner-movie-details.jpg')">
         <div class="container">
             <div class="details-banner-wrapper">
-                <div class="details-banner-content style-two">
-                    <h3 class="title">Irregular</h3>
+                <div class="details-banner-content">
+                    <h3 class="title">{{$movieScreenTime->movie->name}}</h3>
                     <div class="tags">
-                        <a href="#">MOVIE</a>
-                        <a href="#">2D</a>
-                        <a href="#">3D</a>
+                        <a href="#">{{$movieScreenTime->screen->type}}</a>
+                        @foreach($movieScreenTime->movie->genres as $genre)
+                            <a href="#">{{$genre->name}}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -21,33 +22,19 @@
             <div class="page-title-area">
                 <div class="item md-order-1">
                     <a href="movie-ticket-plan.html" class="custom-button back-button">
-                        <i class="far fa-reply"></i> Change Plan
+                        <i class="far fa-reply"></i> Change Option
                     </a>
                 </div>
                 <div class="item date-item">
-                    <span class="date">FRI 14, 2021</span>
-                    <select class="select-bar" style="display: none;">
-                        <option value="sc1">07:40</option>
-                        <option value="sc2">09:40</option>
-                        <option value="sc3">11:40</option>
-                        <option value="sc4">13:40</option>
-                        <option value="sc5">15:50</option>
-                        <option value="sc6">19:50</option>
-                    </select>
-                    <div class="nice-select select-bar" tabindex="0"><span class="current">07:40</span>
-                        <ul class="list">
-                            <li data-value="sc1" class="option selected">07:40</li>
-                            <li data-value="sc2" class="option">09:40</li>
-                            <li data-value="sc3" class="option">11:40</li>
-                            <li data-value="sc4" class="option">13:40</li>
-                            <li data-value="sc5" class="option">15:50</li>
-                            <li data-value="sc6" class="option">19:50</li>
-                        </ul>
-                    </div>
+                    <span class="date">{{date('l d, M Y',strtotime($movieScreenTime->date))}}</span>    
+                </div>
+                <div class="item">
+                    <small> TIME START </small>
+                    <span class="h3 font-weight-bold"> {{$movieScreenTime->time->time}} </span>
                 </div>
                 <div class="item">
                     <small> TIME LEFT </small>
-                    <span class="h3 font-weight-bold"> 09:00 </span>
+                    <span class="h3 font-weight-bold"> {{date('H:i',strtotime(strtotime($movieScreenTime->time->time),strtotime($movieScreenTime->movie->duration)))}} </span>
                 </div>
             </div>
         </div>
@@ -56,20 +43,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="checkout-widget d-flex flex-wrap align-items-center justify-cotent-between">
-                        <div class="title-area">
-                            <h5 class="title">Already Have An Account?</h5>
-                            <p>It is a long established fact that a reader will be distracted!</p>
-                        </div>
-                        <a href="#" class="sign-in-area">
-                            <i class="fal fa-user"></i><span>Login</span>
-                        </a>
-                    </div>
                     <div class="checkout-widget checkout-contact">
                         <h5 class="title">Billing Info </h5>
                         <form class="checkout-contact-form">
                             <div class="form-group">
-                                <input type="text" placeholder="Full Name">
+                                <input type="text" placeholder="Full Name" value="">
                             </div>
                             <div class="form-group">
                                 <input type="text" placeholder="Enter email">
@@ -85,7 +63,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="checkout-widget checkout-contact">
+                    <!-- <div class="checkout-widget checkout-contact">
                         <h5 class="title">Promo Code </h5>
                         <form class="checkout-contact-form">
                             <div class="form-group">
@@ -95,11 +73,17 @@
                                 <input type="submit" value="Apply" class="custom-button">
                             </div>
                         </form>
-                    </div>
+                    </div> -->
                     <div class="checkout-widget checkout-card mb-0">
                         <h5 class="title">Payment Option </h5>
                         <ul class="payment-option">
                             <li class="active">
+                                <a href="#">
+                                    <i class="fas fa-money-bill"></i>
+                                    <span> Cash</span>
+                                </a>
+                            </li>
+                            <li class="disable">
                                 <a href="#">
                                     <i class="fas fa-credit-card-front"></i>
                                     <span> Card</span>
@@ -111,26 +95,8 @@
                                     <span>paypal</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fab fa-cc-stripe"></i>
-                                    <span>stripe</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fab fa-cc-apple-pay"></i>
-                                    <span>Apple</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fab fa-cc-amazon-pay"></i>
-                                    <span>Amazon</span>
-                                </a>
-                            </li>
                         </ul>
-                        <h6 class="subtitle">Enter Your Card Details </h6>
+                        <!-- <h6 class="subtitle">Enter Your Card Details </h6>
                         <form class="payment-card-form">
                             <div class="form-group w-100">
                                 <label for="card1">Name on the Card</label>
@@ -164,7 +130,7 @@
                         </form>
                         <p class="notice">
                             By clicking this payment button you agree with our <a href="#">terms and conditions</a>.
-                        </p>
+                        </p> -->
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -172,35 +138,29 @@
                         <h4 class="title">booking summery</h4>
                         <ul>
                             <li>
-                                <h6 class="subtitle">Irregular</h6>
-                                <span class="info">Movie-3d</span>
+                                <h6 class="subtitle">{{$movieScreenTime->movie->name}}</h6>
+                                <span class="info">Movie-{{$movieScreenTime->screen->type}}</span>
                             </li>
                             <li>
-                                <h6 class="subtitle"><span>Cine World</span><span>04</span></h6>
+                                <h6 class="subtitle"><span>{{$movieScreenTime->screen->name}}</span><span>04</span></h6>
                                 <div class="info"><span>14 APR FRI, 7:00 PM</span> <span>Tickets</span></div>
                             </li>
                             <li>
-                                <h6 class="subtitle mb-0"><span>Tickets Price</span><span>$200</span></h6>
+                                <h6 class="subtitle mb-0"><span>Tickets Price(VND)</span><span></span></h6>
+                                @foreach($bookListArr as $item)
+                                <div class="info"><span>{{$item}}</span> <span>{{$movieScreenTime->screen->price}}</span></div>
+                                @endforeach
                             </li>
                         </ul>
                         <ul>
                             <li>
-                                <h6 class="subtitle"><span>package</span><span>$80</span></h6>
-                                <span class="info"><span>3 star package</span></span>
-                            </li>
-                            <li>
-                                <h6 class="subtitle"><span>food &amp; soft drink</span></h6>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <span class="info"><span>price</span><span>$280</span></span>
-                                <span class="info"><span>vat</span><span>$10</span></span>
+                                <span class="info"><span>price</span><span>{{$bookNumber * $movieScreenTime->screen->price}}</span></span>
+                                <span class="info"><span>vat</span><span>{{($bookNumber * $movieScreenTime->screen->price) / 10}}</span></span>
                             </li>
                         </ul>
                     </div>
                     <div class="proceed-area  text-center">
-                        <h6 class="subtitle"><span> Pay Amount</span><span>$290</span></h6>
+                        <h6 class="subtitle"><span> Pay Amount</span><span>{{($bookNumber * $movieScreenTime->screen->price) / 10 + ($bookNumber * $movieScreenTime->screen->price)}}</span></h6>
                         <a href="#" class="custom-button">confirm payment</a>
                     </div>
                 </div>
