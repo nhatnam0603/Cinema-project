@@ -49,7 +49,6 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('dashboard', [AuthController::class, 'dashboard']);
     // Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     // End route admin dashboard
-
 });
 
 // BACK END - ADMIN ROUTE
@@ -62,7 +61,7 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('product', [ProductController::class,'index']);
     Route::get('product/create', [ProductController::class,'create']);
     Route::post('product', [ProductController::class,'store']);
-});
 
+});
 
 
