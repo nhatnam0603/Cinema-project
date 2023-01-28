@@ -22,20 +22,14 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 //Start route login,register and reset password
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
-Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
-
-Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
-Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-// End route login,register and reset password
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // WEB ROUTE dont need auth
 Route::get('home', [HomeController::class,'homepage'])->name('home');
 Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
 Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
+
 
 //Route user
 Route::prefix('home')->middleware('auth')->group(function () {
@@ -45,6 +39,7 @@ Route::prefix('home')->middleware('auth')->group(function () {
     Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
     Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
     Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
+
 
 
 Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
@@ -69,7 +64,16 @@ Route::prefix('')->middleware('auth')->group(function () {
     Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
 
 
-// End route website dont need auth
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
+
+// End route login,register and reset password
+
 // User needs to be authenticated to enter here.
 Route::group(['middleware' => 'auth'], function () {
     //Start route website
