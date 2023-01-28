@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\User;
-use Hash;;
+use Hash;
 
 class AdminController extends Controller
 {
