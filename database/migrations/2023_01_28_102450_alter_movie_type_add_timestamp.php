@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tickets', function (Blueprint $table) {
-            $table->increments('id');
-            // $table->integer('user_id');
-            $table->foreignId('user_id')->constrainted();
+        Schema::table('movies_types', function (Blueprint $table) {
             $table->timestamps();
-
-            // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tickets');
+        Schema::table('movies_types', function (Blueprint $table) {
+            $table->dropTimestamps();
+        });
     }
 };

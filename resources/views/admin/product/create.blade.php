@@ -37,11 +37,12 @@
                               <div class="form-group">
                                 <label for="exampleSelectGender">Type</label>
                                   <select class="form-control mdi mdi-chevron-down" name="type" id="exampleSelectGender">
-                                @error('type')
-                                    <small class="text-danger">{{$message}}</small>
-                                @enderror
-                                    <option>Male</option>
-                                    <option>Female</option>
+                                  @error('type')
+                                      <small class="text-danger">{{$message}}</small>
+                                  @enderror
+                                    @foreach($screenType as $type)
+                                    <option value="{{$type->id}}">{{$type->name}}</option>
+                                    @endforeach
                                   </select>
                                 </div>
                               <div class="form-group">

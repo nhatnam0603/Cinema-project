@@ -15,11 +15,14 @@ class Movie extends Model
         'name',
         'image',
         'description',
-        'type',
         'began_at',
         'end_at',
     ];
-
+    protected $attributes = [
+        'image' => 'assets/img/movie/movie-default.jpg',
+        'image_list' => "['assets/img/movie/movie-list-default.jpg']",
+        'duration' => '01:30:00',
+    ];
     public function types()
     {
         return $this->belongsToMany(TypeScreens::class,'movies_types','id','type_id');
