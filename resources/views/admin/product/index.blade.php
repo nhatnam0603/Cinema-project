@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-header">
-                    <h4 >PRODUCT LIST
+                    <h4>PRODUCT LIST
                         <a href="{{ url('product/create') }}" class=" btn btn-primary btn-sm float-end">Add Product</a>
                     </h4>
                 </div>
@@ -39,35 +39,42 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="py-1">
-                                    <img src="../../images/faces/face1.jpg" alt="image" />
-                                </td>
-                                <td>
-                                    Herman Beck
-                                </td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td>
-                                    $ 77.99
-                                </td>
-                                <td>
-                                    May 15, 2015
-                                </td>
-                                <td>
-                                    May 15, 2015
-                                </td>
-                                <td>
-                                    May 15, 2015
-                                </td>
-                                <td>
-                                    <button class="btn-primary" type="submit">Edit</button> | <button class="btn-danger" type="submit">Delete</button>
-                                </td>
-                            </tr>
+                            @foreach ($prods as $item)
+                                <tr>
+                                    <td>
+                                        {{ $item->id }}
+                                    </td>
+                                    <td>
+                                        {{ $item->name }}
+                                    </td>
+                                    @if ($item->image != null && $item->image != '')
+                                        <td class="py-1">
+                                            <img src="uploads/product{{ $item->image  }}" alt="{{ $item->name }}"
+                                                style="with: 100px; height:auto;" />
+                                        </td>
+                                    @endif
+                                    <td>
+                                        {{ $item->description }}
+                                    </td>
+                                    <td>
+                                        {{ $item->type }}
+                                    </td>
+                                    <td>
+                                        {{ $item->began_at }}
+                                    </td>
+                                    <td>
+                                        {{ $item->end_at }}
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('admin.product.destroy', $item->id) }}" method="post"
+                                            style="display: inline-block">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="submit" value="Delete" class="btn btn-danger" />
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

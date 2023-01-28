@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductFormRequest;
 use App\Models\Movie;
+use App\Http\Controllers\Admin\AdminController;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        return view('admin.product.index');
+        $prods = Movie::all();
+        return view('admin.product.index', compact('prods'));
     }
 
     public function create()
@@ -33,7 +35,7 @@ class ProductController extends Controller
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$ext;
 
-            $file = move('uploads/product/', $filename);
+            $file->move(public_path('uploads/product'), $filename);
 
             $product->image = $filename;
         }
@@ -41,5 +43,15 @@ class ProductController extends Controller
         $product->save();
 
         return redirect('/product')->with('message', 'Product added Successfully');
+    }
+
+    public function show($id)
+    {
+    }
+
+    public function destroy(Movie $id){
+        $product = Movie::find($id);
+        $product->delete();
+        return redirect()->route('admin.product.index');
     }
 }

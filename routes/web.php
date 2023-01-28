@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
-
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
@@ -31,6 +30,10 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 // End route login,register and reset password
 
+//Route user
+Route::prefix('home')->middleware('auth')->group(function () {
+
+    Route::get('home', [HomeController::class,'homepage'])->name('home');
 
     Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
     Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
@@ -39,6 +42,8 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
 Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
 Route::get('contact', [HomeController::class,'contact'])->name('contact');
+});
+
 
 // End route website dont need auth
 // User needs to be authenticated to enter here.
@@ -47,10 +52,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
     //End route website
 
-   // Start route admin dashboard
-    // Route::get('dashboard', [AuthController::class, 'dashboard']);
-    // Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    // End route admin dashboard
 });
 
 // BACK END - ADMIN ROUTE
@@ -63,6 +64,7 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('product', [ProductController::class,'index']);
     Route::get('product/create', [ProductController::class,'create']);
     Route::post('product', [ProductController::class,'store']);
+    Route::post('product',[ProductController::class,'destroy'])->name('admin.product.destroy');
 
 });
 

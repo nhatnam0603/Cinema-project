@@ -22,29 +22,37 @@
                               <div class="form-group">
                                 <label for="exampleInputName1">Name</label>
                                 <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="Name">
+                                @error('name')
+                                    <small class="text-danger">{{$message}}</small>
+                                @enderror
                               </div>
                               <div class="form-group">
                                 <label for="exampleInputEmail3">Began at</label>
-                                <input type="date" class="form-control" id="exampleInputEmail3" name="began_at" placeholder="Enter time start">
+                                <input type="datetime-local" class="form-control" id="exampleInputEmail3" name="began_at" placeholder="Enter time start">
                               </div>
                               <div class="form-group">
                                 <label for="exampleInputPassword4">End at</label>
-                                <input type="date" class="form-control" id="exampleInputPassword4" name="end_at" placeholder="Enter time end">
+                                <input type="datetime-local" class="form-control" id="exampleInputPassword4" name="end_at" placeholder="Enter time end">
                               </div>
                               <div class="form-group">
                                 <label for="exampleSelectGender">Type</label>
                                   <select class="form-control mdi mdi-chevron-down" name="type" id="exampleSelectGender">
+                                @error('type')
+                                    <small class="text-danger">{{$message}}</small>
+                                @enderror
                                     <option>Male</option>
                                     <option>Female</option>
                                   </select>
                                 </div>
                               <div class="form-group">
                                 <label>Image</label>
-                                <input type="file" name="image" class="file-upload-default">
+                                <input type="file" class="file-upload-default">
                                 <div class="input-group col-xs-12">
-
                                   <span class="input-group-append">
-                                    <input class="file-upload-browse btn btn-dark" type="file">
+                                    <input class="file-upload-browse btn btn-dark" name="image" type="file">
+                                @error('image')
+                                    <small class="text-danger">{{$message}}</small>
+                                @enderror
                                   </span>
                                   <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                 </div>
@@ -52,6 +60,9 @@
                               <div class="form-group">
                                 <label for="exampleTextarea1">Description</label>
                                 <textarea class="form-control" id="exampleTextarea1" name="description" rows="7"></textarea>
+                                @error('description')
+                                <small class="text-danger">{{$message}}</small>
+                                @enderror
                               </div>
                               <button type="submit" class="btn btn-success me-2">Save</button>
                               <button class="btn btn-dark">Cancel</button>

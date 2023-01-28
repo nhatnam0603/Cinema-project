@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('description');
             $table->string('type');
-            $table->date('began_at');
-            $table->date('end_at');
+            $table->dateTime('began_at');
+            $table->dateTime('end_at');
             $table->timestamps();
         });
     }
