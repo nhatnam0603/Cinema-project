@@ -9,14 +9,14 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="mdi mdi-apps menu-icon"></i>
-              <span class="menu-title ">Category</span>
+              <i class="mdi mdi-plus-box menu-icon"></i>
+              <span class="menu-title">Add Product</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class=""> <a class="nav-link" href="pages/ui-features/buttons.html">Add Category</a></li>
-                <li > <a class="nav-link" href="pages/ui-features/typography.html">View Category</a></li>
+              <ul class="nav flex-column sub-menu ">
+                <li class="list-arrow"><a class="nav-link" href="pages/ui-features/buttons.html">Add Scene</a></li>
+                <li class="list-arrow"><a class="nav-link" href="pages/ui-features/typography.html">Add Movie</a></li>
               </ul>
             </div>
           </li>

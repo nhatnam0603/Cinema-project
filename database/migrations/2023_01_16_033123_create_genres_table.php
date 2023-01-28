@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -13,16 +14,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::enableForeignKeyConstraints();
+        Schema::create('genres', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
-            $table->role()->default(1);
         });
+        DB::table('genres')->insert([
+            ['id' => 1, 'name' => 'Action'],
+            ['id' => 2, 'name' => 'Horror'],
+            ['id' => 3, 'name' => 'Comendy'],
+            ['id' => 4, 'name' => 'Romantic'],
+            ['id' => 5, 'name' => 'Animation'],
+        ]);
     }
 
     /**
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('genre');
     }
 };

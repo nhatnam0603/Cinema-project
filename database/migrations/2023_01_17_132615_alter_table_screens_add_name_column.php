@@ -13,15 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('movies', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::table('screens', function (Blueprint $table) {
             $table->string('name');
-            $table->string('image');
-            $table->string('description');
-            $table->string('type');
-            $table->dateTime('began_at');
-            $table->dateTime('end_at');
-            $table->timestamps();
         });
     }
 
@@ -32,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movies');
+        Schema::table('screens', function (Blueprint $table) {
+            $table->dropColumn('name');
+        });
     }
 };

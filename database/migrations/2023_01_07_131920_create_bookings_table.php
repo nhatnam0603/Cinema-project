@@ -13,18 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::enableForeignKeyConstraints();
         Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('movie_id')->unsigned();
-            $table->integer('seat_id')->unsigned();
-            $table->integer('time_id')->unsigned();
-            $table->integer('ticket_id')->unsigned();
-            $table->foreign('movie_id')->references('id')->on('movies');
-            $table->foreign('seat_id')->references('id')->on('seats');
-            $table->foreign('time_id')->references('id')->on('times');
-            $table->foreign('ticket_id')->references('id')->on('tickets');
+            // $table->integer('movie_id');
+            // $table->integer('seat_id');
+            // $table->integer('time_id');
+            // $table->integer('ticket_id');
+            $table->foreignId('movie_id')->constrainted();
+            $table->foreignId('seat_id')->constrainted();
+            $table->foreignId('time_id')->constrainted();
+            $table->foreignId('ticket_id')->constrainted();
             $table->timestamps();
+
+            // $table->foreign('movie_id')->references('id')->on('movies');
+            // $table->foreign('seat_id')->references('id')->on('seats');
+            // $table->foreign('time_id')->references('id')->on('times');
+            // $table->foreign('ticket_id')->references('id')->on('tickets');
         });
     }
 

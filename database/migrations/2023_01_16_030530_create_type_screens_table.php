@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -13,16 +14,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('seats', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('row');
-            $table->integer('number');
-            $table->foreignId('screen_id')->constrainted();
-            // $table->integer('screen_id')->unsigned();
+        Schema::enableForeignKeyConstraints();
+        Schema::create('type_screens', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
             $table->timestamps();
-        
-            // $table->foreign('screen_id')->references('id')->on('screens');
         });
+        DB::table('type_screens')->insert([
+            ['id' => 1, 'name' => '2D'],
+            ['id' => 2, 'name' => '3D'],
+            ['id' => 3, 'name' => 'IMAX'],
+        ]);
     }
 
     /**
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seats');
+        Schema::dropIfExists('type_sceens');
     }
 };
