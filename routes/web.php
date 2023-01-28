@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,10 +23,20 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('reset-password', [AuthController::class, 'resetpassword'])->name('reset.password');
 
 
+// WEB ROUTE dont need auth
+Route::get('home', [HomeController::class,'homepage'])->name('home');
+Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
+Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
+Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
+Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
+Route::get('contact', [HomeController::class,'contact'])->name('contact');
 
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 // BACK END - ADMIN ROUTE
 Route::prefix('')->middleware('admin')->group(function(){
 
@@ -34,15 +44,8 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('logout', [AdminController::class, 'logout']);
 });
 
-Route::prefix('home')->middleware('auth')->group(function () {
-
-    Route::get('home', [HomeController::class,'homepage'])->name('home');
-
-    Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
-    Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
+Route::prefix('')->middleware('auth')->group(function () {
+    
     Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
 
-Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
-Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
-Route::get('contact', [HomeController::class,'contact'])->name('contact');
 });
