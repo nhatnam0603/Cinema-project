@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductController;use App\Http\Controllers\Auth\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,14 +31,29 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 // End route login,register and reset password
 
-
-    Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
-    Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
-    Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
-
+// WEB ROUTE dont need auth
+Route::get('home', [HomeController::class,'homepage'])->name('home');
+Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
+Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
 Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
 Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
 Route::get('contact', [HomeController::class,'contact'])->name('contact');
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+// BACK END - ADMIN ROUTE
+Route::prefix('')->middleware('admin')->group(function(){
+
+    Route::get('dashboard', [AdminController::class, 'dashboard']);
+    Route::get('logout', [AdminController::class, 'logout']);
+});
+
+Route::prefix('')->middleware('auth')->group(function () {
+
+    Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
+
 
 // End route website dont need auth
 // User needs to be authenticated to enter here.
