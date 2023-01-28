@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class MoviesTypes extends Model
 {
     use HasFactory;
-    $table = 'movies_types';
+    protected $table = 'movies_types';
+    protected $fillable = [
+        'type_id',
+        'movie_id',
+    ];
 }

@@ -88,7 +88,7 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('product', [ProductController::class,'index']);
     Route::get('product/create', [ProductController::class,'create']);
     Route::post('product', [ProductController::class,'store']);
-    Route::post('product',[ProductController::class,'destroy'])->name('admin.product.destroy');
+    Route::delete('product',[ProductController::class,'destroy'])->name('admin.product.destroy');
 
 });
 
