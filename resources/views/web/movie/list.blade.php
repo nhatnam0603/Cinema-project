@@ -86,18 +86,7 @@
             <div class="row flex-wrap-reverse justify-content-center">
                 <div class="col-sm-10 col-md-8 col-lg-3">
                     {{-- Filter by type start --}}
-                    <div class="widget-1 widget-check">
-                        <div class="widget-1-body">
-                            <h6 class="subtitle">Type</h6>
-                            <div class="check-area">
-                                @foreach($screenTypes as $k => $type)
-                                <div class="form-group">
-                                    <input type="checkbox" name="mode" id="mode{{$k}}"><label for="mode{{$k}}">{{$type->name}}</label>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
+                    <livewire:filter-movies/>
                     {{-- Filter by type end --}}
 
                     {{-- Filter by genre start --}}
@@ -117,6 +106,8 @@
                         </div>
                     </div>
                     {{-- Filter by genre end --}}
+
+                    {{-- Banner start --}}
                     <div class="widget-1 widget-banner">
                         <div class="widget-1-body">
                             <a href="#">
@@ -124,42 +115,12 @@
                             </a>
                         </div>
                     </div>
+                    {{-- Banner start end--}}
+
                 </div>
                 <div class="col-lg-9 mb-50 mb-lg-0">
                     <div class="filter-tab tab">
-                        <div class="tab-area">
-                            <div class="tab-item">
-                                {{-- Show movie list start --}}
-                                <div class="row mb-10 justify-content-center">
-                                    @foreach($movielist as $movie)
-                                    <div class="col-sm-6 col-lg-6">
-                                        <div class="movie-grid">
-                                            <div class="movie-thumb c-thumb">
-                                                <a href="{{route('movie.detail',['id'=>$movie->id])}}">
-                                                    <img src="{{json_decode($movie->image_list)[0] ?? 'assets/img/movie/movie-list-default.jpg'}}" alt="movie">
-                                                </a>
-                                            </div>
-                                            <div class="movie-content">
-                                                <h5 class="title m-0">
-                                                    <a href="{{route('movie.detail',['id'=>$movie->id])}}">{{$movie->name}}</a>
-                                                </h5>
-                                                <ul class="movie-rating-percent">
-                                                    <li>
-                                                        <i class="fal fa-shopping-cart"></i>
-                                                        <span class="content">88.8k</span>
-                                                    </li>
-                                                    <li>
-                                                        <i class="fal fa-star"></i>
-                                                        <span class="content">5.0</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                                {{-- Show movie list end --}}
-                            </div>
+                        {{-- <div class="tab-area">
                             <div class="tab-item active">
                                 <div class="movie-area mb-10">
                                     @foreach($movielist as $movie)
@@ -230,7 +191,8 @@
                                     @endforeach
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                        <livewire:show-movies />
                         <div class="pagination-area text-center">
                             <a href="#"><i class="fal fa-long-arrow-alt-left"></i><span>Prev</span></a>
                             <a href="#" class="active">1</a>

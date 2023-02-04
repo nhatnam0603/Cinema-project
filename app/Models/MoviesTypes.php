@@ -13,8 +13,4 @@ class MoviesTypes extends Model
         'type_id',
         'movie_id',
     ];
-
-    public function types(){
-        return $this->hasMany(MoviesTypes::class, 'type_id', 'id');
-    }
 }
