@@ -42,7 +42,7 @@
         <div class="container">
             <div class="header-wrapper">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{{route('home')}}">
                         <img src="assets/img/logo/logo.png" alt="logo">
                     </a>
                 </div>

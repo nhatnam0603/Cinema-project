@@ -26,7 +26,6 @@
                             <h3 class="title">find your tickets now</h3>
                         </div>
                     </div>
-
                 </div>
                 <div class="tab-area">
                     {{-- Search movie by name --}}
@@ -38,7 +37,6 @@
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
-
                             {{-- <div class="form-group">
                                 <div class="thumb">
                                     <img src="assets/img/ticket/city.png" alt="ticket">
@@ -61,7 +59,6 @@
                                 @for ($i = 0; $i < 7; $i++)
                                     <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}">{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
                                 @endfor
-
                                 </select>
                             </div>
                             <div class="form-group">
@@ -95,10 +92,11 @@
                 <div class="col-lg-12">
                     <div class="article-section padding-bottom">
                         <div class="section-header-1">
-                            <h2 class="title">movies</h2>
+                            <h2 class="title">Search results</h2>
+                            {{-- <a class="view-more" href="movie-grid.html">View More <i class="fal fa-long-arrow-alt-right"></i> </a> --}}
                         </div>
                         <div class="row mb-30-none justify-content-center">
-                        @foreach ($movielist as $movie)
+                        @foreach ($searchMovies as $movie)
                            <div class="col-sm-6 col-lg-4">
                                 <div class="movie-grid">
                                     <div class="movie-thumb c-thumb">

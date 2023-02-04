@@ -36,18 +36,18 @@ class HomeController extends Controller
     {
       $screenTypes = TypeScreens::all();
       $genres = Genres::all();
-     
+
       if(!empty($request->all())){
          $genreid = $request->input('genreid');
          $date = $request->input('date');
          $type = $request->input('type');
-         
+
 
          $movielist = Movie::query();
          if($date)
          $movielist->whereDate('end_at','>=',date('Y-m-d',strtotime($date)));
-         
-         if($genreid)                     
+
+         if($genreid)
          $movielist->whereHas('genres', function (Builder $query1) use ($genreid) {
             $query1->where('genres.id',$genreid);
          });
@@ -57,12 +57,12 @@ class HomeController extends Controller
          });
          //var_dump($movielist->toSql());
          $movielist = $movielist->get();
-         
+
       }
       else{
          $movielist = Movie::all();
       }
-      
+
       return view('web.movie.list',compact('movielist','screenTypes','genres'));
     }
     /**
@@ -75,10 +75,10 @@ class HomeController extends Controller
       if(!empty($request->all()))
       {
          $id = $request->input('id');
-         $movie = Movie::where('id',$id)->first(); 
-         
+         $movie = Movie::where('id',$id)->first();
+
          return view('web.movie.detail',compact('movie'));
-      } 
+      }
       else return redirect()->back();
     }
      /**
@@ -90,10 +90,10 @@ class HomeController extends Controller
     {
       if(!empty($request->all()))
       {
-         
+
          $movieScreenTime = MoviesScreensTimeAssign::where('id',$request->input('id'))->first();
          $bookList =  $request->input('bookList') ;
-         
+
          $bookListArr = explode(',',$bookList);
          $bookNumber = count($bookListArr);
       }
@@ -109,17 +109,17 @@ class HomeController extends Controller
       if(!empty($request->all()))
       {
          $id = $request->input('id');
-         $movie = Movie::where('id',$id)->first(); 
-        
+         $movie = Movie::where('id',$id)->first();
+
          if(!empty($request->input('date')))
          {
-            
+
             $screensList = MoviesScreensTimeAssign::whereDate('date', '=', date('Y-m-d',strtotime(str_replace('/','-', $request->input('date')))))
             ->where('movie_id',$id)->get();
-           
+
             $screensTimeList = [];
             foreach ($screensList as $key => $value) {
-             
+
                if(!isset($screensTimeList[$value->screen->id]))
                $screensTimeList[$value->screen->id] = new stdClass();
                $screensTimeList[$value->screen->id]->screenName = $value->screen->name;
@@ -129,11 +129,11 @@ class HomeController extends Controller
                $screensTimeList[$value->screen->id]->time = [];
                $screensTimeList[$value->screen->id]->time[] = (object)  array('time' => $value->time->time,'id'=>$value->id);
             }
-          
+
             return view('web.ticketplan',compact('movie','screensTimeList'));
          }
          return view('web.ticketplan',compact('movie'));
-      } 
+      }
       else return redirect()->back();
     }
      /**
@@ -148,7 +148,7 @@ class HomeController extends Controller
          $movieScreenTime = MoviesScreensTimeAssign::where('id',$request->input('id'))->first();
          $timeId = $movieScreenTime->time_id;
          $listSeat = Seats::where('screen_id',$movieScreenTime->screen_id)->get();
-         $listSeatHasChoose = Seats::where('screen_id',$movieScreenTime->screen_id)->whereDoesntHave('bookings', function ($query) use($timeId){ 
+         $listSeatHasChoose = Seats::where('screen_id',$movieScreenTime->screen_id)->whereDoesntHave('bookings', function ($query) use($timeId){
             $query->where('time_id', $timeId);
          })->get();
          $output = [];
@@ -171,5 +171,16 @@ class HomeController extends Controller
     {
        return view('web.contact');
     }
-    
+
+    //Search movie by name
+    public function searchMovies(Request $request){
+        if($request->search) {
+
+            $searchMovies = Movie::where('name', 'like', '%'.$request->search.'%')->get();
+            return view('web.movie.search', compact('searchMovies'));
+        } else {
+            return redirect()->back()->with('message', 'Not found!');
+        }
+    }
+
 }

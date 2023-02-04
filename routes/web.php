@@ -31,7 +31,7 @@ Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.d
 
 
 //Route user
-Route::prefix('home')->middleware('auth')->group(function () {
+// Route::prefix('home')->middleware('auth')->group(function () {
 
     Route::get('home', [HomeController::class,'homepage'])->name('home');
 
@@ -44,7 +44,11 @@ Route::prefix('home')->middleware('auth')->group(function () {
 Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
 Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
 Route::get('contact', [HomeController::class,'contact'])->name('contact');
-});
+
+//Search movie route
+Route::get('search', [HomeController::class,'searchMovies'])->name('search');
+// Route::get('search', 'searchMovies');
+// });
 
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
