@@ -47,7 +47,7 @@ Route::get('contact', [HomeController::class,'contact'])->name('contact');
 
 //Search movie route
 Route::get('search', [HomeController::class,'searchMovies'])->name('search');
-// Route::get('search', 'searchMovies');
+
 // });
 
 

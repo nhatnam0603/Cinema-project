@@ -2,11 +2,11 @@
 
 @section('content')
 <session class="content">
-    <section class="details-banner" style="background:url('assets/img/banner/banner-movie-details.jpg')">
+    <section class="details-banner" style="background:url('{{ asset('assets/img/movie/'.$movie->image) }}')">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-thumb">
-                    <img src="{{$movie->image}}" alt="movie">
+                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie">
                     <a href="https://www.youtube.com/watch?v=IuO64sifh9o" class="video-button video-popup">
                         <i class="fal fa-play"></i>
                     </a>

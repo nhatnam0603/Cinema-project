@@ -13,13 +13,13 @@
             <a href="" class="custom-button seatPlanButton">Show Seat Plans<i class="fal fa-long-arrow-alt-right"></i></a>
         </div>
     </section>
-    <section class="details-banner hero-area" style="background:url('assets/img/banner/banner-movie-details.jpg')">
+    <section class="details-banner hero-area" style="background:url({{ asset('assets/img/movie/'.$movie->image) }})">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-content">
                     <h3 class="title">{{$movie->name}}</h3>
                     <div class="tags">
-                        @foreach($movie->types as $type)                         
+                        @foreach($movie->types as $type)
                             <a href="#">{{$type->name}}</a>
                         @endforeach
                         @foreach($movie->genres as $genre)
@@ -40,7 +40,7 @@
                             <h3 class="title">find your screens now</h3>
                         </div>
                     </div>
-                  
+
                 </div>
                 <div class="tab-area">
                     <div class="tab-item active">
@@ -55,7 +55,7 @@
                                     <option value="">Choose Date</option>
                                     @for ($i = 0; $i < 7; $i++)
                                         <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}">{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
-                                    @endfor 
+                                    @endfor
                                 </select>
                             </div>
                             <div class="form-group">
