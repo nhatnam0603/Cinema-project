@@ -11,7 +11,6 @@ use App\Models\MoviesTypes;
 use App\Models\TypeScreens;
 use DateTime;
 use Illuminate\Support\Facades\DB;
-
 class ProductController extends Controller
 {
     public function index()
@@ -48,8 +47,6 @@ class ProductController extends Controller
 
                 $product->image = $filename;
             }
-
-            $file->move(public_path('uploads/product'), $filename);
 
             $product->save();
 

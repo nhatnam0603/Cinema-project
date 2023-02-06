@@ -77,7 +77,5 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('product/create', [ProductController::class,'create']);
     Route::post('product', [ProductController::class,'store']);
     Route::delete('product',[ProductController::class,'destroy'])->name('admin.product.destroy');
-
-
 });
 
