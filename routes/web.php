@@ -25,13 +25,27 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
+
 // WEB ROUTE dont need auth
 Route::get('home', [HomeController::class,'homepage'])->name('home');
 Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
 Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
+
+//Route user
+Route::prefix('home')->middleware('auth')->group(function () {
+
+    Route::get('home', [HomeController::class,'homepage'])->name('home');
+
+    Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
+    Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
+    Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
+
+
 Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
 Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
 Route::get('contact', [HomeController::class,'contact'])->name('contact');
+});
+
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
@@ -63,6 +77,7 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('product/create', [ProductController::class,'create']);
     Route::post('product', [ProductController::class,'store']);
     Route::delete('product',[ProductController::class,'destroy'])->name('admin.product.destroy');
+
 
 });
 
