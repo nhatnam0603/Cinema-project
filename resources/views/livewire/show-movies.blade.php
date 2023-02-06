@@ -6,7 +6,7 @@
             <div class="movie-list">
                 <div class="movie-thumb c-thumb">
                     <a href="{{route('movie.detail',['id'=>$movie->id])}}" class="w-100 h-100">
-                        <img src="{{$movie->image}}" alt="movie">
+                        <img src="{{ asset('assets/img/movie/'.$movie->image)}}" alt="movie">
                     </a>
                 </div>
                 <div class="movie-content bg-one">

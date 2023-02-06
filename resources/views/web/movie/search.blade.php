@@ -101,7 +101,7 @@
                                 <div class="movie-grid">
                                     <div class="movie-thumb c-thumb">
                                         <a href="{{route('movie.detail',['id'=>$movie->id])}}">
-                                            <img src="{{json_decode($movie->image_list)[0] ?? 'assets/img/movie/movie-list-default.jpg'}}" alt="movie">
+                                            <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie">
                                         </a>
                                     </div>
                                     <div class="movie-content">

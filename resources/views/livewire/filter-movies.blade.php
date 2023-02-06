@@ -6,7 +6,7 @@
             <div class="check-area">
                 @foreach($screenTypes as $k => $type)
                 <div class="form-group">
-                    <input wire:model="type_id" wire:change="filter" type="checkbox" name="mode" id="mode{{$k}}"><label for="mode{{$k}}">{{$type->name}}</label>
+                    <input wire:model="type_id" type="checkbox" name="mode" id="mode{{$k}}" value="{{ $type->id }}"><label for="mode{{$k}}">{{$type->name}}</label>
                 </div>
                 @endforeach
             </div>
