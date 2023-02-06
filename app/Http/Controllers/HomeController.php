@@ -178,6 +178,7 @@ class HomeController extends Controller
        return view('web.contact');
     }
 
+
     public function confirmpayment(Request $request){
       $data = $request->all();
       
@@ -212,7 +213,6 @@ class HomeController extends Controller
       return $pdf->download('ticket'. auth()->user()->id.'.pdf'); 
     }
 
-
     //Search movie by name
     public function searchMovies(Request $request){
         if($request->search) {
@@ -223,6 +223,4 @@ class HomeController extends Controller
             return redirect()->back()->with('message', 'Not found!');
         }
     }
-
-
 }
