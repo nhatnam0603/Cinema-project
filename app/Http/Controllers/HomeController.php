@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bookings;
 use App\Models\Genres;
 use App\Models\Movie;
 use App\Models\MoviesScreensTimeAssign;
 use App\Models\Seats;
+use App\Models\Tickets;
 use App\Models\TypeScreens;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
-use Ramsey\Uuid\Type\Time;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use stdClass;
+use Illuminate\Http\Client\Response;
 
 class HomeController extends Controller
 {
@@ -76,7 +82,9 @@ class HomeController extends Controller
       {
          $id = $request->input('id');
          $movie = Movie::where('id',$id)->first(); 
-         
+         $list = ['assets/img/movie/movie-list-default.jpg'];
+         //dd(json_encode($list));
+       //dd($movie->image_list  );
          return view('web.movie.detail',compact('movie'));
       } 
       else return redirect()->back();
@@ -171,5 +179,37 @@ class HomeController extends Controller
     {
        return view('web.contact');
     }
-    
+    public function confirmpayment(Request $request){
+      $data = $request->all();
+      
+      $ticket = new Tickets();
+      $ticket->user_id = auth()->user()->id;
+      $ticket->save();
+      //dd($data);
+      $html= '';
+      foreach ($data['ticket'] as $key=> $value) { 
+         try{
+            DB::beginTransaction();
+            $data['ticketList'][$key]['row'] = $value[0];
+            $data['ticketList'][$key]['seat'] = substr($value,1);
+            $seat = Seats::where('row', $data['ticketList'][$key]['row'])->where('number',(int)$data['ticketList'][$key]['seat'])->where('screen_id',$data['screenId'])->first();
+
+            $booking = new Bookings();
+            $booking->movie_id = $data['movieId'];
+            $booking->seat_id = $seat->id;
+            $booking->time_id = $data['timeId'];
+            $booking->ticket_id = $ticket->id;
+            $booking->save();
+            $data['ticketList'][$key]['bookingid'] = $booking->id;
+
+            DB::commit();
+         }catch(Exception $th)
+         {
+            DB::rollBack();
+            dd($th);
+         }
+      }
+      $pdf = PDF::loadView('pdfticket', $data);
+      return $pdf->download('ticket'. auth()->user()->id.'.pdf'); 
+    }
 }

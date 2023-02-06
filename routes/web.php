@@ -46,6 +46,7 @@ Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.pos
 Route::group(['middleware' => 'auth'], function () {
     //Start route website
     Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
+    Route::get('comfirm-payment', [HomeController::class,'confirmpayment'])->name('comfirm.payment');
     //End route website
 
 });
