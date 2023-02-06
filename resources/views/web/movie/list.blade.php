@@ -21,16 +21,18 @@
                             <h3 class="title">find your tickets now</h3>
                         </div>
                     </div>
-                  
+
                 </div>
                 <div class="tab-area">
 
                     <div class="tab-item active">
-                        <form class="ticket-search-form" method="get" action="{{route('movie.list')}}">
-                            <div class="form-group large">
-                                <input type="text" placeholder="Search for Movies">
+                        <form class="ticket-search-form" method="get" action="{{url('search')}}">
+                            <div class="form-group large" style="width: 100%">
+                                <input type="search" name="search" value="{{ Request::get('search') }}" placeholder="Search for Movies">
                                 <button type="submit"><i class="fas fa-search"></i></button>
                             </div>
+                        </form>
+                        {{-- <form>
                             <div class="form-group">
                                 <div class="thumb">
                                     <img src="assets/img/ticket/city.png" alt="ticket">
@@ -40,7 +42,7 @@
                                     <option value="">Choose genre</option>
                                     @foreach($genres as $genre)
                                     <option value="{{$genre->id}}">{{$genre->name}}</option>
-                                    @endforeach 
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -53,7 +55,7 @@
                                 @for ($i = 0; $i < 7; $i++)
                                     <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}">{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
                                 @endfor
-                                    
+
                                 </select>
                             </div>
                             <div class="form-group">
@@ -73,7 +75,7 @@
                                     <button type="submit" class="filter-btn"><i class="far fa-search"></i></button>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
             </div>
@@ -83,6 +85,7 @@
         <div class="container">
             <div class="row flex-wrap-reverse justify-content-center">
                 <div class="col-sm-10 col-md-8 col-lg-3">
+                    {{-- Filter by type start --}}
                     <div class="widget-1 widget-check">
                         <div class="widget-1-body">
                             <h6 class="subtitle">Type</h6>
@@ -95,6 +98,9 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Filter by type end --}}
+
+                    {{-- Filter by genre start --}}
                     <div class="widget-1 widget-check">
                         <div class="widget-1-body">
                             <h6 class="subtitle">genre</h6>
@@ -105,11 +111,12 @@
                                 </div>
                                 @endforeach
                             </div>
-                            <div class="add-check-area">
+                            {{-- <div class="add-check-area">
                                 <a href="#">view more</a> <i class="fal fa-chevron-circle-down"></i>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
+                    {{-- Filter by genre end --}}
                     <div class="widget-1 widget-banner">
                         <div class="widget-1-body">
                             <a href="#">
@@ -120,44 +127,9 @@
                 </div>
                 <div class="col-lg-9 mb-50 mb-lg-0">
                     <div class="filter-tab tab">
-                        <div class="filter-area">
-                            <div class="filter-main">
-                                <div class="left">
-                                    <div class="item">
-                                        <span class="show">Show :</span>
-                                        <select class="select-bar">
-                                            <option value="10">10</option>
-                                            <option value="20">20</option>
-                                            <option value="30">30</option>
-                                            <option value="40">40</option>
-                                            <option value="50">50</option>
-                                            <option value="60">60</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                    </div>
-                                    <div class="item">
-                                        <span class="show">Sort By :</span>
-                                        <select class="select-bar">
-                                            <option value="latest">latest showing</option>
-                                            <option value="exclusive">exclusive</option>
-                                            <option value="upcoming">upcoming</option>
-                                            <option value="trending">trending</option>
-                                            <option value="popular">popular</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <ul class="grid-button tab-menu">
-                                    <li>
-                                        <i class="fal fa-th-large"></i>
-                                    </li>
-                                    <li class="active">
-                                        <i class="fal fa-th-list"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                         <div class="tab-area">
                             <div class="tab-item">
+                                {{-- Show movie list start --}}
                                 <div class="row mb-10 justify-content-center">
                                     @foreach($movielist as $movie)
                                     <div class="col-sm-6 col-lg-6">
@@ -186,6 +158,7 @@
                                     </div>
                                     @endforeach
                                 </div>
+                                {{-- Show movie list end --}}
                             </div>
                             <div class="tab-item active">
                                 <div class="movie-area mb-10">
@@ -260,8 +233,8 @@
                         </div>
                         <div class="pagination-area text-center">
                             <a href="#"><i class="fal fa-long-arrow-alt-left"></i><span>Prev</span></a>
-                            <a href="#">1</a>
-                            <a href="#" class="active">2</a>
+                            <a href="#" class="active">1</a>
+                            <a href="#">2</a>
                             <a href="#">3</a>
                             <a href="#"><span>Next</span><i class="fal fa-long-arrow-alt-right"></i></a>
                         </div>
