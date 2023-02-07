@@ -56,7 +56,7 @@
                             <li>
                                 <a href="{{route('movie.list')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie List</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{route('movie.detail')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Details</a>
                             </li>
                             <li>
@@ -67,7 +67,7 @@
                             </li>
                             <li>
                                 <a href="{{route('seat.plan')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Seat Plan</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     <!-- <li class="menu-item-has-children">
@@ -199,11 +199,84 @@
             <div class="container">
                 <div class="footer-top">
                     <div class="logo">
-                        <a href="index-1.html">
+                        <a href="{{ route('home') }}">
                             <img src="assets/img/logo/logo.png" alt="footer">
                         </a>
                     </div>
-                    <ul class="social-icons">
+                    {{-- <ul class="social-icons">
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="active">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-pinterest-p"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-google"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul> --}}
+                </div>
+            </div>
+            <div class="container">
+                <div class="footer-middle">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h5 class="footer-middle-title">About Us</h5>
+                            <p class="pb-4 footer-text">
+                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.
+                            </p>
+                        </div>
+                        {{-- <div class="col-lg-3">
+                            <h5 class="footer-middle-title">Important Link</h5>
+                            <div class="footer-middle-link">
+                                <a href="#">About Us</a>
+                                <a href="#">Contact</a>
+                                <a href="#">Faq</a>
+                                <a href="#">Terms &amp; Conditions</a>
+                                <a href="#">Privacy Policy</a>
+                                <a href="#">Help</a>
+                            </div>
+                        </div> --}}
+                        <div class="col-lg-4">
+                            <h5 class="footer-middle-title">Quick Browse</h5>
+                            <div class="footer-middle-link">
+                                <a href="{{ route('home') }}">Home</a>
+                                {{-- <a href="#">Blog</a> --}}
+                                <a href="{{ route('movie.list') }}">Movies</a>
+                                <a href="{{ route('contact') }}">Contact</a>
+                                {{-- <a href="#">Sports</a> --}}
+                                {{-- <a href="#">Feedback</a> --}}
+                            </div>
+                        </div>
+                        {{-- <div class="col-lg-4">
+                            <h5 class="footer-middle-title">Download</h5>
+                            <p class="footer-text">There are many variations of passages of Lorem Ipsum</p>
+                            <div class="footer-middle-download">
+                                <a href="#"><img src="assets/img/app/app_store.jpg" alt=""></a> <br>
+                                <a href="#"><img src="assets/img/app/google_play.jpg" alt=""></a> <br>
+                                <a href=""> <img src="assets/img/app/windows.jpg" alt=""></a>
+                            </div>
+                        </div> --}}
+                        <div class="col-lg-4">
+                            <h5 class="footer-middle-title">Social Media</h5>
+                            <p class="footer-text">There are many variations of passages of Lorem Ipsum</p>
+                            <div class="footer-middle-download">
+                                <ul class="social-icons">
                         <li>
                             <a href="#">
                                 <i class="fab fa-facebook-f"></i>
@@ -230,46 +303,6 @@
                             </a>
                         </li>
                     </ul>
-                </div>
-            </div>
-            <div class="container">
-                <div class="footer-middle">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <h5 class="footer-middle-title">Company</h5>
-                            <p class="pb-4 footer-text">
-                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.
-                            </p>
-                        </div>
-                        <div class="col-lg-3">
-                            <h5 class="footer-middle-title">Important Link</h5>
-                            <div class="footer-middle-link">
-                                <a href="#">About Us</a>
-                                <a href="#">Contact</a>
-                                <a href="#">Faq</a>
-                                <a href="#">Terms &amp; Conditions</a>
-                                <a href="#">Privacy Policy</a>
-                                <a href="#">Help</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <h5 class="footer-middle-title">Quick Browse</h5>
-                            <div class="footer-middle-link">
-                                <a href="#">Support</a>
-                                <a href="#">Blog</a>
-                                <a href="#">Movies</a>
-                                <a href="#">Events</a>
-                                <a href="#">Sports</a>
-                                <a href="#">Feedback</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <h5 class="footer-middle-title">Download</h5>
-                            <p class="footer-text">There are many variations of passages of Lorem Ipsum</p>
-                            <div class="footer-middle-download">
-                                <a href="#"><img src="assets/img/app/app_store.jpg" alt=""></a>
-                                <a href="#"><img src="assets/img/app/google_play.jpg" alt=""></a>
-                                <a href=""> <img src="assets/img/app/windows.jpg" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -280,9 +313,9 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-area">
                     <div class="left">
-                        <p>Copyright © 2021.All Rights Reserved By <a href="#">Ticket</a>.</p>
+                        <p>Copyright © 2021.All Rights Reserved By <a href="{{ route('home') }}">Ticket</a>.</p>
                     </div>
-                    <ul class="links">
+                    {{-- <ul class="links">
                         <li>
                             <a href="#">About</a>
                         </li>
@@ -298,7 +331,7 @@
                         <li>
                             <a href="#">Feedback</a>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
         </div>

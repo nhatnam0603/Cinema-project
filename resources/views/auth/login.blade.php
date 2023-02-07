@@ -8,7 +8,7 @@
                 <h2 class="title">login</h2>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="index.html">
+                        <a href="{{ route('home') }}">
                             Home
                         </a>
                     </li>
@@ -57,13 +57,13 @@
                     </div>
                     <div class="or"><span>Or</span></div>
                     <ul class="social-icons">
-                        
+
                         <li>
                             <a href="#">
                                 <i class="fab fa-google"></i>
                             </a>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>

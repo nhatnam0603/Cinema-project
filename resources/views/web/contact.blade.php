@@ -8,7 +8,7 @@
                 <h2 class="title">contact us</h2>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="index.html">
+                        <a href="{{ route('home') }}">
                             Home
                         </a>
                     </li>
@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="info-content">
                                         <h6 class="title">phone</h6>
-                                        <a href="Tel:123 456 65478">+1 123 456 65478</a>
+                                        <a href="Tel:123 456 65478">+84 123 456 7890</a>
                                     </div>
                                 </div>
                                 <div class="info-item">
@@ -85,7 +85,7 @@
     </section>
     <section class="contact-counter padding-top padding-bottom">
         <div class="container">
-            <div class="row justify-content-center mb-30-none">
+            {{-- <div class="row justify-content-center mb-30-none">
                 <div class="col-sm-6 col-md-3">
                     <div class="contact-counter-item">
                         <div class="contact-counter-thumb">
@@ -150,7 +150,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
 </session>
