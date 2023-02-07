@@ -28,7 +28,7 @@
                     <div class="tab-item active">
                         <form class="ticket-search-form" method="get" action="{{route('movie.list')}}">
                             <div class="form-group large">
-                                <input type="text" placeholder="Search for Movies">
+                                <input type="text" name="search" placeholder="Search for Movies">
                                 <button type="submit"><i class="fas fa-search"></i></button>
                             </div>
                             <div class="form-group">
@@ -122,7 +122,7 @@
                     <div class="filter-tab tab">
                         <div class="filter-area">
                             <div class="filter-main">
-                                <div class="left">
+                                <!-- <div class="left">
                                     <div class="item">
                                         <span class="show">Show :</span>
                                         <select class="select-bar">
@@ -145,7 +145,7 @@
                                             <option value="popular">popular</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
                                 <ul class="grid-button tab-menu">
                                     <li>
                                         <i class="fal fa-th-large"></i>
@@ -171,7 +171,7 @@
                                                 <h5 class="title m-0">
                                                     <a href="{{route('movie.detail',['id'=>$movie->id])}}">{{$movie->name}}</a>
                                                 </h5>
-                                                <ul class="movie-rating-percent">
+                                                <!-- <ul class="movie-rating-percent">
                                                     <li>
                                                         <i class="fal fa-shopping-cart"></i>
                                                         <span class="content">88.8k</span>
@@ -180,7 +180,7 @@
                                                         <i class="fal fa-star"></i>
                                                         <span class="content">5.0</span>
                                                     </li>
-                                                </ul>
+                                                </ul> -->
                                             </div>
                                         </div>
                                     </div>
@@ -214,7 +214,7 @@
                                             <div class="release">
                                                 <span>Release Date : </span> <a href="#"> April 13, 2021</a>
                                             </div>
-                                            <ul class="movie-rating-percent">
+                                            <!-- <ul class="movie-rating-percent">
                                                 <li>
                                                     <i class="fal fa-shopping-cart"></i>
                                                     <span class="content">88.8k</span>
@@ -223,17 +223,17 @@
                                                     <i class="fal fa-star"></i>
                                                     <span class="content">5.0</span>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                             <div class="book-area">
                                                 <div class="book-ticket">
-                                                    <div class="react-item">
+                                                    <!-- <div class="react-item">
                                                         <a href="#">
                                                             <div class="thumb">
                                                                 <i class="fal fa-heart"></i>
                                                             </div>
                                                             <span>10k</span>
                                                         </a>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="react-item mr-auto">
                                                         <a href="#">
                                                             <div class="thumb">
@@ -258,13 +258,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pagination-area text-center">
+                        <!-- <div class="pagination-area text-center">
                             <a href="#"><i class="fal fa-long-arrow-alt-left"></i><span>Prev</span></a>
                             <a href="#">1</a>
                             <a href="#" class="active">2</a>
                             <a href="#">3</a>
                             <a href="#"><span>Next</span><i class="fal fa-long-arrow-alt-right"></i></a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
