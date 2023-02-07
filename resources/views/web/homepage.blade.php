@@ -31,15 +31,15 @@
                 <div class="tab-area">
                     {{-- Search movie by name --}}
                     <div class="tab-item active">
-                        <form class="ticket-search-form" method="get" action="{{ url('search') }}">
-                            <div class="form-group large" style="width: 100%">
+                        <form class="ticket-search-form" method="get" action="{{ route('movie.list') }}">
+                            <div class="form-group">
                                 <input type="search" name="search" value="{{ Request::get('search') }}" placeholder="Search for Movies">
                                 <button type="submit">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
 
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <div class="thumb">
                                     <img src="assets/img/ticket/city.png" alt="ticket">
                                 </div>
@@ -59,7 +59,7 @@
                                 <select class="select-bar"  name="date">
                                     <option value="">Choose Date</option>
                                 @for ($i = 0; $i < 7; $i++)
-                                    <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}">{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
+                                    <option value="{{date('Y-m-d',strtotime('+ '.$i.' day'))}}">{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
                                 @endfor
 
                                 </select>
@@ -80,7 +80,7 @@
                                 <div class="thumb">
                                     <button type="submit" class="filter-btn"><i class="far fa-search"></i></button>
                                 </div>
-                            </div> --}}
+                            </div>
                         </form>
                     </div>
                     {{-- Search movie by name --}}

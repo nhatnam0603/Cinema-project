@@ -56,18 +56,6 @@
                             <li>
                                 <a href="{{route('movie.list')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie List</a>
                             </li>
-                            <li>
-                                <a href="{{route('movie.detail')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Details</a>
-                            </li>
-                            <li>
-                                <a href="{{route('movie.checkout')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Checkout</a>
-                            </li>
-                            <li>
-                                <a href="{{route('ticket.plan')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Ticket Plan</a>
-                            </li>
-                            <li>
-                                <a href="{{route('seat.plan')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Seat Plan</a>
-                            </li>
                         </ul>
                     </li>
                     <!-- <li class="menu-item-has-children">
@@ -163,7 +151,11 @@
                         <a href="{{route('contact')}}">contact</a>
                     </li>
                     <li class="header-button pr-0">
+                        @if(auth()->check())
+                        <a href="">{{auth()->user()->name}}</a>
+                        @else
                         <a href="{{route('login')}}">Login</a>
+                        @endif
                     </li>
                 </ul>
                 <div class="header-bar d-lg-none">
