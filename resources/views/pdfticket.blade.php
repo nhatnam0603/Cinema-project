@@ -161,7 +161,7 @@ Inspired by: https://dribbble.com/shots/1166639-Movie-Ticket/attachments/152161
             <p class="movie-title">{{$movieName}}</p>
         </div>
         <div class="poster">
-            <img src="{{$image}}" alt="Movie: Only God Forgives" height="300px"/>
+            <img src="{{asset('assets/img/movie/'.$image)}}" alt="Movie: {{$image}}" height="300px"/>
         </div>
         <div class="info">
             <table>
