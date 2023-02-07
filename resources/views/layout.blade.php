@@ -163,7 +163,11 @@
                         <a href="{{route('contact')}}">contact</a>
                     </li>
                     <li class="header-button pr-0">
+                        @if(auth()->check())
+                        <a href="">{{auth()->user()->name}}</a>
+                        @else
                         <a href="{{route('login')}}">Login</a>
+                        @endif
                     </li>
                 </ul>
                 <div class="header-bar d-lg-none">

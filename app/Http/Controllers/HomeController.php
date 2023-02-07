@@ -47,9 +47,11 @@ class HomeController extends Controller
          $genreid = $request->input('genreid');
          $date = $request->input('date');
          $type = $request->input('type');
-
-
          $movielist = Movie::query();
+         if($request->search)
+         {
+            $movielist->where('name', 'like', '%'.$request->search.'%')->get();
+         }
          if($date)
          $movielist->whereDate('end_at','>=',date('Y-m-d',strtotime($date)));
 
@@ -61,9 +63,9 @@ class HomeController extends Controller
          $movielist->whereHas('types', function (Builder $query) use ($type){
             $query->where('type_screens.id',$type);
          });
-         //var_dump($movielist->toSql());
+        //dd($movielist);
          $movielist = $movielist->get();
-
+//var_dump($movielist);
       }
       else{
          $movielist = Movie::all();
