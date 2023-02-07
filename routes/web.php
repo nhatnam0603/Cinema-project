@@ -30,24 +30,7 @@ Route::get('home', [HomeController::class,'homepage'])->name('home');
 Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
 Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 999d6b304e8a09f56f7d1b7cce1be0ecc38f3741
-//Route user
-// Route::prefix('home')->middleware('auth')->group(function () {
-
-    Route::get('home', [HomeController::class,'homepage'])->name('home');
-
-    Route::get('movie-list', [HomeController::class,'movielist'])->name('movie.list');
-    Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.detail');
-    Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 999d6b304e8a09f56f7d1b7cce1be0ecc38f3741
 Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
 Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
 Route::get('contact', [HomeController::class,'contact'])->name('contact');
@@ -57,53 +40,11 @@ Route::get('search', [HomeController::class,'searchMovies'])->name('search');
 
 // });
 
-
-<<<<<<< HEAD
-Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-<<<<<<< HEAD
-Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
-=======
-Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
-Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-// BACK END - ADMIN ROUTE
-Route::prefix('')->middleware('admin')->group(function(){
-
-    Route::get('dashboard', [AdminController::class, 'dashboard']);
-    Route::get('logout', [AdminController::class, 'logout']);
-});
-
-Route::prefix('')->middleware('auth')->group(function () {
-
-    Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
-});
-
-Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
->>>>>>> 93049f6 (fix conflict)
-=======
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 // BACK END - ADMIN ROUTE
-Route::prefix('')->middleware('admin')->group(function(){
-
-    Route::get('dashboard', [AdminController::class, 'dashboard']);
-    Route::get('logout', [AdminController::class, 'logout']);
-});
-
-Route::prefix('')->middleware('auth')->group(function () {
-
-    Route::get('movie-checkout', [HomeController::class,'moviecheckout'])->name('movie.checkout');
-});
-
-Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
->>>>>>> 999d6b304e8a09f56f7d1b7cce1be0ecc38f3741
-Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 
