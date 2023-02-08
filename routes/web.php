@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CastsController;
 use App\Http\Controllers\Admin\ProductController;
 /*
 |--------------------------------------------------------------------------
@@ -70,5 +71,10 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('product/create', [ProductController::class,'create']);
     Route::post('product', [ProductController::class,'store']);
     Route::delete('product',[ProductController::class,'destroy'])->name('admin.product.destroy');
+
+    //Cast routes
+    Route::resource('cast',CastsController::class);
+    Route::get('cast/assign/{cast}',[CastsController::class,'assign'])->name('cast.assign');
+    Route::post('cast/assign/{movie}/store',[CastsController::class,'assignStore'])->name('cast.assign.store');
 });
 
