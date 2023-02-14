@@ -21,12 +21,12 @@
         <div class="container">
             <div class="page-title-area">
                 <div class="item md-order-1">
-                    <a href="movie-ticket-plan.html" class="custom-button back-button">
+                    <a href="{{ route('seat.plan', ['id'=>$movieScreenTime->id])}}" class="custom-button back-button">
                         <i class="far fa-reply"></i> Change Option
                     </a>
                 </div>
                 <div class="item date-item">
-                    <span class="date">{{date('l d, M Y',strtotime($movieScreenTime->date))}}</span>    
+                    <span class="date">{{date('l d, M Y',strtotime($movieScreenTime->date))}}</span>
                 </div>
                 <div class="item">
                     <small> TIME START </small>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="item">
                     <small> TIME LEFT </small>
-                    
+
                     <span class="h3 font-weight-bold"> {{date('H:i',strtotime("+".(date('h',strtotime($movieScreenTime->movie->duration))*60+date('i',strtotime($movieScreenTime->movie->duration)))." minutes",strtotime($movieScreenTime->time->time)))}} </span>
                 </div>
             </div>
