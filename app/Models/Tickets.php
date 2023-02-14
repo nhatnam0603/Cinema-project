@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tickets extends Model
 {
     use HasFactory;
+    
+    public function user_id(){
+        return $this->belongsTo(Users::class,'user_id');
+    }
 }

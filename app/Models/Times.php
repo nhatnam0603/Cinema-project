@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Times extends Model
 {
     use HasFactory;
+
+    public function time_types(){
+        return $this->belongsTo(Bookings::class,'time_id');
+    }
 }
