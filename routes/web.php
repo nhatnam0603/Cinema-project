@@ -48,7 +48,7 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 // BACK END - ADMIN ROUTE
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
-
+Route::get('send-email-next-movie',[HomeController::class,'sendnextmovie'])->name('email.send.nextmovie');
 // End route login,register and reset password
 
 // User needs to be authenticated to enter here.

@@ -13,7 +13,7 @@
             <a href="" class="custom-button seatPlanButton">Show Seat Plans<i class="fal fa-long-arrow-alt-right"></i></a>
         </div>
     </section>
-    <section class="details-banner hero-area" style="background:url({{ asset('assets/img/movie/'.$movie->image) }})">
+    <section class="details-banner hero-area" style="background:url({{asset('assets/img/movie/'.$movie->image)}})">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-content">
@@ -54,7 +54,7 @@
                                 <select class="select-bar"  name="date">
                                     <option value="">Choose Date</option>
                                     @for ($i = 0; $i < 7; $i++)
-                                        <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}">{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
+                                        <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}" {{date('d/m/Y',strtotime('+ '.$i.' day')) == Request::get('date')? 'selected' : ''}}>{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
                                     @endfor
                                 </select>
                             </div>

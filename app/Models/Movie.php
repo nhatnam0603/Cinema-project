@@ -35,4 +35,7 @@ class Movie extends Model
     {
         return $this->belongsToMany(Casts::class,'movies_casts','movie_id','cast_id','id','id');
     }
+    public function movieDateAssign(){
+        return $this->hasMany(MoviesScreensTimeAssign::class);
+    }
 }

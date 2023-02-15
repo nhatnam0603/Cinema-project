@@ -198,8 +198,8 @@
                     <div class="newsletter-wrapper">
                         <h5 class="cate">subscribe now</h5>
                         <h3 class="title">to get latest movies</h3>
-                        <form class="newsletter-form" >
-                            <input type="text" placeholder="Your Email Address">
+                        <form class="newsletter-form" action="{{route('email.send.nextmovie')}}" method="get">
+                            <input type="email" name="email" placeholder="Your Email Address">
                             <button type="submit">subscribe</button>
                         </form>
                         <p>We send you latest movies to your email</p>

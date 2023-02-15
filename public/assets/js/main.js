@@ -135,6 +135,7 @@
     $('.seat-plan-wrapper li .movie-schedule .item').on('click', function() {
       let id = $(this).attr('data-value');
       $('.seatPlanButton').attr('href','seat-plan?id='+id);
+      $('.subtitle').text('Show time: '+ $(this).text()); 
       $('.window-warning').removeClass('inActive');
     })
     //Tab Section

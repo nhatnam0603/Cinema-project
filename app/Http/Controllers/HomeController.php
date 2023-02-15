@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use stdClass;
 use Illuminate\Http\Client\Response;
-
+use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
 {
     /**
@@ -29,9 +29,16 @@ class HomeController extends Controller
     {
       $screenTypes = TypeScreens::all();
       $genres = Genres::all();
-      $movielist = Movie::all();
-
-       return view('web.homepage',compact('movielist','genres','screenTypes'));
+      $movielist = Movie::whereHas('movieDateAssign', function (Builder $query) {
+         $query->whereDate('movies_screens_time_assign.date',date('Y-m-d'));
+      })->get();
+      
+      $movie7nextday = Movie::whereHas('movieDateAssign', function (Builder $query) {
+         $query->whereDate('movies_screens_time_assign.date','>',date('Y-m-d'));
+         $query->whereDate('movies_screens_time_assign.date','<=',date('Y-m-d',strtotime('+ 7day')));
+      })->get();
+      
+       return view('web.homepage',compact('movielist','genres','screenTypes','movie7nextday'));
     }
     /**
      * Display a listing of movie.
@@ -42,12 +49,24 @@ class HomeController extends Controller
     {
       $screenTypes = TypeScreens::all();
       $genres = Genres::all();
-
+      
       if(!empty($request->all())){
          $genreid = $request->input('genreid');
          $date = $request->input('date');
          $type = $request->input('type');
+         $types = $request->has('mode')?array_keys($request->input('mode')) : [] ;
+         $genreids = $request->has('genre')?array_keys($request->input('genre')) : [] ;
+         DB::enableQueryLog();
          $movielist = Movie::query();
+         if($type) $types[] = $type;
+         foreach ($types as $key1 => $value1) {
+            $value1 = (int)$value1;
+         }
+         if($genreid) $genreids[] = $genreid;
+         foreach ($genreids as $key => $value) {
+            $value = (int)$value;
+           }
+         //dd($types);
          if($request->search)
          {
             $movielist->where('name', 'like', '%'.$request->search.'%')->get();
@@ -55,17 +74,16 @@ class HomeController extends Controller
          if($date)
          $movielist->whereDate('end_at','>=',date('Y-m-d',strtotime($date)));
 
-         if($genreid)
-         $movielist->whereHas('genres', function (Builder $query1) use ($genreid) {
-            $query1->where('genres.id',$genreid);
+         if($genreids)
+         $movielist->whereHas('genres', function (Builder $query) use ($genreids) {
+            $query->whereIn('genres.id',$genreids);
          });
-         if($type)
-         $movielist->whereHas('types', function (Builder $query) use ($type){
-            $query->where('type_screens.id',$type);
+         if($types)
+         $movielist->whereHas('types', function (Builder $query) use ($types){
+            $query->whereIn('type_screens.id',$types);
          });
-        //dd($movielist);
+       
          $movielist = $movielist->get();
-//var_dump($movielist);
       }
       else{
          $movielist = Movie::all();
@@ -155,9 +173,11 @@ class HomeController extends Controller
       {
          $movieScreenTime = MoviesScreensTimeAssign::where('id',$request->input('id'))->first();
          $timeId = $movieScreenTime->time_id;
+         $movieScreenTimeId = $movieScreenTime->id;
          $listSeat = Seats::where('screen_id',$movieScreenTime->screen_id)->get();
-         $listSeatHasChoose = Seats::where('screen_id',$movieScreenTime->screen_id)->whereDoesntHave('bookings', function ($query) use($timeId){
+         $listSeatHasChoose = Seats::where('screen_id',$movieScreenTime->screen_id)->whereDoesntHave('bookings', function ($query) use($timeId,$movieScreenTimeId){
             $query->where('time_id', $timeId);
+            $query->where('assign_id',$movieScreenTimeId);
          })->get();
          $output = [];
          foreach ($listSeat as $key => $value) {
@@ -201,6 +221,7 @@ class HomeController extends Controller
             $booking->seat_id = $seat->id;
             $booking->time_id = $data['timeId'];
             $booking->ticket_id = $ticket->id;
+            $booking->assign_id =  $data['assign_id'];
             $booking->save();
             $data['ticketList'][$key]['bookingid'] = $booking->id;
 
@@ -224,5 +245,19 @@ class HomeController extends Controller
         } else {
             return redirect()->back()->with('message', 'Not found!');
         }
+    }
+    public function sendnextmovie(Request $request)
+    {
+
+      $email = $request->email;
+      $movies = Movie::whereHas('movieDateAssign', function (Builder $query) {
+         $query->whereDate('movies_screens_time_assign.date','>',date('Y-m-d'));
+         $query->whereDate('movies_screens_time_assign.date','<=',date('Y-m-d',strtotime('+ 7day')));
+      })->get();
+      Mail::send('email.movielist', ['movies' => $movies], function ($message) use ($request) {
+         $message->to($request->email);
+         $message->subject('List movie in next 7 day');
+     });
+     return redirect()->back();
     }
 }
