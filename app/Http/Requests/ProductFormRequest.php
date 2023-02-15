@@ -37,8 +37,10 @@ class ProductFormRequest extends FormRequest
             //     'string'
             // ],
             'type' => [
-                'required',
-                'string'
+                'required'
+            ],
+            'genre' => [
+                'required'
             ],
             'description' => [
                 'required',

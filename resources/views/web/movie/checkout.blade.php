@@ -21,7 +21,7 @@
         <div class="container">
             <div class="page-title-area">
                 <div class="item md-order-1">
-                    <a href="movie-ticket-plan.html" class="custom-button back-button">
+                    <a href="{{url()->previous()}}" class="custom-button back-button">
                         <i class="far fa-reply"></i> Change Option
                     </a>
                 </div>
@@ -139,6 +139,7 @@
                 </div>
                 <div class="col-lg-4">
                     <form action="{{route('comfirm.payment')}}" method="GET" id="formConfirm">
+                        <input type="hidden" name="assign_id" value="{{$movieScreenTime->id}}"/>
                         <input type="hidden" name="movieId" value="{{$movieScreenTime->movie->id}}"/>
                         <input type="hidden" name="movieName" value="{{$movieScreenTime->movie->name}}"/>
                         <input type="hidden" name="image" value="{{$movieScreenTime->movie->image}}"/>

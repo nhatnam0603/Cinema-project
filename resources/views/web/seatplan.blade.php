@@ -22,7 +22,7 @@
         <div class="container">
             <div class="page-title-area">
                 <div class="item md-order-1">
-                    <a href="movie-ticket-plan.html" class="custom-button back-button">
+                    <a href="{{url()->previous()}}" class="custom-button back-button">
                         <i class="far fa-reply"></i> Change Option
                     </a>
                 </div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="item">
                     <small> TIME LEFT </small>
-                    <span class="h3 font-weight-bold"> {{date('H:i',strtotime(strtotime($movieScreenTime->time->time),strtotime($movieScreenTime->movie->duration)))}} </span>
+                    <span class="h3 font-weight-bold">{{date('H:i',strtotime("+".(date('h',strtotime($movieScreenTime->movie->duration))*60+date('i',strtotime($movieScreenTime->movie->duration)))." minutes",strtotime($movieScreenTime->time->time)))}} </span>
                 </div>
             </div>
         </div>

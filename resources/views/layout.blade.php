@@ -164,7 +164,16 @@
                     </li>
                     <li class="header-button pr-0">
                         @if(auth()->check())
-                        <a href="">{{auth()->user()->name}}</a>
+                        
+                        <div class="dropdown show">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{auth()->user()->name}}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:0;border-radius:25px">
+                                 <a href="{{route('logout')}}">Logout</a>
+                            </div>
+                        </div>
+                       
                         @else
                         <a href="{{route('login')}}">Login</a>
                         @endif
@@ -188,12 +197,12 @@
                 <div class="newsletter-container">
                     <div class="newsletter-wrapper">
                         <h5 class="cate">subscribe now</h5>
-                        <h3 class="title">to get latest update</h3>
-                        <form class="newsletter-form">
-                            <input type="text" placeholder="Your Email Address">
+                        <h3 class="title">to get latest movies</h3>
+                        <form class="newsletter-form" action="{{route('email.send.nextmovie')}}" method="get">
+                            <input type="email" name="email" placeholder="Your Email Address">
                             <button type="submit">subscribe</button>
                         </form>
-                        <p>We send you latest update and news to your email</p>
+                        <p>We send you latest movies to your email</p>
                     </div>
                 </div>
             </div>
@@ -317,7 +326,7 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-area">
                     <div class="left">
-                        <p>Copyright © 2021.All Rights Reserved By <a href="{{ route('home') }}">Ticket</a>.</p>
+                        <p>Copyright © 2023.All Rights Reserved By <a href="{{ route('home') }}">4Group</a>.</p>
                     </div>
                     {{-- <ul class="links">
                         <li>

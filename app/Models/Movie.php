@@ -25,7 +25,7 @@ class Movie extends Model
     ];
     public function types()
     {
-        return $this->belongsToMany(TypeScreens::class,'movies_types','id','type_id');
+        return $this->belongsToMany(TypeScreens::class,'movies_types','movie_id','type_id','id','id');
     }
     public function genres()
     {
@@ -34,5 +34,8 @@ class Movie extends Model
     public function casts()
     {
         return $this->belongsToMany(Casts::class,'movies_casts','movie_id','cast_id','id','id');
+    }
+    public function movieDateAssign(){
+        return $this->hasMany(MoviesScreensTimeAssign::class);
     }
 }

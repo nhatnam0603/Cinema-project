@@ -135,6 +135,7 @@
     $('.seat-plan-wrapper li .movie-schedule .item').on('click', function() {
       let id = $(this).attr('data-value');
       $('.seatPlanButton').attr('href','seat-plan?id='+id);
+      $('.subtitle').text('Show time: '+ $(this).text()); 
       $('.window-warning').removeClass('inActive');
     })
     //Tab Section
@@ -357,7 +358,7 @@
       }
       else if (check == "assets/img/movie/seat-1-booked.png")
       {
-        if(bookList.indexOf($(this).next().attr("data-value")))
+        if(bookList.indexOf($(this).next().attr("data-value")) >= 0)
         bookList.splice(bookList.indexOf($(this).next().attr("data-value")),1)
         $(this).attr("src","assets/img/movie/seat-1-free.png");
         $("#booked").text(bookList.join());

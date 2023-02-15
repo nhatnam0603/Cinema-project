@@ -21,14 +21,12 @@
                             <h3 class="title">find your tickets now</h3>
                         </div>
                     </div>
-                  
                 </div>
                 <div class="tab-area">
-
                     <div class="tab-item active">
                         <form class="ticket-search-form" method="get" action="{{route('movie.list')}}">
                             <div class="form-group large">
-                                <input type="text" name="search" placeholder="Search for Movies">
+                                <input type="text" name="search" placeholder="Search for Movies" value="{{Request::get('search')}}">
                                 <button type="submit"><i class="fas fa-search"></i></button>
                             </div>
                             <div class="form-group">
@@ -39,8 +37,8 @@
                                 <select class="select-bar" name="genreid">
                                     <option value="">Choose genre</option>
                                     @foreach($genres as $genre)
-                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
-                                    @endforeach 
+                                    <option value="{{$genre->id}}" {{$genre->id == Request::get('genreid') ? 'selected': ''}}>{{$genre->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -48,12 +46,11 @@
                                     <img src="assets/img/ticket/date.png" alt="ticket">
                                 </div>
                                 <span class="type">Date</span>
-                                <select class="select-bar"  name="date">
+                                <select class="select-bar" name="date">
                                     <option value="">Choose Date</option>
-                                @for ($i = 0; $i < 7; $i++)
-                                    <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}">{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
-                                @endfor
-                                    
+                                    @for ($i = 0; $i < 7; $i++) <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}" {{date('d/m/Y',strtotime('+ '.$i.' day')) == Request::get('date') ? 'selected': ''}}>{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
+                                        @endfor
+
                                 </select>
                             </div>
                             <div class="form-group">
@@ -62,9 +59,9 @@
                                 </div>
                                 <span class="type">Type</span>
                                 <select class="select-bar" name="type">
-                                <option value="">Choose Type</option>
+                                    <option value="">Choose Type</option>
                                     @foreach( $screenTypes as $type)
-                                        <option value="{{$type->id}}">{{$type->name}}</option>
+                                    <option value="{{$type->id}}" {{$type->id == Request::get('type') ? 'selected': ''}}>{{$type->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -83,40 +80,46 @@
         <div class="container">
             <div class="row flex-wrap-reverse justify-content-center">
                 <div class="col-sm-10 col-md-8 col-lg-3">
-                    <div class="widget-1 widget-check">
-                        <div class="widget-1-body">
-                            <h6 class="subtitle">Type</h6>
-                            <div class="check-area">
-                                @foreach($screenTypes as $k => $type)
-                                <div class="form-group">
-                                    <input type="checkbox" name="mode" id="mode{{$k}}"><label for="mode{{$k}}">{{$type->name}}</label>
+                    <form action="{{route('movie.list')}}" method="get">
+                        <div class="widget-1 widget-check">
+                            <div class="widget-1-body">
+                                <h6 class="subtitle">Type
+                                    <button type="submit" style="display:contents"><i class="far fa-search ml-3"></i></button>
+                                </h6>
+                                <div class="check-area">
+                                    @foreach($screenTypes as $k => $type)
+                                    <div class="form-group">
+                                        <input type="checkbox" name="mode[{{$type->id}}]" id="mode{{$k}}" {{in_array($type->id,$types) ? 'checked':''}} {{$type->id == Request::get('type') ? 'checked': ''}} ><label for="mode{{$k}}">{{$type->name}} </label>
+                                    </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
                             </div>
                         </div>
-                    </div>
-                    <div class="widget-1 widget-check">
-                        <div class="widget-1-body">
-                            <h6 class="subtitle">genre</h6>
-                            <div class="check-area">
-                                @foreach($genres as $key => $genre)
-                                <div class="form-group">
-                                    <input type="checkbox" name="genre" id="genre{{$key}}"><label for="genre{{$key}}">{{$genre->name}}</label>
+                        <div class="widget-1 widget-check">
+                            <div class="widget-1-body">
+                                <h6 class="subtitle">genre
+                                    <button type="submit" style="display:contents"><i class="far fa-search ml-3"></i></button>
+                                </h6>
+                                <div class="check-area">
+                                    @foreach($genres as $key => $genre)
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre[{{$genre->id}}]" id="genre{{$key}}"{{in_array($genre->id,$genreids) ? 'checked':''}} {{$genre->id == Request::get('genreid') ? 'checked': ''}}><label for="genre{{$key}}">{{$genre->name}}</label>
+                                    </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
-                            </div>
-                            <div class="add-check-area">
+                                <!-- <div class="add-check-area">
                                 <a href="#">view more</a> <i class="fal fa-chevron-circle-down"></i>
+                            </div> -->
                             </div>
                         </div>
-                    </div>
-                    <div class="widget-1 widget-banner">
-                        <div class="widget-1-body">
-                            <a href="#">
-                                <img src="assets/img/sidebar/banner/banner-2.jpg" alt="banner">
-                            </a>
+                        <div class="widget-1 widget-banner">
+                            <div class="widget-1-body">
+                                <a href="#">
+                                    <img src="assets/img/sidebar/banner/banner-2.jpg" alt="banner">
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="col-lg-9 mb-50 mb-lg-0">
                     <div class="filter-tab tab">

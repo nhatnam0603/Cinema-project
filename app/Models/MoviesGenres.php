@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class MoviesGenres extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
 }
