@@ -8,7 +8,7 @@
                 <h2 class="title">register</h2>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">
+                        <a href="{{ route('home') }}">
                             Home
                         </a>
                     </li>
@@ -28,7 +28,7 @@
                         <h2 class="title">Create Account</h2>
                     </div>
                     <form class="account-form" action="{{  route('register.post')  }}" method="POST">
-                        @csrf    
+                        @csrf
                         <div class="form-group">
                             <label for="name">Name<span>*</span></label>
                             <input type="text" placeholder="Enter Your Name" name="name" id="name" required="">

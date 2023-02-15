@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bookings;
 use App\Models\Genres;
 use App\Models\Movie;
 use App\Models\MoviesScreensTimeAssign;
 use App\Models\Seats;
+use App\Models\Tickets;
 use App\Models\TypeScreens;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
-use Ramsey\Uuid\Type\Time;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use stdClass;
+use Illuminate\Http\Client\Response;
 
 class HomeController extends Controller
 {
@@ -41,9 +47,11 @@ class HomeController extends Controller
          $genreid = $request->input('genreid');
          $date = $request->input('date');
          $type = $request->input('type');
-
-
          $movielist = Movie::query();
+         if($request->search)
+         {
+            $movielist->where('name', 'like', '%'.$request->search.'%')->get();
+         }
          if($date)
          $movielist->whereDate('end_at','>=',date('Y-m-d',strtotime($date)));
 
@@ -55,9 +63,9 @@ class HomeController extends Controller
          $movielist->whereHas('types', function (Builder $query) use ($type){
             $query->where('type_screens.id',$type);
          });
-         //var_dump($movielist->toSql());
+        //dd($movielist);
          $movielist = $movielist->get();
-
+//var_dump($movielist);
       }
       else{
          $movielist = Movie::all();
@@ -172,6 +180,41 @@ class HomeController extends Controller
        return view('web.contact');
     }
 
+
+    public function confirmpayment(Request $request){
+      $data = $request->all();
+      
+      $ticket = new Tickets();
+      $ticket->user_id = auth()->user()->id;
+      $ticket->save();
+      //dd($data);
+      $html= '';
+      foreach ($data['ticket'] as $key=> $value) { 
+         try{
+            DB::beginTransaction();
+            $data['ticketList'][$key]['row'] = $value[0];
+            $data['ticketList'][$key]['seat'] = substr($value,1);
+            $seat = Seats::where('row', $data['ticketList'][$key]['row'])->where('number',(int)$data['ticketList'][$key]['seat'])->where('screen_id',$data['screenId'])->first();
+
+            $booking = new Bookings();
+            $booking->movie_id = $data['movieId'];
+            $booking->seat_id = $seat->id;
+            $booking->time_id = $data['timeId'];
+            $booking->ticket_id = $ticket->id;
+            $booking->save();
+            $data['ticketList'][$key]['bookingid'] = $booking->id;
+
+            DB::commit();
+         }catch(Exception $th)
+         {
+            DB::rollBack();
+            dd($th);
+         }
+      }
+      $pdf = PDF::loadView('pdfticket', $data);
+      return $pdf->download('ticket'. auth()->user()->id.'.pdf'); 
+    }
+
     //Search movie by name
     public function searchMovies(Request $request){
         if($request->search) {
@@ -182,5 +225,4 @@ class HomeController extends Controller
             return redirect()->back()->with('message', 'Not found!');
         }
     }
-
 }

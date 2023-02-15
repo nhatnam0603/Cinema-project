@@ -34,7 +34,8 @@
                 </div>
                 <div class="item">
                     <small> TIME LEFT </small>
-                    <span class="h3 font-weight-bold"> {{date('H:i',strtotime(strtotime($movieScreenTime->time->time),strtotime($movieScreenTime->movie->duration)))}} </span>
+                    
+                    <span class="h3 font-weight-bold"> {{date('H:i',strtotime("+".(date('h',strtotime($movieScreenTime->movie->duration))*60+date('i',strtotime($movieScreenTime->movie->duration)))." minutes",strtotime($movieScreenTime->time->time)))}} </span>
                 </div>
             </div>
         </div>
@@ -43,16 +44,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+                    <div class="checkout-widget checkout-contact hidden" id="messageSuccess">
+                        <h5 style="color:aquamarine">Ticket download successfuly </h5>
+                    </div>
                     <div class="checkout-widget checkout-contact">
                         <h5 class="title">Billing Info </h5>
                         <form class="checkout-contact-form">
                             <div class="form-group">
-                                <input type="text" placeholder="Full Name" value="">
+                                <input type="text" placeholder="Full Name" value="{{ auth()->user()->name }}">
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Enter email">
+                                <input type="text" placeholder="Enter email" value="{{ auth()->user()->email }}">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="text" placeholder="Enter Phone">
                             </div>
                             <div class="form-group">
@@ -60,7 +64,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Continue" class="custom-button">
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                     <!-- <div class="checkout-widget checkout-contact">
@@ -134,6 +138,17 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
+                    <form action="{{route('comfirm.payment')}}" method="GET" id="formConfirm">
+                        <input type="hidden" name="movieId" value="{{$movieScreenTime->movie->id}}"/>
+                        <input type="hidden" name="movieName" value="{{$movieScreenTime->movie->name}}"/>
+                        <input type="hidden" name="image" value="{{$movieScreenTime->movie->image}}"/>
+                        <input type="hidden" name="date" value="{{$movieScreenTime->date}}"/>
+                        <input type="hidden" name="screenId" value="{{$movieScreenTime->screen->id}}"/>
+                        <input type="hidden" name="type" value="{{$movieScreenTime->screen->type}}"/>
+                        <input type="hidden" name="screenName" value="{{$movieScreenTime->screen->name}}"/>
+                        <input type="hidden" name="timeId" value="{{$movieScreenTime->time->id}}"/>
+                        <input type="hidden" name="time" value="{{$movieScreenTime->time->time}}"/>
+                        <input type="hidden" name="price" value="{{$movieScreenTime->screen->price}}"/>
                     <div class="booking-summery bg-one side-shape">
                         <h4 class="title">booking summery</h4>
                         <ul>
@@ -142,13 +157,14 @@
                                 <span class="info">Movie-{{$movieScreenTime->screen->type}}</span>
                             </li>
                             <li>
-                                <h6 class="subtitle"><span>{{$movieScreenTime->screen->name}}</span><span>04</span></h6>
-                                <div class="info"><span>14 APR FRI, 7:00 PM</span> <span>Tickets</span></div>
+                                <h6 class="subtitle"><span>{{$movieScreenTime->screen->name}}</span></h6>
+                                <div class="info"><span>{{date('d M l',strtotime($movieScreenTime->date))}} , {{$movieScreenTime->time->time}}</span> </div>
                             </li>
                             <li>
                                 <h6 class="subtitle mb-0"><span>Tickets Price(VND)</span><span></span></h6>
                                 @foreach($bookListArr as $item)
                                 <div class="info"><span>{{$item}}</span> <span>{{$movieScreenTime->screen->price}}</span></div>
+                                <input type="hidden" name="ticket[]" value="{{$item}}"/>
                                 @endforeach
                             </li>
                         </ul>
@@ -161,11 +177,20 @@
                     </div>
                     <div class="proceed-area  text-center">
                         <h6 class="subtitle"><span> Pay Amount</span><span>{{($bookNumber * $movieScreenTime->screen->price) / 10 + ($bookNumber * $movieScreenTime->screen->price)}}</span></h6>
-                        <a href="#" class="custom-button">confirm payment</a>
+                        <input type="submit" onclick="tmp()" id="submitBtn" class="custom-button" value="confirm payment">
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </session>
+<script>
+function tmp()
+{
+    $("#submitBtn").addClass('hidden');
+    $("#messageSuccess").removeClass('hidden');
+    window.location.replace("http://localhost/Cinema-project/public/home");
+}
+</script>
 @endsection
