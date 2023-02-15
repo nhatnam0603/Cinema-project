@@ -89,7 +89,7 @@
                                 <div class="check-area">
                                     @foreach($screenTypes as $k => $type)
                                     <div class="form-group">
-                                        <input type="checkbox" name="mode[{{$type->id}}]" id="mode{{$k}}" {{$type->id == Request::get('type') ? 'checked': ''}} ><label for="mode{{$k}}">{{$type->name}} </label>
+                                        <input type="checkbox" name="mode[{{$type->id}}]" id="mode{{$k}}" {{in_array($type->id,$types) ? 'checked':''}} {{$type->id == Request::get('type') ? 'checked': ''}} ><label for="mode{{$k}}">{{$type->name}} </label>
                                     </div>
                                     @endforeach
                                 </div>
@@ -103,7 +103,7 @@
                                 <div class="check-area">
                                     @foreach($genres as $key => $genre)
                                     <div class="form-group">
-                                        <input type="checkbox" name="genre[{{$genre->id}}]" id="genre{{$key}}" {{$genre->id == Request::get('genreid') ? 'checked': ''}}><label for="genre{{$key}}">{{$genre->name}}</label>
+                                        <input type="checkbox" name="genre[{{$genre->id}}]" id="genre{{$key}}"{{in_array($genre->id,$genreids) ? 'checked':''}} {{$genre->id == Request::get('genreid') ? 'checked': ''}}><label for="genre{{$key}}">{{$genre->name}}</label>
                                     </div>
                                     @endforeach
                                 </div>

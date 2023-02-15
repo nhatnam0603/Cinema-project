@@ -49,7 +49,8 @@ class HomeController extends Controller
     {
       $screenTypes = TypeScreens::all();
       $genres = Genres::all();
-      
+      $types = [];
+      $genreids = [];
       if(!empty($request->all())){
          $genreid = $request->input('genreid');
          $date = $request->input('date');
@@ -89,7 +90,7 @@ class HomeController extends Controller
          $movielist = Movie::all();
       }
 
-      return view('web.movie.list',compact('movielist','screenTypes','genres'));
+      return view('web.movie.list',compact('movielist','screenTypes','genres','types','genreids'));
     }
     /**
      * Display movie detail page
