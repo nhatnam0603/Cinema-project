@@ -116,14 +116,15 @@ class HomeController extends Controller
     {
       if(!empty($request->all()))
       {
-
+         if(!$request->bookList) return redirect()->back();
          $movieScreenTime = MoviesScreensTimeAssign::where('id',$request->input('id'))->first();
          $bookList =  $request->input('bookList') ;
 
          $bookListArr = explode(',',$bookList);
          $bookNumber = count($bookListArr);
+         return view('web.movie.checkout',compact('movieScreenTime','bookNumber','bookListArr'));
       }
-       return view('web.movie.checkout',compact('movieScreenTime','bookNumber','bookListArr'));
+       return redirect()->back();
     }
      /**
      * Display ticket plan page

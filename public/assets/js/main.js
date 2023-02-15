@@ -358,7 +358,7 @@
       }
       else if (check == "assets/img/movie/seat-1-booked.png")
       {
-        if(bookList.indexOf($(this).next().attr("data-value")))
+        if(bookList.indexOf($(this).next().attr("data-value")) >= 0)
         bookList.splice(bookList.indexOf($(this).next().attr("data-value")),1)
         $(this).attr("src","assets/img/movie/seat-1-free.png");
         $("#booked").text(bookList.join());
