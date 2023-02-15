@@ -57,7 +57,7 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 // BACK END - ADMIN ROUTE
 Route::prefix('')->middleware('admin')->group(function(){
-
+    Route::get('crud-movie',[AdminController::class,'crud_movie']);
     Route::get('dashboard', [AdminController::class, 'dashboard']);
     Route::get('logout', [AdminController::class, 'logout']);
 });

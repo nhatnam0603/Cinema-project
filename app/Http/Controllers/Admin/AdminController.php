@@ -25,4 +25,10 @@ class AdminController extends Controller
 
         return Redirect('login');
     }
+
+    public function crud_movie(){
+        
+    }
+
+
 }
