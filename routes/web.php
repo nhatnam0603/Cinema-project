@@ -67,11 +67,12 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 
     //Product routes
-    Route::get('product', [ProductController::class,'index']);
+    Route::get('product', [ProductController::class,'index'])->name('admin.product.index');
     Route::get('product/create', [ProductController::class,'create']);
     Route::post('product', [ProductController::class,'store']);
-    Route::delete('product',[ProductController::class,'destroy'])->name('admin.product.destroy');
-
+    Route::delete('product/{movie}',[ProductController::class,'destroy'])->name('admin.product.destroy');
+    Route::get('product/{movie}/edit', [ProductController::class,'edit'])->name('admin.product.edit');
+    Route::post('product/{movie}/update', [ProductController::class,'update'])->name('admin.product.update');
     //Cast routes
     Route::resource('cast',CastsController::class);
     Route::get('cast/assign/{cast}',[CastsController::class,'assign'])->name('cast.assign');

@@ -4,12 +4,12 @@
     <div class="card">
         <div class="card-body">
             <div class="card-header">
-                <h4 >ADD PRODUCT
+                <h4 >EDIT PRODUCT
                     <a href="{{ url('/product') }}" class=" btn btn-dark btn-sm float-end">Back</a>
                 </h4>
             </div>
             <div class="card-body" >
-                <form action="{{ url('/product') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.product.update',$movie) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12 grid-margin stretch-card">
                         <div class="card">
@@ -21,18 +21,18 @@
                             <form class="forms-sample">
                               <div class="form-group">
                                 <label for="exampleInputName1">Name</label>
-                                <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="Name">
+                                <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="Name" value="{{$movie->name}}">
                                 @error('name')
                                     <small class="text-danger">{{$message}}</small>
                                 @enderror
                               </div>
                               <div class="form-group">
                                 <label for="exampleInputEmail3">Began at</label>
-                                <input type="datetime-local" class="form-control" id="exampleInputEmail3" name="began_at" placeholder="Enter time start">
+                                <input type="datetime-local" class="form-control" id="exampleInputEmail3" name="began_at" placeholder="Enter time start" value="{{$movie->began_at}}">
                               </div>
                               <div class="form-group">
                                 <label for="exampleInputPassword4">End at</label>
-                                <input type="datetime-local" class="form-control" id="exampleInputPassword4" name="end_at" placeholder="Enter time end">
+                                <input type="datetime-local" class="form-control" id="exampleInputPassword4" name="end_at" placeholder="Enter time end" value="{{$movie->end_at}}">
                               </div>
                               <div class="form-group">
                                 <label for="exampleSelectGender" style="display: block;">Type</label>
@@ -41,7 +41,7 @@
                                   @enderror
                                     @foreach($screenType as $type)
                                     <div class="form-check form-check-inline" style="display:inline-block;padding-left: 1.5rem;">
-                                      <input class="form-check-input" type="checkbox" name="type[]" id="typeCheckbox{{$type->id}}" value="{{$type->id}}">
+                                      <input class="form-check-input" type="checkbox" name="type[]" id="typeCheckbox{{$type->id}}" value="{{$type->id}}" {{in_array($type->id,$movieTypeList)? 'checked': ''}}>
                                       <label class="form-check-label" for="typeCheckbox{{$type->id}}">{{$type->name}}</label>
                                     </div>
                                     @endforeach
@@ -54,7 +54,7 @@
                                   @enderror
                                     @foreach($genres as $genre)
                                     <div class="form-check form-check-inline" style="display:inline-block;padding-left: 1.5rem;">
-                                      <input class="form-check-input" type="checkbox" name="genre[]" id="genreCheckbox{{$genre->id}}" value="{{$genre->id}}">
+                                      <input class="form-check-input" type="checkbox" name="genre[]" id="genreCheckbox{{$genre->id}}" value="{{$genre->id}}"{{in_array($genre->id,$movieGenreList)? 'checked': ''}}>
                                       <label class="form-check-label" for="genreCheckbox{{$genre->id}}">{{$genre->name}}</label>
                                     </div>
                                     @endforeach
@@ -70,12 +70,12 @@
                                     <small class="text-danger">{{$message}}</small>
                                 @enderror
                                   </span>
-                                  <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                  <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" value="{{$movie->image}}">
                                 </div>
                               </div>
                               <div class="form-group">
                                 <label for="exampleTextarea1">Description</label>
-                                <textarea class="form-control" id="exampleTextarea1" name="description" rows="7"></textarea>
+                                <textarea class="form-control" id="exampleTextarea1" name="description" rows="7">{{$movie->description}}</textarea>
                                 @error('description')
                                 <small class="text-danger">{{$message}}</small>
                                 @enderror

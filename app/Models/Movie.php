@@ -25,7 +25,7 @@ class Movie extends Model
     ];
     public function types()
     {
-        return $this->belongsToMany(TypeScreens::class,'movies_types','id','type_id');
+        return $this->belongsToMany(TypeScreens::class,'movies_types','movie_id','type_id','id','id');
     }
     public function genres()
     {
