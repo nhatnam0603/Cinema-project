@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CastsController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ManagerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,10 +68,13 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 
     //Product routes
-    Route::get('product', [ProductController::class,'index']);
-    Route::get('product/create', [ProductController::class,'create']);
-    Route::post('product', [ProductController::class,'store']);
+    Route::get('product', [ProductController::class,'index'])->name('admin.product.index');
+    Route::get('product/create', [ProductController::class,'create'])->name('admin.product.create');
+    Route::post('product', [ProductController::class,'store'])->name('admin.product.store');
     Route::delete('product',[ProductController::class,'destroy'])->name('admin.product.destroy');
+
+    //User Management
+    Route::resource('user', ManagerController::class);
 
     //Cast routes
     Route::resource('cast',CastsController::class);
