@@ -114,7 +114,6 @@
                                 <a href="#">view more</a> <i class="fal fa-chevron-circle-down"></i>
                             </div> -->
                             </div>
-
                         </div>
                         <div class="widget-1 widget-banner">
                             <div class="widget-1-body">
