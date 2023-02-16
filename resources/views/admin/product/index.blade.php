@@ -47,7 +47,7 @@
                                     @if ($item->image != null && $item->image != '')
                                         <td class="py-1">
                                             <img src="{{asset('assets/img/movie/'.$item->image ) }}" alt="{{ $item->name }}"
-                                                style="with: 100px; height:auto;" />
+                                                style="width: 100px; height:auto;" />
                                         </td>
                                     @endif
                                     <td>
