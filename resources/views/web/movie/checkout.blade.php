@@ -23,6 +23,7 @@
                 <div class="item md-order-1">
 
                     <a href="{{url()->previous()}}" class="custom-button back-button">
+
                         <i class="far fa-reply"></i> Change Option
                     </a>
                 </div>
