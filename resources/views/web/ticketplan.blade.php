@@ -5,7 +5,7 @@
     <section class="window-warning inActive">
         <div class="lay"></div>
         <div class="warning-item">
-            <h6 class="subtitle">Show Time : 07:40</h6>
+            <h6 class="subtitle">Show Time : </h6>
             <h4 class="title">Book Your Seats</h4>
             <div class="thumb">
                 <img src="assets/img/movie/tt.png" alt="movie">
