@@ -40,8 +40,6 @@
 
                                     <option value="{{$genre->id}}" {{$genre->id == Request::get('genreid') ? 'selected': ''}}>{{$genre->name}}</option>
 
-
-
                                     @endforeach
                                 </select>
                             </div>
@@ -52,7 +50,6 @@
                                 <span class="type">Date</span>
                                 <select class="select-bar" name="date">
                                     <option value="">Choose Date</option>
-
                                     @for ($i = 0; $i < 7; $i++) <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}" {{date('d/m/Y',strtotime('+ '.$i.' day')) == Request::get('date') ? 'selected': ''}}>{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
                                         @endfor
 
@@ -112,12 +109,10 @@
                                     </div>
                                     @endforeach
                                 </div>
-
                                 <!-- <div class="add-check-area">
                                 <a href="#">view more</a> <i class="fal fa-chevron-circle-down"></i>
                             </div> -->
                             </div>
-
 
                         </div>
                         <div class="widget-1 widget-banner">
@@ -224,9 +219,7 @@
                                                 @endforeach
                                             </div>
                                             <div class="release">
-
                                                 <span>Release Date : </span> <a href="#"> {{date('d/m/Y',strtotime($movie->began_at))}}</a>
-
 
                                             </div>
                                             <!-- <ul class="movie-rating-percent">
