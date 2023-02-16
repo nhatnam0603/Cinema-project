@@ -29,9 +29,6 @@
                         Description
                     </th>
                     <th>
-                        Type
-                    </th>
-                    <th>
                         Begin at
                     </th>
                     <th>
@@ -47,20 +44,17 @@
                     </td>
                     @if ($item->image != null && $item->image != '')
                     <td class="py-1">
-                        <img src="{{asset('assets/img/movie/'. $item->image)  }}" alt="{{ $item->name }}" style="with: 100px; height:auto;" />
+                        <img src="{{$message->embed(asset('assets/img/movie/'. $item->image)) }}" style="width: 100px; height:auto;" />
                     </td>
                     @endif
                     <td>
                         {{ $item->description }}
                     </td>
                     <td>
-                        {{ $item->type }}
+                        {{ date('d/m/Y',strtotime($item->began_at)) }}
                     </td>
                     <td>
-                        {{ $item->began_at }}
-                    </td>
-                    <td>
-                        {{ $item->end_at }}
+                        {{ date('d/m/Y',strtotime($item->end_at)) }}
                     </td>
                 </tr>
                 @endforeach
