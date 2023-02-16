@@ -100,18 +100,18 @@
                         <div class="row mb-30-none justify-content-center">
                         @foreach ($movielist as $movie)
                            <div class="col-sm-6 col-lg-4">
-                                <div class="movie-grid">
+                                <div class="movie-grid" style="height: 550px">
                                     <div class="movie-thumb c-thumb">
                                         <a href="{{route('movie.detail',['id'=>$movie->id])}}">
                                             {{-- assets/upload/product/imagename --}}
-                                            <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie">
+                                            <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie" style="height: 400px">
                                         </a>
                                     </div>
                                     <div class="movie-content">
                                         <h5 class="title m-0">
                                             <a href="{{route('movie.detail',['id'=>$movie->id])}}">{{$movie->name}}</a>
                                         </h5>
-                                        <ul class="movie-rating-percent">
+                                        {{-- <ul class="movie-rating-percent">
                                             <li>
                                                 <i class="fal fa-shopping-cart"></i>
                                                 <span class="content">88.8k</span>
@@ -120,7 +120,7 @@
                                                 <i class="fal fa-star"></i>
                                                 <span class="content">5.0</span>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>
@@ -138,18 +138,18 @@
                         <div class="row mb-30-none justify-content-center">
                         @foreach ($movie7nextday as $movie)
                            <div class="col-sm-6 col-lg-4">
-                                <div class="movie-grid">
+                                <div class="movie-grid" style="height: 550px">
                                     <div class="movie-thumb c-thumb">
                                         <a href="{{route('movie.detail',['id'=>$movie->id])}}">
                                             {{-- assets/upload/product/imagename --}}
-                                            <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie">
+                                            <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie" style="height: 400px">
                                         </a>
                                     </div>
                                     <div class="movie-content">
                                         <h5 class="title m-0">
                                             <a href="{{route('movie.detail',['id'=>$movie->id])}}">{{$movie->name}}</a>
                                         </h5>
-                                        <ul class="movie-rating-percent">
+                                        {{-- <ul class="movie-rating-percent">
                                             <li>
                                                 <i class="fal fa-shopping-cart"></i>
                                                 <span class="content">88.8k</span>
@@ -158,7 +158,7 @@
                                                 <i class="fal fa-star"></i>
                                                 <span class="content">5.0</span>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>

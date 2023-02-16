@@ -2,11 +2,11 @@
 
 @section('content')
 <session class="content">
-    <section class="details-banner" style="background:url('{{ ($movie->banner === NULl)?asset('assets/img/movie/'.$movie->image):asset('assets/img/banner/'.$movie->banner) }}')">
+    <section class="details-banner" style="background:url('{{ ($movie->banner === NULl)?asset('assets/img/movie/'.$movie->image):asset('assets/img/banner/'.$movie->banner) }}') no-repeat fixed center">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-thumb">
-                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie" style="width: 200px; height: auto">
+                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie" style="height: 350px">
                     <a href="{{$movie->video}}" class="video-button video-popup">
                         <i class="fal fa-play"></i>
                     </a>
@@ -183,7 +183,7 @@
                                                         <div class="cast-item">
                                                             <div class="cast-thumb">
                                                                 <a href="#">
-                                                                    <img src="{{asset('assets/img/cast/'.$cast->image)}}" alt="cast">
+                                                                    <img src="{{asset('assets/img/cast/'.$cast->image)}}" alt="cast" style="height: 100px">
                                                                 </a>
                                                             </div>
                                                             <div class="cast-content">
