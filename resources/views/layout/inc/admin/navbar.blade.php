@@ -35,7 +35,6 @@
             </button>
         </div>
     </nav>
-    <!-- partial -->
 
 
 
