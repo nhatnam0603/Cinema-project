@@ -124,7 +124,13 @@
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
                         <img src="{{ asset('admin/images/faces/face5.jpg') }}" alt="profile" />
-                        <span class="nav-profile-name">Louis Barnett</span>
+                        <span class="nav-profile-name">
+                                @if(auth()->check())
+                                <span>{{auth()->user()->name}}</span>
+                                @else
+                                <a href="{{route('login')}}">Login</a>
+                                @endif
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <a class="dropdown-item">
