@@ -12,6 +12,8 @@ use App\Models\MoviesCasts;
 use App\Models\MoviesGenres;
 use App\Models\MoviesScreensTimeAssign;
 use App\Models\MoviesTypes;
+use App\Models\Screens;
+use App\Models\Times;
 use App\Models\TypeScreens;
 use DateTime;
 use Illuminate\Support\Facades\DB;
@@ -204,5 +206,33 @@ class ProductController extends Controller
             DB::rollBack();
         }
         
+    }
+    public function assign(Request $request,Movie $movie)
+    {
+        $times = [];
+        $screens = Screens::all();
+        if($request->screen && $request->date){
+            $times = Times::whereDoesntHave('time_assign_movie_screen',function($query) use($movie,$request){
+                $query->where('movie_id',$movie->id)->where('screen_id',$request->screen)->whereDate('date',date('Y-m-d',strtotime($request->date)));
+            })->get();
+        }
+        return view('admin.product.assign-movie',compact('movie','screens','times'));
+    }
+    public function assignscreen(Request $request,Movie $movie)
+    {
+        $validated = $request->validate([
+            'screenid' => 'required',
+            'dateAssign' => 'required',
+            'time' => 'required',
+        ]);
+        foreach ($request->time as $key => $value) {
+            $movieAssignScreenTime = new MoviesScreensTimeAssign();
+            $movieAssignScreenTime->movie_id = $movie->id;
+            $movieAssignScreenTime->screen_id = $request->screenid;
+            $movieAssignScreenTime->time_id = $value;
+            $movieAssignScreenTime->date = date('Y-m-d',strtotime($request->dateAssign));
+            $movieAssignScreenTime->save();
+        }
+        return redirect()->route('admin.product.index');
     }
 }

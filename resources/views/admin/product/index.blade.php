@@ -73,6 +73,7 @@
                                         <form action="{{ route('admin.product.destroy', $item->id) }}" method="post"
                                             style="display: inline-block">
                                             <a class="btn btn-primary" href="{{ route('admin.product.edit',$item) }}">Edit</a>
+                                            <a class="btn btn-primary" href="{{ route('admin.product.assign',$item) }}">Assign Screen</a>
                                             @csrf
                                             @method('delete')
                                             <input type="submit" value="Delete" class="btn btn-danger" />

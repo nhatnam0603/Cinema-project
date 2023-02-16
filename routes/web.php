@@ -74,7 +74,8 @@ Route::prefix('')->middleware('admin')->group(function(){
     Route::delete('product/{movie}',[ProductController::class,'destroy'])->name('admin.product.destroy');
     Route::get('product/{movie}/edit', [ProductController::class,'edit'])->name('admin.product.edit');
     Route::post('product/{movie}/update', [ProductController::class,'update'])->name('admin.product.update');
-
+    Route::get('product/{movie}/assign', [ProductController::class,'assign'])->name('admin.product.assign');
+    Route::get('product/{movie}/assignscreen', [ProductController::class,'assignscreen'])->name('admin.product.assignscreen');
     //User Management
     Route::resource('user', ManagerController::class);
 
