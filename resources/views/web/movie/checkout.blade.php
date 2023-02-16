@@ -2,7 +2,7 @@
 
 @section('content')
 <session class="content">
-<section class="details-banner hero-area" style="background:url('{{ ($movie->banner === NULl)?asset('assets/img/banner/banner-movie-details.jpg'):asset('assets/img/banner/'.$movie->banner) }}')">
+<section class="details-banner hero-area" style="background:url('{{ ($movieScreenTime->movie->banner === NULl)?asset('assets/img/banner/banner-movie-details.jpg'):asset('assets/img/banner/'.$movieScreenTime->movie->banner) }}')">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-content">
@@ -21,7 +21,6 @@
         <div class="container">
             <div class="page-title-area">
                 <div class="item md-order-1">
-
                     <a href="{{url()->previous()}}" class="custom-button back-button">
 
                         <i class="far fa-reply"></i> Change Option
