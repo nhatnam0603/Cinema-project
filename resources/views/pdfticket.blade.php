@@ -8,7 +8,7 @@
         }
 
         img {
-            max-width: 100%;
+            max-width: 400px;
             height: auto;
         }
 
@@ -153,7 +153,7 @@
 Inspired by: https://dribbble.com/shots/1166639-Movie-Ticket/attachments/152161
 -->
     @foreach($ticketList as $ticket)
-  
+
     <div class="ticket">
         <div class="holes-top"></div>
         <div class="title">

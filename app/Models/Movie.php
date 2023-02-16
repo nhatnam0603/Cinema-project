@@ -20,7 +20,7 @@ class Movie extends Model
     ];
     protected $attributes = [
         'image' => 'assets/img/movie/movie-default.jpg',
-        'image_list' => "['assets/img/movie/movie-list-default.jpg']",
+        'image_list' => '["assets\/img\/movie\/movie-list-default.jpg"]',
         'duration' => '01:30:00',
     ];
     public function types()

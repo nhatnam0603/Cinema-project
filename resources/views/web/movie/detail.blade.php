@@ -6,7 +6,7 @@
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-thumb">
-                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie">
+                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie" style="width: 200px; height: auto">
                     <a href="{{$movie->video}}" class="video-button video-popup">
                         <i class="fal fa-play"></i>
                     </a>
