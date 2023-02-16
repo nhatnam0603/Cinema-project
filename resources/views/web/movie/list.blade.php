@@ -38,7 +38,6 @@
                                     <option value="">Choose genre</option>
                                     @foreach($genres as $genre)
 
-
                                     <option value="{{$genre->id}}" {{$genre->id == Request::get('genreid') ? 'selected': ''}}>{{$genre->name}}</option>
 
 
@@ -53,7 +52,6 @@
                                 <span class="type">Date</span>
                                 <select class="select-bar" name="date">
                                     <option value="">Choose Date</option>
-
 
                                     @for ($i = 0; $i < 7; $i++) <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}" {{date('d/m/Y',strtotime('+ '.$i.' day')) == Request::get('date') ? 'selected': ''}}>{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
                                         @endfor
@@ -227,7 +225,6 @@
                                                 @endforeach
                                             </div>
                                             <div class="release">
-
 
                                                 <span>Release Date : </span> <a href="#"> {{date('d/m/Y',strtotime($movie->began_at))}}</a>
 
