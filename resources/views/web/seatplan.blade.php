@@ -2,12 +2,12 @@
 
 @section('content')
 <session class="content">
-    <section class="details-banner hero-area seat-plan-banner" style="background:url('{{ ($movie->banner === NULl)?asset('assets/img/banner/banner-movie-details.jpg'):asset('assets/img/banner/'.$movie->banner) }}')">
+    <section class="details-banner hero-area seat-plan-banner" style="background:url('{{ ($movieScreenTime->movie->banner === NULl)?asset('assets/img/banner/banner-movie-details.jpg'):asset('assets/img/banner/'.$movieScreenTime->movie->banner) }}')">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-content style-two">
                     <h3 class="title">{{$movieScreenTime->movie->name}}</h3>
-                    <div class="tags">                     
+                    <div class="tags">
                         <a href="#">{{$movieScreenTime->screen->type}}</a>
                         @foreach($movieScreenTime->movie->genres as $genre)
                             <a href="#">{{$genre->name}}</a>
@@ -27,7 +27,7 @@
                     </a>
                 </div>
                 <div class="item date-item">
-                    <span class="date">{{date('l d, M Y',strtotime($movieScreenTime->date))}}</span>    
+                    <span class="date">{{date('l d, M Y',strtotime($movieScreenTime->date))}}</span>
                 </div>
                 <div class="item">
                     <small> TIME START </small>
@@ -53,7 +53,7 @@
                         @foreach($output as $rowname => $row)
                         <li class="seat-line">
                             <span>{{$rowname}}</span>
-                           
+
                             <ul class="seat--area">
                                 <li class="front-seat">
                                     <ul>
