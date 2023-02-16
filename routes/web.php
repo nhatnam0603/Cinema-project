@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 // BACK END - ADMIN ROUTE
 Route::prefix('')->middleware('admin')->group(function(){
-
+    Route::get('crud-movie',[AdminController::class,'crud_movie']);
     Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
     Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 
