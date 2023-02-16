@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="card-header">
                     <h4>PRODUCT LIST
-                        <a href="{{ url('product/create') }}" class=" btn btn-primary btn-sm float-end">Add Product</a>
+                        <a href="{{ Route('admin.product.create') }}" class=" btn btn-primary btn-sm float-end">Add Product</a>
                     </h4>
                 </div>
                 <div class="table-responsive">
@@ -47,7 +47,7 @@
                                     @if ($item->image != null && $item->image != '')
                                         <td class="py-1">
                                             <img src="{{asset('assets/img/movie/'.$item->image ) }}" alt="{{ $item->name }}"
-                                                style="with: 100px; height:auto;" />
+                                                style="width: 100px; height:auto;" />
                                         </td>
                                     @endif
                                     <td>
@@ -73,6 +73,7 @@
                                         <form action="{{ route('admin.product.destroy', $item->id) }}" method="post"
                                             style="display: inline-block">
                                             <a class="btn btn-primary" href="{{ route('admin.product.edit',$item) }}">Edit</a>
+                                            <a class="btn btn-primary" href="{{ route('admin.product.assign',$item) }}">Assign Screen</a>
                                             @csrf
                                             @method('delete')
                                             <input type="submit" value="Delete" class="btn btn-danger" />

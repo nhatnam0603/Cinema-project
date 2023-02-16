@@ -2,7 +2,7 @@
 
 @section('content')
 <session class="content">
-<section class="details-banner hero-area" style="background:url('assets/img/banner/banner-movie-details.jpg')">
+<section class="details-banner hero-area" style="background:url('{{ ($movieScreenTime->movie->banner === NULl)?asset('assets/img/banner/banner-movie-details.jpg'):asset('assets/img/banner/'.$movieScreenTime->movie->banner) }}')">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-content">
@@ -22,11 +22,12 @@
             <div class="page-title-area">
                 <div class="item md-order-1">
                     <a href="{{url()->previous()}}" class="custom-button back-button">
+
                         <i class="far fa-reply"></i> Change Option
                     </a>
                 </div>
                 <div class="item date-item">
-                    <span class="date">{{date('l d, M Y',strtotime($movieScreenTime->date))}}</span>    
+                    <span class="date">{{date('l d, M Y',strtotime($movieScreenTime->date))}}</span>
                 </div>
                 <div class="item">
                     <small> TIME START </small>
@@ -34,7 +35,7 @@
                 </div>
                 <div class="item">
                     <small> TIME LEFT </small>
-                    
+
                     <span class="h3 font-weight-bold"> {{date('H:i',strtotime("+".(date('h',strtotime($movieScreenTime->movie->duration))*60+date('i',strtotime($movieScreenTime->movie->duration)))." minutes",strtotime($movieScreenTime->time->time)))}} </span>
                 </div>
             </div>

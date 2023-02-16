@@ -5,7 +5,7 @@
     <section class="window-warning inActive">
         <div class="lay"></div>
         <div class="warning-item">
-            <h6 class="subtitle">Show Time : 07:40</h6>
+            <h6 class="subtitle">Show Time : </h6>
             <h4 class="title">Book Your Seats</h4>
             <div class="thumb">
                 <img src="assets/img/movie/tt.png" alt="movie">
@@ -13,7 +13,7 @@
             <a href="" class="custom-button seatPlanButton">Show Seat Plans<i class="fal fa-long-arrow-alt-right"></i></a>
         </div>
     </section>
-    <section class="details-banner hero-area" style="background:url({{asset('assets/img/movie/'.$movie->image)}})">
+    <section class="details-banner hero-area" style="background:url('{{ ($movie->banner === NULl)?asset('assets/img/banner/banner-movie-details.jpg'):asset('assets/img/banner/'.$movie->banner) }}')">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-content">

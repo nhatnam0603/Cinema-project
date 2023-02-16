@@ -74,9 +74,29 @@
                                 </div>
                               </div>
                               <div class="form-group">
+                                <label>Banner</label>
+                                <input type="file" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                  <span class="input-group-append">
+                                    <input class="file-upload-browse btn btn-dark" name="banner" type="file">
+                                    @error('banner')
+                                        <small class="text-danger">{{$message}}</small>
+                                    @enderror
+                                  </span>
+                                  <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Banner" value="{{$movie->banner}}">
+                                </div>
+                              </div>
+                              <div class="form-group">
                                 <label for="exampleTextarea1">Description</label>
                                 <textarea class="form-control" id="exampleTextarea1" name="description" rows="7">{{$movie->description}}</textarea>
                                 @error('description')
+                                <small class="text-danger">{{$message}}</small>
+                                @enderror
+                              </div>
+                              <div class="form-group">
+                                <label for="videoid">Teaser video</label>
+                                <input type="text" class="form-control" id="videoid" name="video" placeholder="Video" value="{{$movie->video}}">
+                                @error('video')
                                 <small class="text-danger">{{$message}}</small>
                                 @enderror
                               </div>

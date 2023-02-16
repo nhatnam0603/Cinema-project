@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CastsController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ManagerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,17 +63,22 @@ Route::group(['middleware' => 'auth'], function () {
 
 // BACK END - ADMIN ROUTE
 Route::prefix('')->middleware('admin')->group(function(){
-
+    Route::get('crud-movie',[AdminController::class,'crud_movie']);
     Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
     Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 
     //Product routes
     Route::get('product', [ProductController::class,'index'])->name('admin.product.index');
-    Route::get('product/create', [ProductController::class,'create']);
-    Route::post('product', [ProductController::class,'store']);
+    Route::get('product/create', [ProductController::class,'create'])->name('admin.product.create');
+    Route::post('product', [ProductController::class,'store'])->name('admin.product.store');
     Route::delete('product/{movie}',[ProductController::class,'destroy'])->name('admin.product.destroy');
     Route::get('product/{movie}/edit', [ProductController::class,'edit'])->name('admin.product.edit');
     Route::post('product/{movie}/update', [ProductController::class,'update'])->name('admin.product.update');
+    Route::get('product/{movie}/assign', [ProductController::class,'assign'])->name('admin.product.assign');
+    Route::get('product/{movie}/assignscreen', [ProductController::class,'assignscreen'])->name('admin.product.assignscreen');
+    //User Management
+    Route::resource('user', ManagerController::class);
+
     //Cast routes
     Route::resource('cast',CastsController::class);
     Route::get('cast/assign/{cast}',[CastsController::class,'assign'])->name('cast.assign');

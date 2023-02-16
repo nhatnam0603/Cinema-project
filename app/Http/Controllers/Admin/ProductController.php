@@ -12,6 +12,8 @@ use App\Models\MoviesCasts;
 use App\Models\MoviesGenres;
 use App\Models\MoviesScreensTimeAssign;
 use App\Models\MoviesTypes;
+use App\Models\Screens;
+use App\Models\Times;
 use App\Models\TypeScreens;
 use DateTime;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +24,7 @@ class ProductController extends Controller
     {
         $prods = Movie::all();
         $moviecheck = Movie::where('id',4)->get();
-        
+
         return view('admin.product.index', compact('prods'));
     }
 
@@ -45,7 +47,16 @@ class ProductController extends Controller
             $product->end_at = $end_at;
             $product->name = $validatedData['name'];
             $product->description = $validatedData['description'];
+            $product->video = $request->video;
+            if($request->hasFile('banner')){
+                $file = $request->file('banner');
+                $ext = $file->getClientOriginalExtension();
+                $filename = time().'.'.$ext;
 
+                $file->move(public_path('assets/img/banner'), $filename);
+
+                $product->banner = $filename;
+            }
             if($request->hasFile('image')){
                 $file = $request->file('image');
                 $ext = $file->getClientOriginalExtension();
@@ -69,13 +80,12 @@ class ProductController extends Controller
                 $productType->movie_id= $product->id;
                 $productType->save();
             }
-
             DB::commit();
         } catch (\Throwable $th) {
            DB::rollBack();
            dd( $th);
         }
-    
+
         return redirect('/product')->with('message', 'Product added Successfully');
     }
 
@@ -105,16 +115,28 @@ class ProductController extends Controller
             $product->end_at = $end_at;
             $product->name = $validatedData['name'];
             $product->description = $validatedData['description'];
+            $product->video = $request->video;
+            if($request->hasFile('banner')){
+                $file = $request->file('banner');
+                $ext = $file->getClientOriginalExtension();
+                $filename = time().'.'.$ext;
 
+                $file->move(public_path('assets/img/banner'), $filename);
+                if(file_exists(public_path('assets/img/banner/'). $product->banner))
+                {
+                    $status = unlink(public_path('assets/img/banner/'). $product->banner);
+                }
+                $product->banner = $filename;
+            }
             if($request->hasFile('image')){
                 $file = $request->file('image');
                 $ext = $file->getClientOriginalExtension();
                 $filename = time().'.'.$ext;
 
                 $file->move(public_path('assets/img/movie'), $filename);
-                if(file_exists(public_path('assets/img/movie/'). $filename))
+                if(file_exists(public_path('assets/img/movie/'). $product->banner))
                 {
-                    $status = unlink(public_path('assets/img/movie/'). $filename);
+                    $status = unlink(public_path('assets/img/movie/'). $product->banner);
                 }
                 $product->image = $filename;
             }
@@ -148,7 +170,7 @@ class ProductController extends Controller
            DB::rollBack();
            dd( $th);
         }
-    
+
         return redirect('/product')->with('message', 'Product updated Successfully');
     }
     public function destroy(Movie $movie){
@@ -182,6 +204,34 @@ class ProductController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
         }
-        
+
+    }
+    public function assign(Request $request,Movie $movie)
+    {
+        $times = [];
+        $screens = Screens::all();
+        if($request->screen && $request->date){
+            $times = Times::whereDoesntHave('time_assign_movie_screen',function($query) use($movie,$request){
+                $query->where('movie_id',$movie->id)->where('screen_id',$request->screen)->whereDate('date',date('Y-m-d',strtotime($request->date)));
+            })->get();
+        }
+        return view('admin.product.assign-movie',compact('movie','screens','times'));
+    }
+    public function assignscreen(Request $request,Movie $movie)
+    {
+        $validated = $request->validate([
+            'screenid' => 'required',
+            'dateAssign' => 'required',
+            'time' => 'required',
+        ]);
+        foreach ($request->time as $key => $value) {
+            $movieAssignScreenTime = new MoviesScreensTimeAssign();
+            $movieAssignScreenTime->movie_id = $movie->id;
+            $movieAssignScreenTime->screen_id = $request->screenid;
+            $movieAssignScreenTime->time_id = $value;
+            $movieAssignScreenTime->date = date('Y-m-d',strtotime($request->dateAssign));
+            $movieAssignScreenTime->save();
+        }
+        return redirect()->route('admin.product.index');
     }
 }

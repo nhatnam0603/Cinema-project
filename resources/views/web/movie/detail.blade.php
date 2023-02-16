@@ -2,12 +2,12 @@
 
 @section('content')
 <session class="content">
-    <section class="details-banner" style="background:url('{{ asset('assets/img/movie/'.$movie->image) }}')">
+    <section class="details-banner" style="background:url('{{ ($movie->banner === NULl)?asset('assets/img/movie/'.$movie->image):asset('assets/img/banner/'.$movie->banner) }}')">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-thumb">
-                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie">
-                    <a href="https://www.youtube.com/watch?v=IuO64sifh9o" class="video-button video-popup">
+                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie" style="width: 200px; height: auto">
+                    <a href="{{$movie->video}}" class="video-button video-popup">
                         <i class="fal fa-play"></i>
                     </a>
                 </div>
@@ -42,17 +42,17 @@
                     <div class="item">
                         <div class="item-header">
                             <div class="thumb">
-                                <i class="fal fa-shopping-cart"></i>
+                                <i class="fal fa-shopping-cart" ></i>
                             </div>
                             <div class="counter-area">
-                                <span class="counter-item odometer odometer-auto-theme" data-odometer-final="92">
+                                <!-- <span class="counter-item odometer odometer-auto-theme" data-odometer-final="92">
                                     <div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">9</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">2</span></span></span></span></span></div>
-                                </span>
-                                <span>k+</span>
+                                </span> -->
+                                <span>{{$moviebookings}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
+                    <!-- <div class="item">
                         <div class="item-header">
                             <div class="thumb">
                                 <i class="fal fa-heart"></i>
@@ -64,8 +64,8 @@
                                 <span>k+</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
+                    </div> -->
+                    <!-- <div class="item">
                         <div class="item-header">
                             <h5 class="title">5.0</h5>
                             <div class="rated">
@@ -84,7 +84,7 @@
                             </div>
                             <h5 class="title">0.0</h5>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <a href="{{route('ticket.plan',['id'=>$movie->id])}}" class="custom-button">book tickets</a>
             </div>
@@ -183,7 +183,7 @@
                                                         <div class="cast-item">
                                                             <div class="cast-thumb">
                                                                 <a href="#">
-                                                                    <img src="{{$cast->image}}" alt="cast">
+                                                                    <img src="{{asset('assets/img/cast/'.$cast->image)}}" alt="cast">
                                                                 </a>
                                                             </div>
                                                             <div class="cast-content">
@@ -206,7 +206,7 @@
                                     </div>
 
                                 </div>
-                                <div class="tab-item">
+                                <!-- <div class="tab-item">
                                     <div class="movie-review-item">
                                         <div class="author">
                                             <div class="thumb">
@@ -354,7 +354,7 @@
                                     <div class="load-more text-center">
                                         <a href="#" class="custom-button transparent">load more</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

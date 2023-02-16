@@ -37,7 +37,9 @@
                                 <select class="select-bar" name="genreid">
                                     <option value="">Choose genre</option>
                                     @foreach($genres as $genre)
+
                                     <option value="{{$genre->id}}" {{$genre->id == Request::get('genreid') ? 'selected': ''}}>{{$genre->name}}</option>
+
                                     @endforeach
                                 </select>
                             </div>
@@ -50,6 +52,7 @@
                                     <option value="">Choose Date</option>
                                     @for ($i = 0; $i < 7; $i++) <option value="{{date('d/m/Y',strtotime('+ '.$i.' day'))}}" {{date('d/m/Y',strtotime('+ '.$i.' day')) == Request::get('date') ? 'selected': ''}}>{{date('d/m/Y',strtotime('+ '.$i.' day'))}}</option>
                                         @endfor
+
 
                                 </select>
                             </div>
@@ -125,8 +128,8 @@
                     <div class="filter-tab tab">
                         <div class="filter-area">
                             <div class="filter-main">
-                                <!-- <div class="left">
-                                    <div class="item">
+                                <div class="left">
+                                    {{-- <div class="item">
                                         <span class="show">Show :</span>
                                         <select class="select-bar">
                                             <option value="10">10</option>
@@ -147,8 +150,8 @@
                                             <option value="trending">trending</option>
                                             <option value="popular">popular</option>
                                         </select>
-                                    </div>
-                                </div> -->
+                                    </div> --}}
+                                </div>
                                 <ul class="grid-button tab-menu">
                                     <li>
                                         <i class="fal fa-th-large"></i>
@@ -167,14 +170,15 @@
                                         <div class="movie-grid">
                                             <div class="movie-thumb c-thumb">
                                                 <a href="{{route('movie.detail',['id'=>$movie->id])}}">
-                                                    <img src="{{json_decode($movie->image_list)[0] ?? 'assets/img/movie/movie-list-default.jpg'}}" alt="movie">
+                                                    {{-- <img src="{{json_decode($movie->image_list)[0] ?? 'assets/img/movie/movie-list-default.jpg'}}" alt="movie"> --}}
+                                                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie">
                                                 </a>
                                             </div>
                                             <div class="movie-content">
                                                 <h5 class="title m-0">
                                                     <a href="{{route('movie.detail',['id'=>$movie->id])}}">{{$movie->name}}</a>
                                                 </h5>
-                                                <!-- <ul class="movie-rating-percent">
+                                                {{-- <ul class="movie-rating-percent">
                                                     <li>
                                                         <i class="fal fa-shopping-cart"></i>
                                                         <span class="content">88.8k</span>
@@ -183,7 +187,7 @@
                                                         <i class="fal fa-star"></i>
                                                         <span class="content">5.0</span>
                                                     </li>
-                                                </ul> -->
+                                                </ul> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -215,7 +219,8 @@
                                                 @endforeach
                                             </div>
                                             <div class="release">
-                                                <span>Release Date : </span> <a href="#"> April 13, 2021</a>
+                                                <span>Release Date : </span> <a href="#"> {{date('d/m/Y',strtotime($movie->began_at))}}</a>
+
                                             </div>
                                             <!-- <ul class="movie-rating-percent">
                                                 <li>
@@ -238,7 +243,7 @@
                                                         </a>
                                                     </div> -->
                                                     <div class="react-item mr-auto">
-                                                        <a href="#">
+                                                        <a href="{{route('ticket.plan',['id'=>$movie->id])}}">
                                                             <div class="thumb">
                                                                 <i class="fal fa-ticket"></i>
                                                             </div>
@@ -246,7 +251,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="react-item">
-                                                        <a href="https://www.youtube.com/watch?v=uyNh0RPiLyI" class="popup-video video-popup">
+                                                        <a href="{{$movie->video}}" class="popup-video video-popup">
                                                             <div class="thumb">
                                                                 <i class="fal fa-play-circle"></i>
                                                             </div>
