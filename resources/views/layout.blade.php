@@ -1,4 +1,5 @@
-<html lang="en" class=" sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers">
+<html lang="en"
+    class=" sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers">
 
 <head>
     <meta charset="UTF-8">
@@ -7,17 +8,17 @@
 
     <title>Cinema</title>
 
-    <link rel="shortcut icon" href="{{asset('assets/img/favicon.jpg')}}" type="image/x-icon">
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/odometer.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/jquery.animatedheadline.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.jpg') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/odometer.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.animatedheadline.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
 <body>
@@ -42,19 +43,20 @@
         <div class="container">
             <div class="header-wrapper">
                 <div class="logo">
-                    <a href="{{route('home')}}">
+                    <a href="{{ route('home') }}">
                         <img src="assets/img/logo/logo.png" alt="logo">
                     </a>
                 </div>
                 <ul class="menu">
                     <li class="menu-item">
-                        <a href="{{route('home')}}" >Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#">movies</a>
                         <ul class="submenu">
                             <li>
-                                <a href="{{route('movie.list')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie List</a>
+                                <a href="{{ route('movie.list') }}"><i class="fal fa-long-arrow-alt-right"></i>Movie
+                                    List</a>
                             </li>
                             {{-- <li>
                                 <a href="{{route('movie.detail')}}"><i class="fal fa-long-arrow-alt-right"></i>Movie Details</a>
@@ -160,14 +162,16 @@
                         </ul>
                     </li> -->
                     <li>
-                        <a href="{{route('contact')}}">contact</a>
+                        <a href="{{ route('contact') }}">contact</a>
                     </li>
-                    <li class="header-button pr-0">
-                        @if(auth()->check())
-                        <a href="">{{auth()->user()->name}}</a>
-                        @else
-                        <a href="{{route('login')}}">Login</a>
-                        @endif
+                    <li>
+                        <a href="#">
+                            @if (auth()->check())
+                                <span>{{ auth()->user()->email }}</span>
+                            @else
+                                <a href="{{ route('login') }}">Login</a>
+                            @endif
+                        </a>
                     </li>
                 </ul>
                 <div class="header-bar d-lg-none">
@@ -179,7 +183,7 @@
         </div>
     </header>
 
-@yield('content')
+    @yield('content')
 
     <footer class="footer-section">
 
@@ -242,7 +246,8 @@
                         <div class="col-lg-4">
                             <h5 class="footer-middle-title">About Us</h5>
                             <p class="pb-4 footer-text">
-                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.
+                                There are many variations of passages of Lorem Ipsum available, but the majority have
+                                suffered alteration in some form, by injected humour.
                             </p>
                         </div>
                         {{-- <div class="col-lg-3">
@@ -281,32 +286,32 @@
                             <p class="footer-text">There are many variations of passages of Lorem Ipsum</p>
                             <div class="footer-middle-download">
                                 <ul class="social-icons">
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="active">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-pinterest-p"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-google"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </li>
-                    </ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="active">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-pinterest-p"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-google"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
