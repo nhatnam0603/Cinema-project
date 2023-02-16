@@ -24,7 +24,7 @@ class ProductController extends Controller
     {
         $prods = Movie::all();
         $moviecheck = Movie::where('id',4)->get();
-        
+
         return view('admin.product.index', compact('prods'));
     }
 
@@ -47,7 +47,7 @@ class ProductController extends Controller
             $product->end_at = $end_at;
             $product->name = $validatedData['name'];
             $product->description = $validatedData['description'];
-            $product->video = $validatedData['video'];
+            $product->video = $request->video;
             if($request->hasFile('banner')){
                 $file = $request->file('banner');
                 $ext = $file->getClientOriginalExtension();
@@ -80,13 +80,12 @@ class ProductController extends Controller
                 $productType->movie_id= $product->id;
                 $productType->save();
             }
-
             DB::commit();
         } catch (\Throwable $th) {
            DB::rollBack();
            dd( $th);
         }
-    
+
         return redirect('/product')->with('message', 'Product added Successfully');
     }
 
@@ -105,7 +104,7 @@ class ProductController extends Controller
         return view('admin.product.edit',compact('movie','screenType','genres','movieTypeList','movieGenreList'));
     }
     public function update(ProductFormRequest $request,Movie $movie)
-    { 
+    {
         $validatedData = $request->validated();
         $began_at = new DateTime($request->input('began_at'));
         $end_at = new DateTime($request->input('end_at'));
@@ -171,7 +170,7 @@ class ProductController extends Controller
            DB::rollBack();
            dd( $th);
         }
-    
+
         return redirect('/product')->with('message', 'Product updated Successfully');
     }
     public function destroy(Movie $movie){
@@ -205,7 +204,7 @@ class ProductController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
         }
-        
+
     }
     public function assign(Request $request,Movie $movie)
     {

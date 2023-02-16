@@ -169,7 +169,7 @@
                         @if(auth()->check())
 
                         <div class="dropdown show">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="dropdown-toggle" href="#"  id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{auth()->user()->name}}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:0;border-radius:25px">
