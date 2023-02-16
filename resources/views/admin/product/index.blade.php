@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="card-header">
                     <h4>PRODUCT LIST
-                        <a href="{{ url('product/create') }}" class=" btn btn-primary btn-sm float-end">Add Product</a>
+                        <a href="{{ Route('admin.product.create') }}" class=" btn btn-primary btn-sm float-end">Add Product</a>
                     </h4>
                 </div>
                 <div class="table-responsive">
