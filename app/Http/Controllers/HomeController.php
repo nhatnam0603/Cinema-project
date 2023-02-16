@@ -103,8 +103,8 @@ class HomeController extends Controller
       {
          $id = $request->input('id');
          $movie = Movie::where('id',$id)->first();
-
-         return view('web.movie.detail',compact('movie'));
+         $moviebookings = DB::table('bookings')->where('movie_id',$id)->count();
+         return view('web.movie.detail',compact('movie','moviebookings'));
       }
       else return redirect()->back();
     }

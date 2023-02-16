@@ -215,7 +215,7 @@
                                                 @endforeach
                                             </div>
                                             <div class="release">
-                                                <span>Release Date : </span> <a href="#"> April 13, 2021</a>
+                                                <span>Release Date : </span> <a href="#"> {{date('d/m/Y',strtotime($movie->began_at))}}</a>
                                             </div>
                                             <!-- <ul class="movie-rating-percent">
                                                 <li>
@@ -238,7 +238,7 @@
                                                         </a>
                                                     </div> -->
                                                     <div class="react-item mr-auto">
-                                                        <a href="#">
+                                                        <a href="{{route('ticket.plan',['id'=>$movie->id])}}">
                                                             <div class="thumb">
                                                                 <i class="fal fa-ticket"></i>
                                                             </div>
@@ -246,7 +246,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="react-item">
-                                                        <a href="https://www.youtube.com/watch?v=uyNh0RPiLyI" class="popup-video video-popup">
+                                                        <a href="{{$movie->video}}" class="popup-video video-popup">
                                                             <div class="thumb">
                                                                 <i class="fal fa-play-circle"></i>
                                                             </div>

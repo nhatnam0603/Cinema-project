@@ -2,7 +2,7 @@
 
 @section('content')
 <session class="content">
-<section class="details-banner hero-area" style="background:url('assets/img/banner/banner-movie-details.jpg')">
+<section class="details-banner hero-area" style="background:url('{{ ($movie->banner === NULl)?asset('assets/img/banner/banner-movie-details.jpg'):asset('assets/img/banner/'.$movie->banner) }}')">
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-content">

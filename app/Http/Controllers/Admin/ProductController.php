@@ -45,7 +45,16 @@ class ProductController extends Controller
             $product->end_at = $end_at;
             $product->name = $validatedData['name'];
             $product->description = $validatedData['description'];
+            $product->video = $validatedData['video'];
+            if($request->hasFile('banner')){
+                $file = $request->file('banner');
+                $ext = $file->getClientOriginalExtension();
+                $filename = time().'.'.$ext;
 
+                $file->move(public_path('assets/img/banner'), $filename);
+
+                $product->banner = $filename;
+            }
             if($request->hasFile('image')){
                 $file = $request->file('image');
                 $ext = $file->getClientOriginalExtension();
@@ -94,7 +103,7 @@ class ProductController extends Controller
         return view('admin.product.edit',compact('movie','screenType','genres','movieTypeList','movieGenreList'));
     }
     public function update(ProductFormRequest $request,Movie $movie)
-    {
+    { 
         $validatedData = $request->validated();
         $began_at = new DateTime($request->input('began_at'));
         $end_at = new DateTime($request->input('end_at'));
@@ -105,16 +114,28 @@ class ProductController extends Controller
             $product->end_at = $end_at;
             $product->name = $validatedData['name'];
             $product->description = $validatedData['description'];
+            $product->video = $request->video;
+            if($request->hasFile('banner')){
+                $file = $request->file('banner');
+                $ext = $file->getClientOriginalExtension();
+                $filename = time().'.'.$ext;
 
+                $file->move(public_path('assets/img/banner'), $filename);
+                if(file_exists(public_path('assets/img/banner/'). $product->banner))
+                {
+                    $status = unlink(public_path('assets/img/banner/'). $product->banner);
+                }
+                $product->banner = $filename;
+            }
             if($request->hasFile('image')){
                 $file = $request->file('image');
                 $ext = $file->getClientOriginalExtension();
                 $filename = time().'.'.$ext;
 
                 $file->move(public_path('assets/img/movie'), $filename);
-                if(file_exists(public_path('assets/img/movie/'). $filename))
+                if(file_exists(public_path('assets/img/movie/'). $product->banner))
                 {
-                    $status = unlink(public_path('assets/img/movie/'). $filename);
+                    $status = unlink(public_path('assets/img/movie/'). $product->banner);
                 }
                 $product->image = $filename;
             }

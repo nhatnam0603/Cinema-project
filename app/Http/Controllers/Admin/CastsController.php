@@ -52,7 +52,7 @@ class CastsController extends Controller
         $cast->position = $request->position;
         if($request->hasFile('image')){
             $file = $request->file('image');
-            $ext = 'cast-'.$cast->id;
+            $ext = 'cast-'.$cast->id.'.jpg';
             $filename = time().'.'.$ext;
 
             $file->move(public_path('assets/img/cast/'), $filename);
