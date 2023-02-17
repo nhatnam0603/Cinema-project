@@ -22,12 +22,12 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
               <i class="mdi mdi-plus-box menu-icon"></i>
               <span class="menu-title">Product List</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="ui-basic1">
               <ul class="nav flex-column sub-menu ">
                 <li class="list-arrow"><a class="nav-link" href="{{Route('admin.screen.index')}}">Scenes List</a></li>
                 <li class="list-arrow"><a class="nav-link" href="{{Route('admin.product.index')}}">Movie List</a></li>

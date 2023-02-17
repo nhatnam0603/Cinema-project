@@ -39,19 +39,22 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
-
+        if($request->remember) $remember = true;
+        else $remember = false;
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials) && Auth::user()->role == 2) {
-            return redirect()->intended('dashboard')
+        if (Auth::attempt($credentials,$remember) ) {
+            if(Auth::user()->role == 2)
+                return redirect()->intended('dashboard')
                         ->withSuccess('You have Successfully loggedin');
+            else return redirect()->intended("home");
         }else{
-            return redirect()->intended("home");
+            return redirect()->back()->with('message','Oppes! You have entered invalid credentials');
         }
 
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        return redirect()->back();
     }
 
     /**
@@ -64,13 +67,13 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required|confirmed|min:6',
         ]);
 
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+        return redirect("login")->withSuccess('Great! You have Successfully loggedin');
     }
 
     /**

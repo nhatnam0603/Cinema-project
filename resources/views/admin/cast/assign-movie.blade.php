@@ -61,7 +61,7 @@
                                     <form action="{{ route('cast.assign.store', $item) }}" method="post" style="display: inline-block">
                                         @csrf
                                         <input type="hidden" name="castid" value="{{$cast->id}}">
-                                        <input type="submit" value="Assign" class="btn btn-danger" />
+                                        <input type="submit" value="{{ ($item->candelete == 1)?'Unassign':'Assign'}}" class="btn {{($item->candelete == 1)?'btn-danger':'btn-primary'}}" />
                                     </form>
                                 </td>
                             </tr>
