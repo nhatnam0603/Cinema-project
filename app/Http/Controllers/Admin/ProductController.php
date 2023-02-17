@@ -209,7 +209,13 @@ class ProductController extends Controller
     public function assign(Request $request,Movie $movie)
     {
         $times = [];
-        $screens = Screens::all();
+        $movietypes = [];
+        foreach ($movie->types as $key => $value) {
+            $movietypes[] = '"'.$value->name.'"';
+        }
+        DB::enableQueryLog();
+        $movietypein = '('.implode(',',$movietypes).')';
+        $screens = Screens::whereRaw('type IN '.$movietypein)->get();
         if($request->screen && $request->date){
             $times = Times::whereDoesntHave('time_assign_movie_screen',function($query) use($movie,$request){
                 $query->where('movie_id',$movie->id)->where('screen_id',$request->screen)->whereDate('date',date('Y-m-d',strtotime($request->date)));
