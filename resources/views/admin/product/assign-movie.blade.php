@@ -20,7 +20,7 @@
                         <li class="nav-item nav-search d-none d-lg-block w-100">
                             <div class="form-group">
                                 <label for="date">Date</label>
-                                <input type="date" class="form-control" id="date" name="date" placeholder="Enter time" value="{{Request::get('date')}}">
+                                <input type="date" min="{{ now()->toDateString('Y-m-d') }}" class="form-control" id="date" name="date" placeholder="Enter time" value="{{Request::get('date')}}">
                                 @error('date')
                                 <small class="text-danger">{{$message}}</small>
                                 @enderror

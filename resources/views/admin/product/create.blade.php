@@ -28,11 +28,17 @@
                               </div>
                               <div class="form-group">
                                 <label for="exampleInputEmail3">Began at</label>
-                                <input type="datetime-local" class="form-control" id="exampleInputEmail3" name="began_at" placeholder="Enter time start">
+                                <input type="datetime-local"   min="{{ now()->toDateString('Y-m-d') }}T00:00" class="form-control" id="exampleInputEmail3" name="began_at" placeholder="Enter time start">
+                                @error('began_at')
+                                      <small class="text-danger">{{$message}}</small>
+                                  @enderror
                               </div>
                               <div class="form-group">
                                 <label for="exampleInputPassword4">End at</label>
-                                <input type="datetime-local" class="form-control" id="exampleInputPassword4" name="end_at" placeholder="Enter time end">
+                                <input type="datetime-local" min="{{ now()->toDateString('Y-m-d') }}T00:00" class="form-control" id="exampleInputPassword4" name="end_at" placeholder="Enter time end">
+                                @error('end_at')
+                                      <small class="text-danger">{{$message}}</small>
+                                  @enderror
                               </div>
                               <div class="form-group">
                                 <label for="exampleSelectGender" style="display: block;">Type</label>
