@@ -118,11 +118,11 @@ class ScreensController extends Controller
         } catch (Exception $th) {
             DB::rollBack();
             return redirect()
-                ->route('screen.index')
+                ->route('admin.screen.index')
                 ->with('success', 'Screen has been deleted errors');
         }
         return redirect()
-            ->route('Screen.index')
+            ->route('admin.screen.index')
             ->with('success', 'Screen has been deleted successfully');
     }
     // public function assign(Request $request, Casts $cast)
