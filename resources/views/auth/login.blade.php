@@ -38,7 +38,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="email">Email<span>*</span></label>
-                            <input type="text" placeholder="Email" name="email" id="email" required="">
+                            <input type="text" placeholder="Email" name="email" id="email" required="" value="{{old('email')}}">
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
@@ -62,7 +62,7 @@
                     <div class="option">
                         Don't have an account? <a href="{{route('register')}}">register now</a>.
                     </div>
-                    <div class="or"><span>Or</span></div>
+                    <!-- <div class="or"><span>Or</span></div>
                     <ul class="social-icons">
 
                         <li>
@@ -71,7 +71,7 @@
                             </a>
                         </li>
 
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <session class="content">
-    <section class="main-page-header speaker-banner" style="background: url('assets/img/banner/banner-1.jpg');">
+    <section class="main-page-header speaker-banner" style="background: url({{asset('assets/img/banner/banner-1.jpg')}});">
         <div class="container">
             <div class="speaker-banner-content">
                 <h2 class="title">reset password</h2>
@@ -61,9 +61,7 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <input type="submit">
-                            Reset Password
-                            </input>
+                            <input type="submit" value="Reset Password" >
                         </div>
                     </form>
 
