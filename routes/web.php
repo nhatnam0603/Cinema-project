@@ -36,6 +36,7 @@ Route::get('movie-detail', [HomeController::class,'moviedetail'])->name('movie.d
 Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
 Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
 Route::get('contact', [HomeController::class,'contact'])->name('contact');
+Route::post('contactstore', [HomeController::class, 'contactstore'])->name('contactstore');
 
 //Search movie route
 Route::get('search', [HomeController::class,'searchMovies'])->name('search');
