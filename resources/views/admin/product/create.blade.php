@@ -7,7 +7,6 @@
                 <h4 >ADD PRODUCT
                     <a href="{{ url('/product') }}" class=" btn btn-dark btn-sm float-end">Back</a>
                 </h4>
-            </div>
             <div class="card-body" >
                 <form action="{{ url('/product') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -20,6 +19,8 @@
                             </p>
                             <form class="forms-sample">
                               <div class="form-group">
+            
+            </div>
                                 <label for="exampleInputName1">Name</label>
                                 <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="Name">
                                 @error('name')

@@ -1,5 +1,6 @@
 @extends('layout.admin')
 @section('content')
+@method('get')
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -7,12 +8,18 @@
                 <h4>ADD SCREEN
                     <a href="{{ route('admin.screen.index') }}" class=" btn btn-dark btn-sm float-end">Back</a>
                 </h4>
+                @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
             </div>
             @if(session('status'))
             <div class="alert alert-success mb-1 mt-1">
               {{ session('status') }}
             </div>
             @endif
+            
             <div class="card-body">
                 <form action="{{ route('admin.screen.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
