@@ -28,24 +28,44 @@
                         <div class="section-header-3 left-style">
                             <span class="cate">contact us</span>
                             <h2 class="title">get in touch</h2>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p>
+                            <p>If you have any questions, don't mind to contact us!</p>
                         </div>
-                        <form method="post" action="/ticket/assets/php/contact.php" id="contact-form" class="contact-form">
+                        <div>
+                            @if (Session::has('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+                        </div>
+                        <form method="post" action="{{  route('contactstore')  }}" id="contact-form" class="contact-form">
+                            @csrf
                             <div class="form-group">
                                 <label for="name">Name <span>*</span></label>
                                 <input type="text" placeholder="Enter Your Name" name="name" id="name" required="">
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="email">Email <span>*</span></label>
                                 <input type="text" placeholder="Enter Your Email" name="email" id="email" required="">
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="subject">Subject <span>*</span></label>
                                 <input type="text" placeholder="Enter Your Subject" name="subject" id="subject" required="">
+                                @if ($errors->has('subject'))
+                                    <span class="text-danger">{{ $errors->first('subject') }}</span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="message">Message <span>*</span></label>
                                 <textarea name="message" id="message" placeholder="Enter Your Message" required=""></textarea>
+                                @if ($errors->has('message'))
+                                    <span class="text-danger">{{ $errors->first('message') }}</span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Send Your Message">
