@@ -49,9 +49,10 @@ class ScreensController extends Controller
             'type' => 'required',
             'price' => 'required',
         ]);
+        $typename = TypeScreens::where('id',$request->type[0])->first();
         $screen = new Screens();
         $screen->name = $request->name;
-        $screen->type = $request->type[0];
+        $screen->type = $typename->name;
         $screen->price = $request->price;
         $screen->save();
         return redirect()
