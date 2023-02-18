@@ -7,17 +7,13 @@
                 <h4>ADD SEATS TO SCREEN
                     <a href="{{ route('admin.screen.index') }}" class=" btn btn-dark btn-sm float-end">Back</a>
                 </h4>
-               
+            @endif
             </div>
             <div class="card-header">
             @foreach($screenInfo as $s)
                 <h4>SCREEN NAME : {{$s->name}}</h4>
                 @endforeach
             </div>
-            @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            @endif
             <div class="card-body">
                 <form action="{{route('admin.screen.assign.store',$screen)}}" method="get">
                     <input type="hidden" name="screenid" value={{$screen}}>

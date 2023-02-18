@@ -49,14 +49,21 @@ class ScreensController extends Controller
             'type' => 'required',
             'price' => 'required',
         ]);
-        $screen = new Screens();
-        $screen->name = $request->name;
-        $screen->type = $request->type[0];
-        $screen->price = $request->price;
-        $screen->save();
-        return redirect()
-            ->route('admin.screen.index')
-            ->with('success', 'Screen Has Been created successfully');
+        $checkScreen = Screens::where('name', $request->name)->first();
+        if ($checkScreen) {
+            return redirect()
+                ->route('admin.screen.create')
+                ->with('success', 'Screen Existed');
+        } else {
+            $screen = new Screens();
+            $screen->name = $request->name;
+            $screen->type = $request->type[0];
+            $screen->price = $request->price;
+            $screen->save();
+            return redirect()
+                ->route('admin.screen.index')
+                ->with('success', 'Screen Has Been created successfully');
+        }
     }
 
     /**
@@ -92,14 +99,21 @@ class ScreensController extends Controller
             'type' => 'required',
             'price' => 'required',
         ]);
-
-        $screen->name = $request->name;
-        $screen->type = $request->type[0];
-        $screen->price = $request->price;
-        $screen->save();
-        return redirect()
-            ->route('admin.screen.index')
-            ->with('success', 'Screen Has Been updated successfully');
+        $screen = $request->screen;
+        $checkScreen = Screens::where('name', $request->name)->first();
+        if ($checkScreen) {
+            return redirect()
+                ->route('admin.screen.edit', compact('screen'))
+                ->with('success', 'Screen Existed');
+        } else {
+            $screen->name = $request->name;
+            $screen->type = $request->type[0];
+            $screen->price = $request->price;
+            $screen->save();
+            return redirect()
+                ->route('admin.screen.index')
+                ->with('success', 'Screen Has Been updated successfully');
+        }
     }
 
     /**

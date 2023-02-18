@@ -8,7 +8,12 @@
                 <h4 >EDIT SCREEN
                     <a href="{{ url('/screen') }}" class=" btn btn-dark btn-sm float-end">Back</a>
                 </h4>
+                @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
             </div>
+</div>
+            @endif
             <div class="card-body" >
                 <form action="{{ route('admin.screen.update',$screen) }}" method="POST" enctype="multipart/form-data">
                     @csrf

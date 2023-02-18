@@ -258,8 +258,7 @@
                         <div class="col-lg-4">
                             <h5 class="footer-middle-title">About Us</h5>
                             <p class="pb-4 footer-text">
-                                There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour.
+                             We are group 4. We have 5 members include: Doan Nhat Nam, Quach Hoang Long, Tho Che Quoc An, Mai Trieu Chinh and Vu Hai Anh 
                             </p>
                         </div>
                         {{-- <div class="col-lg-3">
