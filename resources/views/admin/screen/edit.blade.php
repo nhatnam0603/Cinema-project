@@ -22,7 +22,7 @@
                             <form class="forms-sample">
                               <div class="form-group">
                                 <label for="exampleInputName1">Screen Name</label>
-                                <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder={}{}>
+                                <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="{{$screen->name}}">
                                 @error('name')
                                     <small class="text-danger">{{$message}}</small>
                                 @enderror
@@ -34,7 +34,7 @@
                                   @enderror
                                     @foreach($screenType as $type)
                                     <div class="form-check form-check-inline" style="display:inline-block;padding-left: 1.5rem;">
-                                      <input class="form-check-input" type="checkbox" name="type[]" id="typeCheckbox{{$type->id}}" value="{{$type->id}}" {{in_array($type->id,$screenType)? 'checked': ''}}>
+                                      <input class="form-check-input" type="radio" name="type[]" id="typeCheckbox{{$type->id}}" value="{{$type->id}}" {{in_array($type->id,[$screen->type])? 'checked': ''}}>
                                       <label class="form-check-label" for="typeCheckbox{{$type->id}}">{{$type->name}}</label>
                                     </div>
                                     @endforeach

@@ -38,7 +38,7 @@
                                   @enderror
                                     @foreach($screenType as $type)
                                     <div class="form-check form-check-inline" style="display:inline-block;padding-left: 1.5rem;">
-                                      <input class="form-check-input" type="checkbox" name="type[]" id="typeCheckbox{{$type->id}}" value="{{$type->id}}">
+                                      <input class="form-check-input" type="radio" name="type[]" id="typeCheckbox{{$type->id}}" value="{{$type->id}}">
                                       <label class="form-check-label" for="typeCheckbox{{$type->id}}">{{$type->name}}</label>
                                     </div>
                                     @endforeach     

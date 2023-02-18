@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Screens;
+use App\Models\Seats;
 use App\Models\TypeScreens;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,8 @@ class ScreensController extends Controller
     public function index()
     {
         $screens = Screens::all();
-        return view('admin.screen.index', compact('screens'));
+        $seat = Seats::all();
+        return view('admin.screen.index', compact('screens', 'seat'));
     }
 
     /**
@@ -54,7 +56,7 @@ class ScreensController extends Controller
         $screen->save();
         return redirect()
             ->route('admin.screen.index')
-            ->with('success', 'Cast Has Been created successfully');
+            ->with('success', 'Screen Has Been created successfully');
     }
 
     /**
@@ -125,30 +127,41 @@ class ScreensController extends Controller
             ->route('admin.screen.index')
             ->with('success', 'Screen has been deleted successfully');
     }
-    // public function assign(Request $request, Casts $cast)
-    // {
-    //     if ($request->search) {
-    //         $movies = Movie::where(
-    //             'name',
-    //             'like',
-    //             '%' . $request->search . '%'
-    //         )->paginate(10);
-    //         return view('admin.cast.assign-movie', compact('cast', 'movies'));
-    //     }
-    //     $movies = Movie::orderBy('began_at', 'desc')->paginate(10);
-    //     return view('admin.cast.assign-movie', compact('cast', 'movies'));
-    // }
-    // public function assignStore(Request $request, Movie $movie)
-    // {
-    //     if ($request->castid) {
-    //         $moviesCast = new MoviesCasts();
-    //         $moviesCast->cast_id = $request->castid;
-    //         $moviesCast->movie_id = $movie->id;
-    //         $moviesCast->save();
-    //         return redirect()
-    //             ->route('cast.index')
-    //             ->with('success', 'Cast has been assign successfully');
-    //     }
-    //     return redirect()->back();
-    // }
+    public function assign(Request $request)
+    {
+        $screen = $request->screen;
+        $screenInfo = Screens::where('id', $request->screen)->get();
+        return view(
+            'admin.screen.assign-seat',
+            compact('screen', 'screenInfo')
+        );
+    }
+    public function assignStore(Request $request)
+    {
+        $screen = $request->screen;
+        $checkAssign = Seats::where('number', $request->number)
+            ->where('row', $request->row)
+            ->first();
+        if ($checkAssign) {
+            return redirect()
+                ->route('admin.screen.assign', compact('screen'))
+                ->with('success', 'Seats Existed');
+        } else {
+            try {
+                $seat = new Seats();
+                $seat->number = $request->number;
+                $seat->row = $request->row;
+                $seat->screen_id = $request->screenid;
+                $seat->save();
+            } catch (Exception $th) {
+                DB::rollBack();
+                return redirect()
+                    ->route('admin.screen.assign', compact('screen'))
+                    ->with('success', 'Seats errors');
+            }
+        }
+        return redirect()
+            ->route('admin.screen.assign', compact('screen'))
+            ->with('success', 'Seats add successfully');
+    }
 }

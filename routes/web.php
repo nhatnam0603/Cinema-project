@@ -169,8 +169,12 @@ Route::prefix('')
             ScreensController::class,
             'update',
         ])->name('admin.screen.update');
-        Route::get('screen/{seat}/assign', [
+        Route::get('screen/{screen}/assign', [
             ScreensController::class,
             'assign',
         ])->name('admin.screen.assign');
+        Route::get('screen/{screen}/assign/store', [
+            ScreensController::class,
+            'assignStore',
+        ])->name('admin.screen.assign.store');
     });
