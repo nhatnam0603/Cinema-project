@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CastsController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ManagerController;
 use App\Http\Controllers\Admin\ScreensController;
+use App\Http\Controllers\Admin\TimeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -173,4 +174,6 @@ Route::prefix('')
             ScreensController::class,
             'assign',
         ])->name('admin.screen.assign');
+        //Time route
+        Route::resource('time', TimeController::class);
     });
