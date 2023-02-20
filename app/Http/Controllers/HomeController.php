@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bookings;
+use App\Models\Contact;
 use App\Models\Genres;
 use App\Models\Movie;
 use App\Models\MoviesScreensTimeAssign;
@@ -32,12 +33,12 @@ class HomeController extends Controller
       $movielist = Movie::whereHas('movieDateAssign', function (Builder $query) {
          $query->whereDate('movies_screens_time_assign.date',date('Y-m-d'));
       })->get();
-      
+
       $movie7nextday = Movie::whereHas('movieDateAssign', function (Builder $query) {
          $query->whereDate('movies_screens_time_assign.date','>',date('Y-m-d'));
          $query->whereDate('movies_screens_time_assign.date','<=',date('Y-m-d',strtotime('+ 7day')));
       })->get();
-      
+
        return view('web.homepage',compact('movielist','genres','screenTypes','movie7nextday'));
     }
     /**
@@ -83,7 +84,7 @@ class HomeController extends Controller
          $movielist->whereHas('types', function (Builder $query) use ($types){
             $query->whereIn('type_screens.id',$types);
          });
-       
+
          $movielist = $movielist->get();
       }
       else{
@@ -202,16 +203,29 @@ class HomeController extends Controller
        return view('web.contact');
     }
 
+    public function contactstore(Request $request)
+    {
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+
+        $contact->save();
+
+       return redirect()->route('contact')->with('success','Your message has been sent!');
+    }
+
 
     public function confirmpayment(Request $request){
       $data = $request->all();
-      
+
       $ticket = new Tickets();
       $ticket->user_id = auth()->user()->id;
       $ticket->save();
       //dd($data);
       $html= '';
-      foreach ($data['ticket'] as $key=> $value) { 
+      foreach ($data['ticket'] as $key=> $value) {
          try{
             DB::beginTransaction();
             $data['ticketList'][$key]['row'] = $value[0];
@@ -235,7 +249,7 @@ class HomeController extends Controller
          }
       }
       $pdf = PDF::loadView('pdfticket', $data);
-      return $pdf->download('ticket'. auth()->user()->id.'.pdf'); 
+      return $pdf->download('ticket'. auth()->user()->id.'.pdf');
     }
 
     //Search movie by name

@@ -1,5 +1,6 @@
 @extends('layout.admin')
 @section('content')
+@method('get')
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -7,12 +8,18 @@
                 <h4>ADD SCREEN
                     <a href="{{ route('admin.screen.index') }}" class=" btn btn-dark btn-sm float-end">Back</a>
                 </h4>
+                @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
             </div>
             @if(session('status'))
             <div class="alert alert-success mb-1 mt-1">
               {{ session('status') }}
             </div>
             @endif
+            
             <div class="card-body">
                 <form action="{{ route('admin.screen.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -38,7 +45,7 @@
                                   @enderror
                                     @foreach($screenType as $type)
                                     <div class="form-check form-check-inline" style="display:inline-block;padding-left: 1.5rem;">
-                                      <input class="form-check-input" type="checkbox" name="type[]" id="typeCheckbox{{$type->id}}" value="{{$type->id}}">
+                                      <input class="form-check-input" type="radio" name="type[]" id="typeCheckbox{{$type->id}}" value="{{$type->id}}">
                                       <label class="form-check-label" for="typeCheckbox{{$type->id}}">{{$type->name}}</label>
                                     </div>
                                     @endforeach     

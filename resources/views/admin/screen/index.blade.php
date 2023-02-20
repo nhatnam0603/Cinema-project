@@ -1,6 +1,5 @@
 @extends('layout.admin')
 @section('content')
-@method('get')
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -9,6 +8,11 @@
                         <a href="{{ Route('admin.screen.create') }}" class=" btn btn-primary btn-sm float-end">Add Product</a>
                     </h4>
                 </div>
+                @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
                 <div class="table-responsive">
                     <table class="table table-dark ">
                         <thead>

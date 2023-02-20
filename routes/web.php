@@ -40,11 +40,11 @@ Route::get('movie-detail', [HomeController::class, 'moviedetail'])->name(
     'movie.detail'
 );
 
-Route::get('ticket-plan', [HomeController::class, 'ticketplan'])->name(
-    'ticket.plan'
-);
-Route::get('seat-plan', [HomeController::class, 'seatplan'])->name('seat.plan');
-Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+
+Route::get('ticket-plan', [HomeController::class,'ticketplan'])->name('ticket.plan');
+Route::get('seat-plan', [HomeController::class,'seatplan'])->name('seat.plan');
+Route::get('contact', [HomeController::class,'contact'])->name('contact');
+Route::post('contactstore', [HomeController::class, 'contactstore'])->name('contactstore');
 
 //Search movie route
 Route::get('search', [HomeController::class, 'searchMovies'])->name('search');
@@ -170,10 +170,14 @@ Route::prefix('')
             ScreensController::class,
             'update',
         ])->name('admin.screen.update');
-        Route::get('screen/{seat}/assign', [
+        Route::get('screen/{screen}/assign', [
             ScreensController::class,
             'assign',
         ])->name('admin.screen.assign');
         //Time route
         Route::resource('time', TimeController::class);
+        Route::get('screen/{screen}/assign/store', [
+            ScreensController::class,
+            'assignStore',
+        ])->name('admin.screen.assign.store');
     });

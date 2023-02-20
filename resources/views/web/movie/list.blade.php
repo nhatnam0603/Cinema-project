@@ -167,11 +167,11 @@
                                 <div class="row mb-10 justify-content-center">
                                     @foreach($movielist as $movie)
                                     <div class="col-sm-6 col-lg-6">
-                                        <div class="movie-grid">
+                                        <div class="movie-grid" style="height: 550px">
                                             <div class="movie-thumb c-thumb">
                                                 <a href="{{route('movie.detail',['id'=>$movie->id])}}">
                                                     {{-- <img src="{{json_decode($movie->image_list)[0] ?? 'assets/img/movie/movie-list-default.jpg'}}" alt="movie"> --}}
-                                                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie">
+                                                    <img src="{{ asset('assets/img/movie/'.$movie->image) }}" alt="movie" style="height: 400px">
                                                 </a>
                                             </div>
                                             <div class="movie-content">
