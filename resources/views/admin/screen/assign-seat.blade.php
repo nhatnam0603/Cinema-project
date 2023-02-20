@@ -7,7 +7,6 @@
                 <h4>ADD SEATS TO SCREEN
                     <a href="{{ route('admin.screen.index') }}" class=" btn btn-dark btn-sm float-end">Back</a>
                 </h4>
-            @endif
             </div>
             <div class="card-header">
             @foreach($screenInfo as $s)

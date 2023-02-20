@@ -16,7 +16,7 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu ">
                 <li class="list-arrow"><a class="nav-link" href="{{Route('admin.screen.create')}}">Add Screen</a></li>
-                <li class="list-arrow"><a class="nav-link" href="{{Route('admin.product.index')}}">Add Movie</a></li>
+                <li class="list-arrow"><a class="nav-link" href="{{Route('admin.product.create')}}">Add Movie</a></li>
                 <li class="list-arrow"><a class="nav-link" href="{{Route('cast.create')}}">Add Cast</a></li>
                 <li class="list-arrow"><a class="nav-link" href="{{Route('time.create')}}">Add Time</a></li>
               </ul>
