@@ -19,8 +19,8 @@
                             </p>
                             <form class="forms-sample">
                               <div class="form-group">
-            
-            </div>
+
+
                                 <label for="exampleInputName1">Name</label>
                                 <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="Name">
                                 @error('name')
@@ -52,7 +52,7 @@
                                       <label class="form-check-label" for="typeCheckbox{{$type->id}}">{{$type->name}}</label>
                                     </div>
                                     @endforeach
-                                  
+
                               </div>
                               <div class="form-group">
                                 <label for="exampleSelectGender" style="display: block;">Genre</label>
@@ -65,7 +65,7 @@
                                       <label class="form-check-label" for="genreCheckbox{{$genre->id}}">{{$genre->name}}</label>
                                     </div>
                                     @endforeach
-                                  
+
                               </div>
                               <div class="form-group">
                                 <label>Image</label>
