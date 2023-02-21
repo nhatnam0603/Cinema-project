@@ -95,9 +95,9 @@
             <div class="row justify-content-center flex-wrap-reverse mb--50">
                 <div class="col-lg-9 mb-50">
                     <div class="movie-details">
-                        <h3 class="title">photos</h3>
+                        {{-- <h3 class="title">photos</h3> --}}
                         <div class="details-photos owl-carousel owl-loaded owl-drag">
-                            <div class="owl-stage-outer">
+                            {{-- <div class="owl-stage-outer">
                                 <div class="owl-stage" style="transform: translate3d(-855px, 0px, 0px); transition: all 1s ease 0s; width: 1710px;">
                                     @if(!empty($movie->image_list))
                                     @foreach(json_decode($movie->image_list) as $imagelist)
@@ -133,9 +133,9 @@
                                     </div>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
-                            <div class="owl-dots disabled"></div>
+                            </div> --}}
+                            {{-- <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
+                            <div class="owl-dots disabled"></div> --}}
                         </div>
                         <div class="tab summery-review">
                             <ul class="tab-menu">
