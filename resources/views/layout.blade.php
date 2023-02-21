@@ -44,7 +44,7 @@
             <div class="header-wrapper">
                 <div class="logo">
                     <a href="{{ route('home') }}">
-                        <img src="assets/img/logo/logo.png" alt="logo">
+                        <img src="{{asset('assets/img/logo/logo.png')}}" alt="logo">
                     </a>
                 </div>
                 <ul class="menu">
@@ -258,8 +258,7 @@
                         <div class="col-lg-4">
                             <h5 class="footer-middle-title">About Us</h5>
                             <p class="pb-4 footer-text">
-                                There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour.
+                             We are group 4. We have 5 members include: Doan Nhat Nam, Quach Hoang Long, Tho Che Quoc An, Mai Trieu Chinh and Vu Hai Anh 
                             </p>
                         </div>
                         {{-- <div class="col-lg-3">
@@ -359,20 +358,20 @@
     </footer>
 
 
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/modernizr-3.6.0.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/heandline.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/magnific-popup.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/countdown.min.js"></script>
-    <script src="assets/js/odometer.min.js"></script>
-    <script src="assets/js/viewport.jquery.js"></script>
-    <script src="assets/js/nice-select.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{asset('assets/js/modernizr-3.6.0.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/js/heandline.js')}}"></script>
+    <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{asset('assets/js/magnific-popup.min.js')}}"></script>
+    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/js/wow.min.js')}}"></script>
+    <script src="{{asset('assets/js/countdown.min.js')}}"></script>
+    <script src="{{asset('assets/js/odometer.min.js')}}"></script>
+    <script src="{{asset('assets/js/viewport.jquery.js')}}"></script>
+    <script src="{{asset('assets/js/nice-select.js')}}"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>
 
 </body>
 

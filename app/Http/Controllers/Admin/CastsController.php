@@ -157,19 +157,30 @@ class CastsController extends Controller
     {
         if($request->search){
             $movies = Movie::where('name', 'like', '%'.$request->search.'%')->paginate(10);
-            return view('admin.cast.assign-movie',compact('cast','movies'));
+        }else{
+            $movies = Movie::orderBy('began_at','desc')->paginate(10);
         }
-        $movies = Movie::orderBy('began_at','desc')->paginate(10);
+        foreach ($movies as $key => $value) {
+            $checkAssign = MoviesCasts::where('movie_id',$value->id)->where('cast_id',$cast->id)->first();
+            if($checkAssign) $value->candelete = 1;
+            else $value->candelete = 0;
+        }
         return view('admin.cast.assign-movie',compact('cast','movies'));
     }
     public function assignStore(Request $request,Movie $movie)
     {
         if($request->castid){
-            $moviesCast = new MoviesCasts();
-            $moviesCast->cast_id = $request->castid;
-            $moviesCast->movie_id = $movie->id;
-            $moviesCast->save();
-            return redirect()->route('cast.index')->with('success','Cast has been assign successfully');
+            $checkAssign = MoviesCasts::where('movie_id',$movie->id)->where('cast_id',$request->castid)->first();
+            if($checkAssign) {
+                $checkAssign->delete();
+                return redirect()->route('cast.index')->with('success','Cast has been unassign successfully');
+            }else{
+                $moviesCast = new MoviesCasts();
+                $moviesCast->cast_id = $request->castid;
+                $moviesCast->movie_id = $movie->id;
+                $moviesCast->save();
+                return redirect()->route('cast.index')->with('success','Cast has been assign successfully');
+            }  
         }
         return redirect()->back();
     }

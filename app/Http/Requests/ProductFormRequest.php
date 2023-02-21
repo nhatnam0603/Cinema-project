@@ -28,14 +28,12 @@ class ProductFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            // 'began_at' => [
-            //     'required',
-            //     'string'
-            // ],
-            // 'end_at' => [
-            //     'required',
-            //     'string'
-            // ],
+            'began_at' => [
+                'required',
+            ],
+            'end_at' => [
+                'required','after_or_equal:began_at',
+            ],
             'type' => [
                 'required'
             ],
