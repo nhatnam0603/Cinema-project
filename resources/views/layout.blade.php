@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Cinema</title>
+    <title>4Group Cinema</title>
 
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.jpg') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -258,7 +258,7 @@
                         <div class="col-lg-4">
                             <h5 class="footer-middle-title">About Us</h5>
                             <p class="pb-4 footer-text">
-                             We are group 4. We have 5 members include: Doan Nhat Nam, Quach Hoang Long, Tho Che Quoc An, Mai Trieu Chinh and Vu Hai Anh 
+                             We are group 4. We have 5 members include: Doan Nhat Nam, Quach Hoang Long, Tho Che Quoc An, Mai Trieu Chinh and Vu Hai Anh
                             </p>
                         </div>
                         {{-- <div class="col-lg-3">
