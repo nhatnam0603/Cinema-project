@@ -18,7 +18,9 @@ class AuthController extends Controller
      */
     public function index()
     {
+        if(!auth()->user())
         return view('auth.login');
+        else return redirect()->back();
     }
 
     /**
