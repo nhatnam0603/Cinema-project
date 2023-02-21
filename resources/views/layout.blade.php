@@ -173,7 +173,7 @@
                                 {{auth()->user()->name}}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:0;border-radius:25px">
-                                 <a href="{{route('logout')}}">Logout</a>
+                                 <a href="{{route('user.logout')}}">Logout</a>
                                  @if(auth()->user()->role == 2)
                                  <a href="{{route('dashboard')}}">Dashboard</a>
                                  @endif

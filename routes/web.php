@@ -90,6 +90,9 @@ Route::group(['middleware' => 'auth'], function () {
         'confirmpayment',
     ])->name('comfirm.payment');
     //End route website
+    Route::get('logoutuser', [AuthController::class, 'logout'])->name(
+        'user.logout'
+    );
 });
 
 // BACK END - ADMIN ROUTE
