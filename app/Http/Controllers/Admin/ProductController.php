@@ -15,6 +15,7 @@ use App\Models\MoviesTypes;
 use App\Models\Screens;
 use App\Models\Times;
 use App\Models\TypeScreens;
+use core_customfield\data;
 use DateTime;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -66,7 +67,19 @@ class ProductController extends Controller
 
                 $product->image = $filename;
             }
+            $files = $request->file('imagelist');
 
+            if($request->hasFile('imagelist'))
+            {
+                $data = [];
+                foreach ($files as $file) {
+                    $name = $file->getClientOriginalName();
+                    $file->move(public_path('assets/img/movie'), $name);
+                    $data[] = public_path('assets/img/movie') .$name;
+                }
+                $product->image_list = json_encode($data);
+            }
+            $product->duration = date('H:i',strtotime($request->duration));
             $product->save();
             foreach ($validatedData['type'] as $key => $value) {
                 $productType = new MoviesTypes();
@@ -140,7 +153,18 @@ class ProductController extends Controller
                 }
                 $product->image = $filename;
             }
-
+            if($request->hasFile('imagelist'))
+            {
+                $files = $request->file('imagelist');
+                $data = [];
+                foreach ($files as $file) {
+                    $name = $file->getClientOriginalName();
+                    $file->move(public_path('assets/img/movie'), $name);
+                    $data[] = 'assets/img/movie/' .$name;
+                }
+                $product->image_list = json_encode($data);
+            }
+            $product->duration = date('H:i',strtotime($request->duration));
             $product->save();
              // Xoa type
              $movieTypes = MoviesTypes::where('movie_id',$movie->id)->get();

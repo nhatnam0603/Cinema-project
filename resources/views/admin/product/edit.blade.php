@@ -87,6 +87,19 @@
                                 </div>
                               </div>
                               <div class="form-group">
+                                <label>Image list</label>
+                                <input type="file" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                  <span class="input-group-append">
+                                    <input class="file-upload-browse btn btn-dark" name="imagelist[]" type="file" multiple>
+                                    @error('imagelist')
+                                        <small class="text-danger">{{$message}}</small>
+                                    @enderror
+                                  </span>
+                                  <input type="text" class="form-control file-upload-info" disabled placeholder="{{count(json_decode($movie->image_list))}} files">
+                                </div>
+                              </div>
+                              <div class="form-group">
                                 <label for="exampleTextarea1">Description</label>
                                 <textarea class="form-control" id="exampleTextarea1" name="description" rows="7">{{$movie->description}}</textarea>
                                 @error('description')
@@ -99,6 +112,10 @@
                                 @error('video')
                                 <small class="text-danger">{{$message}}</small>
                                 @enderror
+                              </div>
+                              <div class="form-group">
+                                    <label for="timeid">Time</label>
+                                    <input type="time"  max="03:00" class="form-control" id="timeid" name="duration" placeholder="Enter time " value="{{$movie->duration}}">
                               </div>
                               <button type="submit" class="btn btn-success me-2">Save</button>
                               <button class="btn btn-dark">Cancel</button>
