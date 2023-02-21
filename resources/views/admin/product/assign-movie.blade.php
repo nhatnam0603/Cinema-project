@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <select class="form-control" name="screen">
-                                    <option>Choose screen</option>
+                                    <option value="">Choose screen</option>
                                     @foreach($screens as $screen)
                                     <option value="{{$screen->id}}" {{($screen->id == Request::get('screen'))?'selected':''}}>{{$screen->name}}</option>
                                     @endforeach

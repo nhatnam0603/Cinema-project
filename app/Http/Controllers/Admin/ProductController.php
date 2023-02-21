@@ -218,8 +218,16 @@ class ProductController extends Controller
         $screens = Screens::whereRaw('type IN '.$movietypein)->get();
         if($request->screen && $request->date){
             $times = Times::whereDoesntHave('time_assign_movie_screen',function($query) use($movie,$request){
-                $query->where('movie_id',$movie->id)->where('screen_id',$request->screen)->whereDate('date',date('Y-m-d',strtotime($request->date)));
+                $query->where('screen_id',$request->screen)->whereDate('date',date('Y-m-d',strtotime($request->date)));
             })->get();
+            if(date('Y-m-d',strtotime($request->date)) == date('Y-m-d')) 
+            {
+                $timeCustom = [];
+                foreach ($times as $key => $value) {
+                    if(date('H:i') <= date('H:i',strtotime($value->time))) $timeCustom[] = $value;
+                }
+                $times = $timeCustom;
+            }
         }
         return view('admin.product.assign-movie',compact('movie','screens','times'));
     }
